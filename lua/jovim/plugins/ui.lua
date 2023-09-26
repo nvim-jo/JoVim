@@ -89,7 +89,7 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
-      local options = require('setup.lualine').get_opts()
+      local options = require('jovim.setup.lualine').get_opts()
 
       return options 
     end,

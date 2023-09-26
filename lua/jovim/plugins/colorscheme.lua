@@ -13,11 +13,11 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = function ()
-      local options = require('setup.catppuccin.colors').get_options()
+      local options = require('jovim.setup.catppuccin.colors').get_options()
       return options
     end,
     config = function()
-      require('setup.catppuccin').setup()
+      require('jovim.setup.catppuccin').setup()
     end
   },
 }

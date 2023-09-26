@@ -1,7 +1,7 @@
 local M = {}
 local vim = vim
 
-local colors = require("setup.catppuccin.colors").get_palette()
+local colors = require("jovim.setup.catppuccin.colors").get_palette()
 
 function M.get_colors()
   return colors
