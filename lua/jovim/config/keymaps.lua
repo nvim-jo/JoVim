@@ -142,7 +142,7 @@ if vim.fn.has("nvim-0.9.0") == 1 then
 end
 
 -- JoVim Changelog
-map("n", "<leader>Ju", "<cmd>JoVimUpdate<cr>", {desc = "Update JoVim"})
+map("n", "<leader>ju", "<cmd>JoVimUpdate<cr>", {desc = "Update JoVim"})
 
 -- floating terminal
 local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end

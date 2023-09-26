@@ -304,7 +304,7 @@ If you rather use leap/flit instead, you can add the leap extra:
         ["<leader>u"] = { name = "+ui" },
         ["<leader>w"] = { name = "+windows" },
         ["<leader>x"] = { name = "+diagnostics/quickfix" },
-        ["<leader>J"] = { name = "+JoVim" },
+        ["<leader>j"] = { name = "+JoVim" },
       },
     },
     config = function(_, opts)
