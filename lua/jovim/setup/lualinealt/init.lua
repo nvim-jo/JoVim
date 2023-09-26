@@ -4,17 +4,20 @@ local fancy_branch = require('jovim.setup.lualinealt.components.fancy_branch')
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = '#202328',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
+  bg       = '#181825',
+  fg       = '#CDD6F4',
+  yellow   = '#f9e2af',
+  cyan     = '#89dceb',
   darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
+  green    = '#a6e3a1',
+  orange   = '#fab387',
+  maroon = '#eba0ac',
   violet   = '#a9a1e1',
   magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
+  blue     = '#89B4FA',
+  red      = '#f38ba8',
+  lavender = '#b4befe',
+  mauve = '#cba6f7'
 }
 
 local conditions = {
@@ -44,6 +47,7 @@ local config = {
       normal = { c = { fg = colors.fg, bg = colors.bg } },
       inactive = { c = { fg = colors.fg, bg = colors.bg } },
     },
+    disabled_filetypes = { statusline = { "dashboard", "alpha", "neo-tree" } },
   },
   sections = {
     -- these are to remove the defaults
@@ -83,19 +87,19 @@ ins_left {
   color = function()
     -- auto change color according to neovims mode
     local mode_color = {
-      n = colors.red,
+      n = colors.blue,
       i = colors.green,
-      v = colors.blue,
+      v = colors.mauve,
       [''] = colors.blue,
-      V = colors.blue,
-      c = colors.magenta,
-      no = colors.red,
+      V = colors.mauve,
+      c = colors.mauve,
+      no = colors.blue,
       s = colors.orange,
       S = colors.orange,
       [''] = colors.orange,
       ic = colors.yellow,
-      R = colors.violet,
-      Rv = colors.violet,
+      R = colors.maroon,
+      Rv = colors.maroon,
       cv = colors.red,
       ce = colors.red,
       r = colors.cyan,
