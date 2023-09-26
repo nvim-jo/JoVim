@@ -104,12 +104,14 @@ function M.setup(opts)
       callback = function()
         M.load("autocmds")
         M.load("keymaps")
+        require("jovim.extra.notepad").setup()
       end,
     })
   else
     -- load them now so they affect the opened buffers
     M.load("autocmds")
     M.load("keymaps")
+    require("jovim.extra.notepad").setup()
   end
 
   require("lazy.core.util").try(function()
