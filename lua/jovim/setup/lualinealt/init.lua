@@ -83,6 +83,16 @@ local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
 
+local function capitalizeFirstLetter(str)
+  -- Check if the string is not empty
+  if #str > 0 then
+      -- Capitalize the first letter and make the rest lowercase
+      return str:sub(1, 1):upper() .. str:sub(2):lower()
+  else
+      return str
+  end
+end
+
 ins_left {
   function()
     return '▊'
@@ -184,8 +194,8 @@ ins_right {
 
 ins_right {
   fancy_filetype,
-  fmt = string.upper,
-  padding = { left = 1 }
+  fmt = capitalizeFirstLetter,
+  padding = { left = 1, right = 1 }
 }
 -- Add components to right sections
 -- ins_right {
