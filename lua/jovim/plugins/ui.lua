@@ -258,13 +258,10 @@ return {
       require("alpha").setup(dashboard.opts)
 
       vim.api.nvim_create_autocmd("User", {
-        pattern = "JoVimStarted",
+        pattern = "LazyVimStarted",
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          local version = "                v" ..vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
-          local plugins = "⚡ Editor loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-          dashboard.section.footer.val = version .. '\n' .. plugins .. '\n'
           dashboard.section.footer.val = "⚡ Editor loaded " .. stats.count .. " plugins in " .. ms .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
