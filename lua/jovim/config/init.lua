@@ -105,6 +105,7 @@ function M.setup(opts)
         M.load("autocmds")
         M.load("keymaps")
         require("jovim.extra.notepad").setup()
+        require("jovim.extra.updater").setup()
       end,
     })
   else
@@ -112,6 +113,7 @@ function M.setup(opts)
     M.load("autocmds")
     M.load("keymaps")
     require("jovim.extra.notepad").setup()
+    require("jovim.extra.updater").setup()
   end
 
   require("lazy.core.util").try(function()
