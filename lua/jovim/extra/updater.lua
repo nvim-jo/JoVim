@@ -3,6 +3,7 @@ local M = {}
 M.update_all = function ()
     require("lazy").sync { wait = true }
     require("jovim.extra.utils.mason").Update()
+    vim.cmd("TSUpdateSync")
 end
 
 M.setup = function()
