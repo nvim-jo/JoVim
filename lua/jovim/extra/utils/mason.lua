@@ -1,14 +1,12 @@
-local platform = require "mason-core.platform"
 local M = {}
 
-
 M.Update = function()
+    local _ = require "mason-core.functional"
+    local platform = require "mason-core.platform"
     local notify = require "mason-core.notify"
     local registry = require "mason-registry"
     notify "Updating registries…"
 
-    ---@param success boolean
-    ---@param updated_registries RegistrySource[]
     local function handle_result(success, updated_registries)
         if success then
             local count = #updated_registries
