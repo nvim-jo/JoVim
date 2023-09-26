@@ -17,19 +17,7 @@ function M:init(options)
 end
 
 function M:apply_icon()
-    M.super.apply_icon(self)
-
-    if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] == nil then
-        return
-    end
-
-    local icon = self:format_hl(self.ts_icon_hl) .. self.options.ts_icon[1]
-    local align = self.options.ts_icon.align
-    if align == "left" then
-        self.status = self.status
-    else
-        self.status = self.status
-    end
+   return 
 end
 
 return M
