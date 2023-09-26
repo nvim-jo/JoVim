@@ -88,11 +88,9 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = function()
-      local options = require('jovim.setup.lualine').get_opts()
-
-      return options
-    end,
+    config = function()
+      require('jovim.setup.lualinealt').setup()
+    end 
   },
 
   -- indent guides for Neovim
