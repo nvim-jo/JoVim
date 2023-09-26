@@ -1,5 +1,6 @@
 local lualine = require('lualine')
 local fancy_branch = require('jovim.setup.lualinealt.components.fancy_branch')
+local fancy_location = require('jovim.setup.lualinealt.components.fancy_location')
 
 -- Color table for highlights
 -- stylua: ignore
@@ -17,7 +18,8 @@ local colors = {
   blue     = '#89B4FA',
   red      = '#f38ba8',
   lavender = '#b4befe',
-  mauve = '#cba6f7'
+  mauve = '#cba6f7',
+  text = "#cdd6f4",
 }
 
 local conditions = {
@@ -120,7 +122,7 @@ ins_left {
 ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
+  color = { fg = colors.text, gui = 'bold' },
 }
 
 ins_left { 'location' }
@@ -165,6 +167,9 @@ ins_left {
   color = { fg = '#ffffff', gui = 'bold' },
 }
 
+ins_right {
+  fancy_location
+}
 -- Add components to right sections
 ins_right {
   'o:encoding', -- option component same as &encoding in viml
