@@ -1,3 +1,4 @@
+local Util = require('jovim.util')
 return {
   -- Better `vim.notify()`
   {
@@ -75,11 +76,12 @@ return {
         offsets = {
           {
             filetype = "neo-tree",
-            text = "Neo-tree",
+            text = "Explorer: "..Util.get_directory(),
             highlight = "Directory",
             text_align = "left",
           },
         },
+        highlights = require("catppuccin.groups.integrations.bufferline").get()
       },
     },
   },

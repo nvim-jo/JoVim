@@ -299,4 +299,11 @@ function M.changelog()
   vim.diagnostic.disable(float.buf)
 end
 
+M.get_directory = function()
+  local current_directory = vim.loop.cwd()
+  local path_elements = vim.fn.split(current_directory, "/") -- Split the path using the directory separator
+  local last_directory = path_elements[#path_elements] -- Get the last element
+  return last_directory 
+end
+
 return M
