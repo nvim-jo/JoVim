@@ -1,4 +1,5 @@
 local lualine = require('lualine')
+local fancy_branch = require('jovim.setup.lualinealt.components.fancy_branch')
 
 -- Color table for highlights
 -- stylua: ignore
@@ -79,15 +80,6 @@ ins_left {
   function()
     return '▊'
   end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
-  padding = { left = 0, right = 1 }, -- We don't need space before this
-}
-
-ins_left {
-  -- mode component
-  function()
-    return ''
-  end,
   color = function()
     -- auto change color according to neovims mode
     local mode_color = {
@@ -113,14 +105,12 @@ ins_left {
       t = colors.red,
     }
     return { fg = mode_color[vim.fn.mode()] }
-  end,
-  padding = { right = 1 },
+  end, 
+  padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
 ins_left {
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
+  fancy_branch 
 }
 
 ins_left {
@@ -130,8 +120,6 @@ ins_left {
 }
 
 ins_left { 'location' }
-
-ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
   'diagnostics',
