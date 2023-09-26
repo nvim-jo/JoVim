@@ -1,7 +1,7 @@
 local M = require("lualine.components.filetype"):extend()
 
 function M:init(options)
-    options.ts_icon = options.ts_icon or ""
+    options.ts_icon = options.ts_icon or ""
     if type(options.ts_icon) == "string" then
         options.ts_icon = { options.ts_icon }
     end

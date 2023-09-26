@@ -1,6 +1,7 @@
 local lualine = require('lualine')
 local fancy_branch = require('jovim.setup.lualinealt.components.fancy_branch')
 local fancy_location = require('jovim.setup.lualinealt.components.fancy_location')
+local fancy_filetype = require('jovim.setup.lualinealt.components.fancy_filetype')
 
 -- Color table for highlights
 -- stylua: ignore
@@ -138,6 +139,18 @@ ins_left {
   },
 }
 
+ins_left {
+  'diff',
+  -- Is it me or the symbol for modified us really weird
+  symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+  diff_color = {
+    added = { fg = colors.green },
+    modified = { fg = colors.orange },
+    removed = { fg = colors.red },
+  },
+  cond = conditions.hide_in_width,
+}
+
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
 ins_left {
@@ -170,46 +183,33 @@ ins_left {
 ins_right {
   fancy_location
 }
+
+ins_right {
+  fancy_filetype,
+  padding = { left = 1 }
+}
 -- Add components to right sections
-ins_right {
-  'o:encoding', -- option component same as &encoding in viml
-  fmt = string.upper, -- I'm not sure why it's upper case either ;)
-  cond = conditions.hide_in_width,
-  color = { fg = colors.green, gui = 'bold' },
-}
+-- ins_right {
+--   'o:encoding', -- option component same as &encoding in viml
+--   fmt = string.upper, -- I'm not sure why it's upper case either ;)
+--   cond = conditions.hide_in_width,
+--   color = { fg = colors.green, gui = 'bold' },
+-- }
 
-ins_right {
-  'fileformat',
-  fmt = string.upper,
-  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = 'bold' },
-}
+-- ins_right {
+--   'fileformat',
+--   fmt = string.upper,
+--   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+--   color = { fg = colors.green, gui = 'bold' },
+-- }
 
-ins_right {
-  'branch',
-  icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
-}
-
-ins_right {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
-  },
-  cond = conditions.hide_in_width,
-}
-
-ins_right {
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.blue },
-  padding = { left = 1 },
-}
+-- ins_right {
+--   function()
+--     return '▊'
+--   end,
+--   color = { fg = colors.blue },
+--   padding = { left = 1 },
+-- }
 
 local M = {}
 M.setup = function ()
