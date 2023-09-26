@@ -184,6 +184,7 @@ ins_right {
 
 ins_right {
   fancy_filetype,
+  fmt = string.upper,
   padding = { left = 1 }
 }
 -- Add components to right sections

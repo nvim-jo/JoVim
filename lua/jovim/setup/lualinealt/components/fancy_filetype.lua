@@ -1,7 +1,7 @@
 local M = require("lualine.components.filetype"):extend()
 
 function M:init(options)
-    options.ts_icon = ""
+    options.ts_icon = options.ts_icon or ""
     if type(options.ts_icon) == "string" then
         options.ts_icon = { options.ts_icon }
     end
@@ -26,9 +26,9 @@ function M:apply_icon()
     local icon = self:format_hl(self.ts_icon_hl) .. self.options.ts_icon[1]
     local align = self.options.ts_icon.align
     if align == "left" then
-        self.status = icon .. " " .. self.status
+        self.status = self.status
     else
-        self.status = self.status .. " " .. icon
+        self.status = self.status
     end
 end
 
