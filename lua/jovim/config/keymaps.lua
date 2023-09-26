@@ -47,6 +47,8 @@ if Util.has("bufferline.nvim") then
   map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
   map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
   map("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+  map("n", "<C-PageUp>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+  map("n", "<C-PageDown>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 else
   map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
   map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
@@ -54,6 +56,8 @@ else
   map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
   map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
   map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+  map("n", "<C-PageUp>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+  map("n", "<C-PageDown>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
