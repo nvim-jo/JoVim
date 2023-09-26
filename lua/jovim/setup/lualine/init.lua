@@ -31,7 +31,7 @@ local os_icon = get_os_icon()
 M.get_opts = function()
     local opts = {
         options = {
-            theme = "jw",
+            theme = "auto",
             globalstatus = true,
             disabled_filetypes = { statusline = { "dashboard", "alpha", "neo-tree" } },
         },
