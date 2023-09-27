@@ -157,6 +157,9 @@ M.overrides = {
 			IlluminatedWordText = { bg = "#1e2030" },
 			IlluminatedWordRead = { bg = "#1e2030" },
 			IlluminatedWordWrite = { bg = "#1e2030" },
+
+			NoiceCmdlineIcon = { fg = my_palette.mauve },
+			NoiceCmdlinePopupBorder = { fg = my_palette.blue },
 		},
 	},
 }
