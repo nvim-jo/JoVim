@@ -85,7 +85,7 @@ return {
               local last_directory = path_elements[#path_elements]       -- Get the last element
               return "Explorer: " .. last_directory
             end,
-            highlight = "Directory",
+            highlight = "Explorer",
             text_align = "left",
           },
         },
