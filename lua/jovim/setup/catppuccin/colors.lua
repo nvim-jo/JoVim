@@ -149,8 +149,9 @@ M.overrides = {
 			NeoTreeRootName = { fg = my_palette.lavender, style = { "bold" } },
 			NeoTreeNormal = { fg = my_palette.text, bg = my_palette.mantle },
 			NeoTreeNormalNC = { fg = my_palette.text, bg = my_palette.mantle },
-			NeoTreeTabActive = { bg = my_palette.mantle, fg = my_palette.lavender, style = { "bold" } },
-			NeoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
+			-- NeoTreeTabActive = { bg = my_palette.mantle, fg = my_palette.lavender, style = { "bold" } },
+			-- NeoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
+			NeoTreeIndentMarker = { fg = my_palette.blue },
 
 			MiniIndentscopeSymbol = { fg = my_palette.blue },
 			IlluminatedWordText = { bg = "#1e2030" },
