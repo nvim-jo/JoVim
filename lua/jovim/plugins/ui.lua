@@ -191,7 +191,6 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
-        enabled = false,
       },
       routes = {
         {
@@ -211,6 +210,7 @@ return {
         command_palette = true,
         long_message_to_split = true,
         inc_rename = true,
+        lsp_doc_border = true, -- add a border to hover docs and signature help
       },
     },
     -- stylua: ignore
