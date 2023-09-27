@@ -101,7 +101,7 @@ M.overrides = {
 			GitSignsChange = { fg = my_palette.diff.change },
 			GitSignsDelete = { fg = my_palette.diff.delete },
 
-			TabLineSel = { bg = my_palette.blue },
+			TabLineSel = { bg = my_palette.red },
 
 			-- telescope
 			-- For telescope.nvim

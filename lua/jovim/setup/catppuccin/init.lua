@@ -35,6 +35,8 @@ M.mode_color = {
 
 M.setup = function()
   vim.api.nvim_command [[syntax on]]
+  local opts = require('jovim.setup.catppuccin.colors').get_options()
+  require('catppuccin').setup(opts)
   vim.g.catppuccin_flavour = "mocha"  -- latte, frappe, macchiato mocha
 end
 
