@@ -87,18 +87,7 @@ return {
             text_align = "left",
           },
         },
-        highlights = require("catppuccin.groups.integrations.bufferline").get({
-          styles = { "bold" },
-          custom = {
-            all = {
-              background = { bg = "#181825", fg = "#CDD6F4" },
-              fill = { bg = "#181825" }
-            },
-            mocha = {
-              background = { bg = "#181825", fg = "#CDD6F4" }
-            }
-          }
-        })
+        highlights = require("catppuccin.groups.integrations.bufferline").get()
       },
     },
   },
