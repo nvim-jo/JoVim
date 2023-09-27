@@ -1,3 +1,5 @@
+local mocha = require("catppuccin.palettes").get_palette "mocha"
+
 return {
   -- Better `vim.notify()`
   {
@@ -80,11 +82,25 @@ return {
             text = function()
               local current_directory = vim.loop.cwd()
               local path_elements = vim.fn.split(current_directory, "/") -- Split the path using the directory separator
-              local last_directory = path_elements[#path_elements] -- Get the last element
-              return "Explorer: "..last_directory 
+              local last_directory = path_elements[#path_elements]       -- Get the last element
+              return "Explorer: " .. last_directory
             end,
             highlight = "Directory",
-            text_align = "center",
+            text_align = "left",
+          },
+        },
+      },
+      highlights = require("catppuccin.groups.integrations.bufferline").get {
+        styles = { "bold" },
+        custom = {
+          all = {
+            fill = { bg = "#000000" },
+          },
+          mocha = {
+            background = { fg = mocha.text, bg = mocha.mantle },
+          },
+          latte = {
+            background = { fg = "#000000" },
           },
         },
       },
@@ -97,7 +113,7 @@ return {
     event = "VeryLazy",
     config = function()
       require('jovim.setup.lualinealt').setup()
-    end 
+    end
   },
 
   -- indent guides for Neovim
@@ -355,7 +371,7 @@ return {
     version = "*",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",   -- optional dependency
+      "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     opts = {
       theme = 'catppuccin',
