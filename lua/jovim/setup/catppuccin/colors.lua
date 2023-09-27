@@ -57,7 +57,7 @@ M.overrides = {
 
 			FloatBorder = {
 				fg = my_palette.blue,
-				bg = my_palette.base,
+				bg = my_palette.none,
 			},
 
 			NormalFloat = {
