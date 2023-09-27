@@ -47,7 +47,48 @@ return {
         return vim.ui.input(...)
       end
     end,
-  }, 
+  },
+
+  -- This is what powers JoVim's fancy-looking
+  -- tabs, which include filetype icons and close buttons.
+  {
+    "akinsho/bufferline.nvim",
+    keys = {
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
+      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+    },
+    opts = {
+      options = {
+        -- stylua: ignore
+        close_command = function(n) require("mini.bufremove").delete(n, false) end,
+        -- stylua: ignore
+        right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        themable = true,
+        diagnostics = "nvim_lsp",
+        color_icons = true,
+        always_show_bufferline = false,
+        diagnostics_indicator = function(_, _, diag)
+          local icons = require("jovim.config").icons.diagnostics
+          local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+              .. (diag.warning and icons.Warn .. diag.warning or "")
+          return vim.trim(ret)
+        end,
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = function()
+              local current_directory = vim.loop.cwd()
+              local path_elements = vim.fn.split(current_directory, "/") -- Split the path using the directory separator
+              local last_directory = path_elements[#path_elements] -- Get the last element
+              return "Explorer: "..last_directory 
+            end,
+            highlight = "Directory",
+            text_align = "left",
+          },
+        },
+      },
+    },
+  },
 
   -- statusline
   {
