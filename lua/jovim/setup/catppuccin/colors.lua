@@ -153,7 +153,6 @@ M.overrides = {
 			NeoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
 
 			MiniIndentscopeSymbol = { fg = my_palette.blue },
-			MatchParen = { fg = my_palette.blue, bg = my_palette.surface0, style = { "bold" } },
 			ColorColumn = { bg = my_palette.crust }, -- used for the columns set with 'colorcolumn'	
 		},
 	},
