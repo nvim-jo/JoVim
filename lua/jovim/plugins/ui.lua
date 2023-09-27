@@ -81,7 +81,13 @@ return {
             text_align = "left",
           },
         },
-        highlights = require("catppuccin.groups.integrations.bufferline").get()
+        highlights = require("catppuccin.groups.integrations.bufferline").get({
+          custom = {
+            mocha = {
+              background = { bg = "#181825" }
+            }
+          }
+        })
       },
     },
   },
