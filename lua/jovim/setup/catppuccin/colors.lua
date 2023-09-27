@@ -88,7 +88,7 @@ M.overrides = {
 				fg = my_palette.blue,
 				bg = my_palette.none,
 			},
-			Pmenu = { bg = my_palette.crust },
+			Pmenu = { bg = my_palette.mantle },
 			PmenuSel = { fg = my_palette.sapphire, bg = my_palette.mantle },
 			PmenuSbar = { bg = my_palette.base }, -- Popup menu: scrollbar.
 			PmenuThumb = { bg = my_palette.surface0 }, -- Popup menu: Thumb of the scrollbar.
