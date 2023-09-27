@@ -153,10 +153,10 @@ M.overrides = {
 			NeoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
 
 			MiniIndentscopeSymbol = { fg = my_palette.blue },
-			IlluminatedWordText = { bg = my_palette.surface0 },
-			IlluminatedWordRead = { bg = my_palette.surface0 },
+			IlluminatedWordText = { bg = my_palette.base },
+			IlluminatedWordRead = { bg = my_palette.base },
 			IlluminatedWordWrite = {
-				bg = my_palette.surface0
+				bg = my_palette.base
 			},
 		},
 	},
