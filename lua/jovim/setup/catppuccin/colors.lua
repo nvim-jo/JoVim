@@ -151,6 +151,8 @@ M.overrides = {
 			NeoTreeNormalNC = { fg = my_palette.text, bg = my_palette.mantle },
 			NeoTreeTabActive = { bg = my_palette.mantle, fg = my_palette.lavender, style = { "bold" } },
 			NeoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
+
+			MiniTablineCurrent = { fg = my_palette.blue },
 		},
 	},
 }
