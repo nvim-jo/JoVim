@@ -94,13 +94,10 @@ return {
         styles = { "bold" },
         custom = {
           all = {
-            fill = { bg = "#000000" },
+            fill = { bg = mocha.mantle },
           },
           mocha = {
             background = { fg = mocha.text, bg = mocha.mantle },
-          },
-          latte = {
-            background = { fg = "#000000" },
           },
         },
       },
