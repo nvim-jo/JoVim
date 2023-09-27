@@ -36,6 +36,8 @@ return {
       end
     end,
     opts = {
+      disable_netrw = true,
+      hijack_netrw = true,
       sources = { "filesystem", "buffers", "git_status", "document_symbols" },
       open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
       filesystem = {
@@ -162,6 +164,7 @@ return {
     },
     opts = {
       defaults = {
+        file_ignore_patterns = { "node_modules", "venv" },
         prompt_prefix = " ",
         selection_caret = " ",
         mappings = {
