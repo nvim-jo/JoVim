@@ -97,7 +97,7 @@ return {
             fill = { bg = mocha.mantle },
           },
           mocha = {
-            background = { fg = mocha.text, bg = mocha.mantle },
+            background = { bg = mocha.mantle },
           },
         },
       },
