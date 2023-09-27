@@ -53,6 +53,7 @@ return {
   -- tabs, which include filetype icons and close buttons.
   {
     "akinsho/bufferline.nvim",
+    lazy = false,
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
@@ -83,7 +84,7 @@ return {
               return "Explorer: "..last_directory 
             end,
             highlight = "Directory",
-            text_align = "left",
+            text_align = "center",
           },
         },
       },
