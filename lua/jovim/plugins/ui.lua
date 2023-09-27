@@ -96,6 +96,10 @@ return {
           all = {
             fill = { bg = mocha.mantle },
             indicator_selected = { fg = mocha.blue },
+            separator = { bg = mocha.mantle },
+            separator_visible = { bg = mocha.mantle },
+            separator_selected = { bg = mocha.mantle },
+            offset_separator = { bg = mocha.mantle },
           },
           mocha = {
             background = { bg = mocha.mantle },
