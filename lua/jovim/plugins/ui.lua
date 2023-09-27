@@ -95,6 +95,7 @@ return {
         custom = {
           all = {
             fill = { bg = mocha.mantle },
+            indicator_selected = { fg = mocha.blue },
           },
           mocha = {
             background = { bg = mocha.mantle },
