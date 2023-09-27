@@ -1,4 +1,3 @@
-local Util = require('jovim.util')
 return {
   -- Better `vim.notify()`
   {
@@ -65,7 +64,9 @@ return {
         close_command = function(n) require("mini.bufremove").delete(n, false) end,
         -- stylua: ignore
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        themable = true,
         diagnostics = "nvim_lsp",
+        color_icons = true,
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require("jovim.config").icons.diagnostics
@@ -76,15 +77,25 @@ return {
         offsets = {
           {
             filetype = "neo-tree",
-            text = "Explorer: "..Util.get_directory(),
+            text = function()
+              local current_directory = vim.loop.cwd()
+              local path_elements = vim.fn.split(current_directory, "/") -- Split the path using the directory separator
+              local last_directory = path_elements[#path_elements] -- Get the last element
+              return "Explorer: "..last_directory 
+            end,
             highlight = "Directory",
             text_align = "left",
           },
         },
         highlights = require("catppuccin.groups.integrations.bufferline").get({
+          styles = { "bold" },
           custom = {
+            all = {
+              background = { bg = "#181825", fg = "#CDD6F4" },
+              fill = { bg = "#181825" }
+            },
             mocha = {
-              background = { bg = "#181825" }
+              background = { bg = "#181825", fg = "#CDD6F4" }
             }
           }
         })
