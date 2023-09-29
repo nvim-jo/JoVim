@@ -14,7 +14,7 @@ local M = {}
 M.setup = function ()
     hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
         vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#89B4FA" })
-        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#CBA6F7" })
+        vim.api.nvim_set_hl(0, "RainbowMauve", { fg = "#CBA6F7" })
         vim.api.nvim_set_hl(0, "RainbowLavender", { fg = "#B4BEFE" })
         vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#F38BA8" })
         vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E3A1" })
