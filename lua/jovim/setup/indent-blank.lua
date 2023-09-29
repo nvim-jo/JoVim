@@ -1,3 +1,5 @@
+local utils = require('catppuccin.utils.colors')
+
 local highlight = {
     "RainbowBlue",
     "RainbowMauve",
@@ -6,6 +8,10 @@ local highlight = {
     "RainbowGreen",
     "RainbowYellow",
     "RainbowRosewater",
+}
+
+local indent_highliht = {
+    "RainbowDark"
 }
 
 local hooks = require "ibl.hooks"
@@ -20,6 +26,7 @@ M.setup = function ()
         vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E3A1" })
         vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#F9E2AF" })
         vim.api.nvim_set_hl(0, "RainbowRosewater", { fg = "#F5E0DC" })
+        vim.api.nvim_set_hl(0, "RainbowDark", { fg = utils.darken("#313244", 0.50, "#1E1E2E" ) })
     end)
 
     
@@ -47,7 +54,7 @@ M.setup = function ()
         indent = {
             char = "│",
             tab_char = nil,
-            highlight = "IblIndent",
+            highlight = indent_highliht,
             smart_indent_cap = true,
             priority = 1,
         },
