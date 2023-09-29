@@ -72,7 +72,7 @@ local defaults = {
       Value = " ",
       Variable = " ",
     },
-  },
+  }, 
 }
 
 M.renames = {

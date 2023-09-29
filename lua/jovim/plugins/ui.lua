@@ -120,26 +120,29 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      -- char = "▏",
-      char = "│",
-      scope = { enabled = false },
-      filetype_exclude = {
-        "help",
-        "alpha",
-        "dashboard",
-        "neo-tree",
-        "Trouble",
-        "lazy",
-        "mason",
-        "notify",
-        "toggleterm",
-        "lazyterm",
-      },
-      -- show_trailing_blankline_indent = false,
-      -- show_current_context = false,
-      -- smart_indent_cap = true,
-    },
+    -- opts = {
+    --   -- char = "▏",
+    --   char = "│",
+    --   scope = { enabled = false },
+    --   filetype_exclude = {
+    --     "help",
+    --     "alpha",
+    --     "dashboard",
+    --     "neo-tree",
+    --     "Trouble",
+    --     "lazy",
+    --     "mason",
+    --     "notify",
+    --     "toggleterm",
+    --     "lazyterm",
+    --   },
+    --   -- show_trailing_blankline_indent = false,
+    --   -- show_current_context = false,
+    --   -- smart_indent_cap = true,
+    -- },
+    config = function ()
+      require('jovim.setup.indent-blank').setup()
+    end,
   },
 
   -- Active indent guide and indent text objects. When you're browsing
@@ -148,6 +151,7 @@ return {
   {
     "echasnovski/mini.indentscope",
     version = false, -- wait till new 0.7.0 release to put it back on semver
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- symbol = "▏",
