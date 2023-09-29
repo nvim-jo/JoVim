@@ -221,7 +221,7 @@ function M.get_options()
 				custom_bg = "NONE",
 			},
 			indent_blankline = {
-				enabled = true,
+				enabled = false,
 				colored_indent_levels = true,
 			},
 			dap = {
