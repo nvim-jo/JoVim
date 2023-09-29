@@ -73,7 +73,7 @@ M.overrides = {
 			LspInfoBorder = { link = "FloatBorder" },
 
 			-- For indent-blankline
-			IndentBlanklineChar = { fg = "#313244", style = {} },
+			IndentBlanklineChar = { fg = utils.darken(my_palette.surface0, 0.40, my_palette.mantle), style = {} },
 			IndentBlanklineContextChar = { fg = my_palette.lavender, style = { "bold" } },
 			IndentBlanklineContextStart = { sp = my_palette.lavender, style = { "underline" } },
 
@@ -155,9 +155,9 @@ M.overrides = {
 			NeoTreeIndentMarker = { fg = my_palette.blue },
 
 			MiniIndentscopeSymbol = { fg = my_palette.blue },
-			IlluminatedWordText = { bg = "#1e2030" },
-			IlluminatedWordRead = { bg = "#1e2030" },
-			IlluminatedWordWrite = { bg = "#1e2030" },
+			IlluminatedWordText = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
+			IlluminatedWordRead = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
+			IlluminatedWordWrite = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
 
 			NoiceCmdlineIcon = { fg = my_palette.mauve },
 			NoiceCmdlinePopupBorder = { fg = my_palette.blue },
