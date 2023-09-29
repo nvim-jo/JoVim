@@ -121,8 +121,8 @@ return {
     main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      -- char = "▏",
-      char = "│",
+      char = "▏",
+      -- char = "│",
       filetype_exclude = {
         "help",
         "alpha",
@@ -137,6 +137,7 @@ return {
       },
       show_trailing_blankline_indent = false,
       show_current_context = false,
+      smart_indent_cap = true,
     },
   },
 
