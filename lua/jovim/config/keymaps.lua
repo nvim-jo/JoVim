@@ -102,7 +102,8 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>li", "<cmd>Lazy<cr>", { desc = "Info Lazy" })
+map("n", "<leader>ls", "<cmd>Lazy sync<cr>", { desc = "Synchronize Lazy" })
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
