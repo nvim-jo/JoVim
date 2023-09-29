@@ -62,7 +62,7 @@ M.overrides = {
 			},
 
 			NormalFloat = {
-				bg = my_palette.base
+				bg = my_palette.none
 			},
 
 			-- For native lsp configs
