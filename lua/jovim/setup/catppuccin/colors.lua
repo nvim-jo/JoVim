@@ -72,7 +72,7 @@ M.overrides = {
 			LspInfoBorder = { link = "FloatBorder" },
 
 			-- For indent-blankline
-			IndentBlanklineChar = { fg = my_palette.surface0 },
+			IndentBlanklineChar = { fg = "#313244", style = {} },
 			IndentBlanklineContextChar = { fg = my_palette.lavender, style = { "bold" } },
 			IndentBlanklineContextStart = { sp = my_palette.lavender, style = { "underline" } },
 
@@ -221,7 +221,7 @@ function M.get_options()
 				custom_bg = "NONE",
 			},
 			indent_blankline = {
-				enabled = false,
+				enabled = true,
 				colored_indent_levels = true,
 			},
 			dap = {

@@ -25,8 +25,36 @@ M.setup = function ()
     
     vim.g.rainbow_delimiters = { highlight = highlight }
     require("ibl").setup { 
-        scope = { highlight = highlight },
-        char = "│",
+        scope = { 
+            highlight = highlight,
+            show_end = false,
+            exclude = {
+                language = {},
+                node_type = {
+                    ["*"] = {
+                        "source_file",
+                        "program",
+                    },
+                    lua = {
+                        "chunk",
+                    },
+                    python = {
+                        "module",
+                    },
+                },
+            },
+        },
+        indent = {
+            char = "│",
+            tab_char = nil,
+            highlight = "IblIndent",
+            smart_indent_cap = true,
+            priority = 1,
+        },
+        viewport_buffer = {
+            min = 30,
+            max = 500,
+        },
         filetype_exclude = {
             "help",
             "alpha",
