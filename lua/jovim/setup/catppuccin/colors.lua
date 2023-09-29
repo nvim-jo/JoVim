@@ -1,6 +1,7 @@
 local M = {}
 local catppuccin = require("catppuccin")
 local mocha = require("catppuccin.palettes").get_palette("mocha")
+local utils = require('catppuccin.utils.colors')
 
 local mocha_overrides = {
 	-- green = "#9ece6a",
@@ -162,7 +163,7 @@ M.overrides = {
 			NoiceCmdlinePopupBorder = { fg = my_palette.blue },
 			NoiceCmdlinePopupTitle = { fg = my_palette.text },
 
-			MatchParen = { fg = my_palette.blue, bg = my_palette.surface0, style = { "bold" } },
+			MatchParen = { fg = my_palette.blue, bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle), style = { "bold" } },
 		},
 	},
 }
