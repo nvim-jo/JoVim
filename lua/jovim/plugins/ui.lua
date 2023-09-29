@@ -121,8 +121,9 @@ return {
     main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      char = "▏",
-      -- char = "│",
+      -- char = "▏",
+      char = "│",
+      scope = { enabled = false },
       filetype_exclude = {
         "help",
         "alpha",
