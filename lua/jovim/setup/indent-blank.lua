@@ -26,7 +26,7 @@ M.setup = function ()
         vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E3A1" })
         vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#F9E2AF" })
         vim.api.nvim_set_hl(0, "RainbowRosewater", { fg = "#F5E0DC" })
-        vim.api.nvim_set_hl(0, "RainbowDark", { fg = utils.darken("#313244", 0.50, "#1E1E2E" ) })
+        vim.api.nvim_set_hl(0, "RainbowDark", { fg = utils.darken("#313244", 0.30, "#1E1E2E" ) })
     end)
 
     
