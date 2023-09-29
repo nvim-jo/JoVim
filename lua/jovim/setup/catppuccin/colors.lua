@@ -160,7 +160,9 @@ M.overrides = {
 
 			NoiceCmdlineIcon = { fg = my_palette.mauve },
 			NoiceCmdlinePopupBorder = { fg = my_palette.blue },
-			NoiceCmdlinePopupTitle = { fg = my_palette.text }
+			NoiceCmdlinePopupTitle = { fg = my_palette.text },
+
+			MatchParen = { fg = my_palette.blue, bg = my_palette.surface0, style = { "bold" } },
 		},
 	},
 }
