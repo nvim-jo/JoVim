@@ -135,9 +135,9 @@ return {
         "toggleterm",
         "lazyterm",
       },
-      show_trailing_blankline_indent = false,
-      show_current_context = false,
-      smart_indent_cap = true,
+      -- show_trailing_blankline_indent = false,
+      -- show_current_context = false,
+      -- smart_indent_cap = true,
     },
   },
 
