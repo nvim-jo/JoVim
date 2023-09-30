@@ -12,7 +12,6 @@ return {
     opts = {
       servers = {
         pyright = {
-          mason = false,
           capabilities = (function ()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
@@ -21,9 +20,9 @@ return {
             python = {
               analysis = {
                 useLibraryCodeForTypes = true,
-                diagnosticSeverityOverrides = {
-                  reportUnusedVariable = "warning"
-                },
+                -- diagnosticSeverityOverrides = {
+                --   reportUnusedVariable = "warning"
+                -- },
                 diagnosticMode = 'off',
                 typeCheckingMode = 'off'
               }
