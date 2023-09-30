@@ -12,6 +12,7 @@ return {
     opts = {
       servers = {
         pyright = {
+          mason = false,
           capabilities = (function ()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }

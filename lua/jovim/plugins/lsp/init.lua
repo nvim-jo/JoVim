@@ -71,25 +71,6 @@ return {
             },
           },
         },
-        pyright = {
-          capabilities = (function ()
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-          end)(),
-          settings = {
-            python = {
-              analysis = {
-                useLibraryCodeForTypes = true,
-                diagnosticSeverityOverrides = {
-                  reportUnusedVariable = "warning"
-                },
-                diagnosticMode = 'off',
-                typeCheckingMode = 'off'
-              }
-            }
-          }
-        }, 
-        ruff_lsp = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
