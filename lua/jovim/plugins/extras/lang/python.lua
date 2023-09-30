@@ -29,7 +29,7 @@ return {
           }
         }, 
         ruff_lsp = {},
-      },
+      }, 
       setup = {
         ruff_lsp = function()
           require("jovim.util").on_attach(function(client, _)
