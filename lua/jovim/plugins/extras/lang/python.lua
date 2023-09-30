@@ -13,7 +13,6 @@ return {
       servers = {
         pyright = {
           mason = false,
-          autostart = false, 
         },
         ruff_lsp = {},
       },
