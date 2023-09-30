@@ -12,15 +12,21 @@ return {
     opts = {
       servers = {
         pyright = {
-          capabilities = {
-            textDocument = {
-              publishDiagnostics = {
-                tagSupport = {
-                  valueSet = { 2 },
+          capabilities = (function ()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+          end)(),
+          settings = {
+            python = {
+              analysis = {
+                useLibraryCodeForTypes = true,
+                diagnosticSeverityOverrides = {
+                  reportUnusedVariable = "warning"
                 },
-              },
-            },
-          },
+                typeCheckingMode = 'basic'
+              }
+            }
+          }
         }, 
         ruff_lsp = {},
       },
