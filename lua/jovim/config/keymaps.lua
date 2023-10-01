@@ -178,3 +178,4 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 map("n", "<leader>n", "<cmd>Notepad<cr>", { desc = "Toggle Notepad" })
+map("n", "<leader>tc", function() require('jovim.extra.customconceal').toggle_conceal() end, { desc = "Toggle Conceal", silent = true })

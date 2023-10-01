@@ -106,6 +106,7 @@ function M.setup(opts)
         M.load("keymaps")
         require("jovim.extra.notepad").setup()
         require("jovim.extra.updater").setup()
+        require("jovim.extra.customconceal").setup()
       end,
     })
   else
