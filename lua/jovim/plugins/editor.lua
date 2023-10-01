@@ -6,9 +6,10 @@ return {
     keys = {
       "<leader>o",
       function()
-        require("fm").toggle_float()
+        vim.cmd([[FM --float]]) 
       end,
     },
+    cmd = "FM",
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
