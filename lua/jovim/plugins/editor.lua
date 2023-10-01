@@ -1,7 +1,12 @@
 local Util = require("jovim.util")
 
 return {
-
+  {
+    "nvim-jo/fm.nvim",
+    cmd = "FM",
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
