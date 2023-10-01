@@ -65,6 +65,10 @@ M.overrides = {
 				bg = my_palette.none
 			},
 
+			FloatTitle = {
+				fg = my_palette.text
+			},
+
 			-- For native lsp configs
 			DiagnosticVirtualTextError = { bg = my_palette.none },
 			DiagnosticVirtualTextWarn = { bg = my_palette.none },

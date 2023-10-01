@@ -3,7 +3,12 @@ local Util = require("jovim.util")
 return {
   {
     "nvim-jo/fm.nvim",
-    cmd = "FM",
+    keys = {
+      "<leader>o",
+      function()
+        require("fm").toggle_float()
+      end,
+    },
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
