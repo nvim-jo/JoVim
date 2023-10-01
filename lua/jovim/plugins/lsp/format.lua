@@ -82,7 +82,7 @@ function M.notify(formatters)
   vim.notify(table.concat(lines, "\n"), vim.log.levels.INFO, {
     title = "Formatting",
     on_open = function(win)
-      vim.api.nvim_win_set_option(win, "conceallevel", 3)
+      vim.api.nvim_win_set_option(win, "conceallevel", 2)
       vim.api.nvim_win_set_option(win, "spell", false)
       local buf = vim.api.nvim_win_get_buf(win)
       vim.treesitter.start(buf, "markdown")
