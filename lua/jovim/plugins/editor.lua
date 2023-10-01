@@ -4,10 +4,13 @@ return {
   {
     "nvim-jo/fm.nvim",
     keys = {
-      "<leader>o",
-      function()
-        vim.cmd([[FM --float]]) 
-      end,
+      {
+        "<leader>o",
+        function()
+          require("fm").toggle_float()
+        end,
+        desc = "File Manager"
+      } 
     },
     cmd = "FM",
     opts = {},
