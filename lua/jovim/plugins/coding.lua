@@ -217,12 +217,12 @@ return {
       end)
     end,
   },
-  -- {
-  --   "nvim-jo/conceal.nvim",
-  --   config = function ()
-  --     local conceal = require('conceal')
-  --     conceal.setup({})
-  --     conceal.generate_conceals()
-  --   end,
-  -- }
+  {
+    "nvim-jo/conceal.nvim",
+    config = function ()
+      local conceal = require('conceal')
+      conceal.setup({})
+      conceal.generate_conceals()
+    end,
+  }
 }
