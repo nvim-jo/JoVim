@@ -31,7 +31,21 @@ M.setup = function ()
 
     
     vim.g.rainbow_delimiters = { highlight = highlight }
-    require("ibl").setup { 
+    require("ibl").setup {
+        exclude = {
+            filetypes = {
+                "help",
+                "alpha",
+                "dashboard",
+                "neo-tree",
+                "Trouble",
+                "lazy",
+                "mason",
+                "notify",
+                "toggleterm",
+                "lazyterm",
+            }
+        }, 
         scope = { 
             highlight = highlight,
             show_end = false,
