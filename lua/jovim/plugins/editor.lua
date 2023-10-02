@@ -304,6 +304,7 @@ If you rather use leap/flit instead, you can add the leap extra:
     event = "VeryLazy",
     opts = {
       plugins = { spelling = true },
+      icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
       defaults = {
         mode = { "n", "v" },
         ["g"] = { name = "+goto" },
