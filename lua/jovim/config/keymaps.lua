@@ -201,7 +201,7 @@ end, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
 
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
-  ["<leader>b"] = { name = get_icon("File", 1, true).."Buffer" },
+  ["<leader>b"] = { name = get_icon("Buffer", 1, true).."Buffer" },
   ["<leader>c"] = { name = get_icon("Code", 1, true).."Code" },
   ["<leader>f"] = { name = get_icon("Find", 1, true).."Find" },
   ["<leader>g"] = { name = get_icon("Git", 1, true).."Git" },
