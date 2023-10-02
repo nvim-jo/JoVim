@@ -1,5 +1,7 @@
 -- This file is automatically loaded by jovim.config.init
 local Util = require("jovim.util")
+local wk = require("which-key")
+local get_icon = Util.get_icon
 
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
@@ -14,6 +16,25 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
+
+local function which_map(mode, mappings, opts)
+  wk.register(mappings, {
+    mode = mode,
+    opts
+  })
+end
+
+which_map({"n", "v"}, {
+  f = {
+    name = "file", -- optional group name
+    f = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false, buffer = 123 }
+  },
+  s = {
+    name = "hello",
+    a = { "<cmd>Hello<cr>", "Hello" }
+  }
+}, { prefix = "<leader>"})
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -179,3 +200,19 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 map("n", "<leader>n", "<cmd>Notepad<cr>", { desc = "Toggle Notepad" })
 map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = "Toggle Conceal", silent = true })
+
+which_map({"n", "v"}, {
+  ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
+  ["<leader>b"] = { name = get_icon("Tab", 1, true).."Buffer" },
+  ["<leader>c"] = { name = get_icon("Code", 1, true).."Code" },
+  ["<leader>f"] = { name = get_icon("Find", 1, true).."Find" },
+  ["<leader>g"] = { name = get_icon("Git", 1, true).."Git" },
+  ["<leader>gh"] = { name = "+hunks" },
+  ["<leader>q"] = { name = get_icon("Session", 1, true).."Session" },
+  ["<leader>s"] = { name = get_icon("Search", 1, true).."Search" },
+  ["<leader>u"] = { name = get_icon("UI", 1, true).."UI" },
+  ["<leader>w"] = { name = get_icon("Window", 1, true).."Windows" },
+  ["<leader>x"] = { name = get_icon("Diagnostic", 1, true).."Diagnostics" },
+  ["<leader>j"] = { name = get_icon("Vim", 1, true).."JoVim" },
+  ["<leader>l"] = { name = get_icon("Lazy", 1, true).."Lazy" }
+}, {})
