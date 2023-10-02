@@ -59,6 +59,7 @@ return {
   Tab = "󰓩",
   TabClose = "󰅙",
   Terminal = "",
+  Toggle = "",
   UI = "",
   Vim = "",
   Window = "󱂬",

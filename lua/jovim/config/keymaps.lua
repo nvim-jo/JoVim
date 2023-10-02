@@ -186,7 +186,7 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
-map("n", "<leader>n", "<cmd>Notepad<cr>", { desc = "Toggle Notepad" })
+map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = "Toggle Notepad" })
 map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = "Toggle Conceal", silent = true })
 
 which_map({"n", "v"}, {
@@ -202,5 +202,6 @@ which_map({"n", "v"}, {
   ["<leader>w"] = { name = get_icon("Window", 1, true).."Windows" },
   ["<leader>x"] = { name = get_icon("Diagnostic", 1, true).."Diagnostics" },
   ["<leader>j"] = { name = get_icon("Vim", 1, true).."JoVim" },
-  ["<leader>l"] = { name = get_icon("Lazy", 1, true).."Lazy" }
+  ["<leader>l"] = { name = get_icon("Lazy", 1, true).."Lazy" },
+  ["<leader>t"] = { name = get_icon("Toggle", 1, true).."Toggle"}
 }, {})
