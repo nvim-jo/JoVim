@@ -24,18 +24,6 @@ local function which_map(mode, mappings, opts)
   })
 end
 
-which_map({"n", "v"}, {
-  f = {
-    name = "file", -- optional group name
-    f = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false, buffer = 123 }
-  },
-  s = {
-    name = "hello",
-    a = { "<cmd>Hello<cr>", "Hello" }
-  }
-}, { prefix = "<leader>"})
-
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
