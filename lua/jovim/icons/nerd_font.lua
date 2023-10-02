@@ -5,6 +5,7 @@ return {
   ArrowRight = "",
   Bookmarks = "",
   BufferClose = "󰅖",
+  Bulb = "",
   Code = "",
   Conceal = "",
   DapBreakpoint = "",
@@ -34,6 +35,7 @@ return {
   FolderClosed = "",
   FolderEmpty = "",
   FolderOpen = "",
+  Format = "󰴑",
   Git = "󰊢",
   GitAdd = "",
   GitBranch = "",
@@ -47,6 +49,7 @@ return {
   GitUnstaged = "✗",
   GitUntracked = "★",
   Lazy = "󰒲 ",
+  LineNumber = "",
   LSPLoaded = "", -- TODO: Remove unused icon in AstroNvim v4
   LSPLoading1 = "",
   LSPLoading2 = "󰀚",
@@ -69,4 +72,5 @@ return {
   Vim = "",
   Window = "󱂬",
   WordFile = "󰈭",
+  WordWrap = ""
 }

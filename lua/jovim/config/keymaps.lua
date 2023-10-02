@@ -127,18 +127,6 @@ end
 
 -- stylua: ignore start
 
--- toggle options
-map("n", "<leader>uf", require("jovim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
-map("n", "<leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
-map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>ul", function() Util.toggle_number() end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
-if vim.lsp.inlay_hint then
-  map("n", "<leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
-end
-
 -- lazygit
 map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
 map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
@@ -188,9 +176,18 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- toggle
 map("n", "<leader>tt", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
 map("n", "<leader>tT", function() Util.float_term() end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
-map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = get_icon("Note", 1, true).."Toggle Notepad" })
-map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = get_icon("Conceal", 1, true).."Toggle Conceal", silent = true })
-
+map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = get_icon("Note", 1, true).."Notepad" })
+map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = get_icon("Conceal", 1, true).."Conceal", silent = true })
+map("n", "<leader>tf", require("jovim.plugins.lsp.format").toggle, { desc = get_icon("Format", 1, true).."Format on Save" })
+map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = get_icon("Spellcheck", 1, true).."Spelling" })
+map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = get_icon("WordWrap", 1, true).."Word Wrap" })
+map("n", "<leader>tl", function() Util.toggle_number() end, { desc = get_icon("LineNumber", 1, true).."Line Numbers" })
+map("n", "<leader>td", Util.toggle_diagnostics, { desc = get_icon("Diagnostic", 1, true).."Diagnostics" })
+local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = get_icon("Conceal", 1, true).."Conceal (base)" })
+if vim.lsp.inlay_hint then
+  map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = get_icon("Bulb", 1, true).."Inlay Hints" })
+end
 
 -- file manager
 map("n", "<leader>o", function()
