@@ -131,6 +131,13 @@ ins_left {
 }
 
 ins_left {
+  'filetype',
+  icon_only = true,
+  separator = "",
+  padding = {right = 0, left=1 }
+}
+
+ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
   color = { fg = colors.text, gui = 'bold' },
