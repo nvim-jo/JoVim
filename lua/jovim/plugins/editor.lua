@@ -1,4 +1,5 @@
 local Util = require("jovim.util")
+local get_icon = Util.get_icon
 
 return {
   {
@@ -315,7 +316,7 @@ If you rather use leap/flit instead, you can add the leap extra:
         ["<leader>b"] = { name = "+buffer" },
         ["<leader>c"] = { name = "+code" },
         ["<leader>f"] = { name = "+file/find" },
-        ["<leader>g"] = { name = "+git" },
+        ["<leader>g"] = { name = get_icon("Git", 1, true).."Session" },
         ["<leader>gh"] = { name = "+hunks" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },
