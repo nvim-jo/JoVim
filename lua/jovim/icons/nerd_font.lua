@@ -67,6 +67,8 @@ return {
   Session = "󱂬",
   Sort = "󰒺",
   Spellcheck = "󰓆",
+  SplitHorizontal = "",
+  SplitVertical = "",
   Switch = "",
   Tab = "󰓩",
   TabClose = "󰅙",

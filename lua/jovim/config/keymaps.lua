@@ -72,8 +72,8 @@ else
   map("n", "<C-S-j>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
   map("n", "<C-S-k>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader>bb", "<cmd>e #<cr>", { desc = get_icon("Switch", 1, true).."Switch to Other Buffer" })
+map("n", "<leader>`", "<cmd>e #<cr>", { desc = get_icon("Switch", 1, true).."Switch to Other Buffer" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -159,10 +159,10 @@ map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>w-", "<C-W>s", { desc = get_icon("SplitHorizontal", 1, true).."Split window below", remap = true })
+map("n", "<leader>w|", "<C-W>v", { desc = get_icon("SplitVertical", 1, true).."Split window right", remap = true })
+map("n", "<leader>-", "<C-W>s", { desc = get_icon("SplitHorizontal", 1, true).."Split window below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = get_icon("SplitVertical", 1, true).."Split window right", remap = true })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
