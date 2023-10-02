@@ -62,18 +62,6 @@ M.setup = function ()
             min = 30,
             max = 500,
         },
-        filetype_exclude = {
-            "help",
-            "alpha",
-            "dashboard",
-            "neo-tree",
-            "Trouble",
-            "lazy",
-            "mason",
-            "notify",
-            "toggleterm",
-            "lazyterm",
-        },
     }
 
     hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
