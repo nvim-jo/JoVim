@@ -19,6 +19,7 @@ return {
   DiagnosticInfo = "󰋼",
   DiagnosticWarn = "",
   Ellipsis = "…",
+  File = "",
   FileNew = "",
   FileCabinet = "󰪶",
   FileTree = "󰙅",

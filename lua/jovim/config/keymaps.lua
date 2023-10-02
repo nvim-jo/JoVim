@@ -156,9 +156,7 @@ map("n", "<leader>ju", "<cmd>JoVimUpdate<cr>", {desc = "Update JoVim"})
 
 -- floating terminal
 local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
-map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
-map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
+map("n", "<c-/>", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
 map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
@@ -186,6 +184,10 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+
+-- toggle
+map("n", "<leader>tt", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
+map("n", "<leader>tT", function() Util.float_term() end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
 map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = "Toggle Notepad" })
 map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = "Toggle Conceal", silent = true })
 
@@ -202,7 +204,7 @@ end, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
 
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
-  ["<leader>b"] = { name = get_icon("Tab", 1, true).."Buffer" },
+  ["<leader>b"] = { name = get_icon("File", 1, true).."Buffer" },
   ["<leader>c"] = { name = get_icon("Code", 1, true).."Code" },
   ["<leader>f"] = { name = get_icon("Find", 1, true).."Find" },
   ["<leader>g"] = { name = get_icon("Git", 1, true).."Git" },
