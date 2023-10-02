@@ -198,7 +198,7 @@ end, { desc = get_icon("FileCabinet", 1, true).."File Manager"})
 -- file explorer
 map("n", "<leader>e", function()
   require("neo-tree.command").execute({ toggle = true, dir = require("jovim.util").get_root() })
-end,, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
+end, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
 
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
