@@ -1,19 +1,5 @@
 local M = {}
-
-M.icons = {
-    typescript = "󰛦",
-    javascript = "",
-    env = "",
-    packagejson = "",
-    json = "ﬥ",
-    yaml = "",
-    markdown = "",
-    gitignore = "",
-    python = "",
-    toml = "",
-    lock = "",
-    txt = ""
-}
+M.icons = require('jovim.icons.languages')
 
 M.setup = function()
     require 'nvim-web-devicons'.setup {
