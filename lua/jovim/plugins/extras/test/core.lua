@@ -3,6 +3,8 @@ return {
     "folke/which-key.nvim",
     optional = true,
     opts = {
+      icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
+      disable = { filetypes = { "TelescopePrompt" } },
       defaults = {
         ["<leader>t"] = { name = "+test" },
       },
