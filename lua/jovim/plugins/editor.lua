@@ -4,15 +4,6 @@ local get_icon = Util.get_icon
 return {
   {
     "nvim-jo/fm.nvim",
-    keys = {
-      {
-        "<leader>o",
-        function()
-          require("fm").toggle_float()
-        end,
-        desc = "File Manager"
-      } 
-    },
     cmd = "FM",
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -36,8 +27,6 @@ return {
         end,
         desc = "Explorer (cwd)",
       },
-      { "<leader>e", "<leader>fe", desc = "Explorer (root dir)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer (cwd)", remap = true },
     },
     deactivate = function()
       vim.cmd([[Neotree close]])

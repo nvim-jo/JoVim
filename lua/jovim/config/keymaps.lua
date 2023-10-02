@@ -103,8 +103,8 @@ map("i", ";", ";<c-g>u")
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
---keywordprg
-map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
+-- --keywordprg
+-- map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
 -- better indenting
 map("v", "<", "<gv")
@@ -115,7 +115,7 @@ map("n", "<leader>li", "<cmd>Lazy<cr>", { desc = "Info Lazy" })
 map("n", "<leader>ls", "<cmd>Lazy sync<cr>", { desc = "Synchronize Lazy" })
 
 -- new file
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+map("n", "<leader>n", "<cmd>enew<cr>", { desc = get_icon("FileNew", 1, true).."New File" })
 
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
@@ -188,6 +188,15 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = "Toggle Notepad" })
 map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = "Toggle Conceal", silent = true })
+
+
+-- file manager
+map("n", "<leader>o", function()
+  require("fm").toggle_float()
+end, { desc = get_icon("FileCabinet", 1, true).."File Manager"})
+
+-- file explorer
+map("n", "<leader>e", "<leader>fe", { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
 
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },

@@ -20,6 +20,8 @@ return {
   DiagnosticWarn = "",
   Ellipsis = "…",
   FileNew = "",
+  FileCabinet = "󰪶",
+  FileTree = "󰙅",
   FileModified = "",
   FileReadOnly = "",
   Find = "󰈞",
