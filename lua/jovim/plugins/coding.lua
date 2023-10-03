@@ -224,5 +224,16 @@ return {
       conceal.setup({})
       conceal.generate_conceals()
     end,
-  }
+  },
+  {
+    "linux-cultist/venv-selector.nvim",
+    cmd = {"VenvSelect", "VenvSelectedCached"},
+    opts = {
+      auto_refresh = true
+    },
+    keys = { 
+      { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" },
+      { "<leader>cs", "<cmd>:VenvSelectCached<cr>", desc = "Select VirtualEnv Cached" } 
+    },
+  },
 }
