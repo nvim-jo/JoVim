@@ -145,7 +145,8 @@ ins_left {
 
 ins_left {
   'swenv',
-  icon = "<icon>"
+  icon = "",
+  color = { fg = "#CDD6F4" },
 }
 
 ins_left {
