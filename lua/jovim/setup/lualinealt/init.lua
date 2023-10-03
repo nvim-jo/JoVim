@@ -35,6 +35,9 @@ local conditions = {
     local gitdir = vim.fn.finddir('.git', filepath .. ';')
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
+  check_if_python = function ()
+    return vim.bo.filetype == "python"
+  end,
 }
 
 -- Config
@@ -145,7 +148,8 @@ ins_left {
 
 ins_left {
   'swenv',
-  icon = "",
+  icon = "",
+  cond = conditions.check_if_python,
   color = { fg = "#CDD6F4" },
 }
 
