@@ -239,7 +239,6 @@ return {
           ".env"
         },
         search_workspace = true,
-        search_venv_managers = false,
       })
     end,
     keys = { 
