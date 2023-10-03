@@ -77,6 +77,9 @@ return {
   },
   {
     "nvim-jo/selenv.nvim",
+    opts = {
+      post_set_venv = vim.cmd('LspRestart')
+    },
     keys = {
       { "<leader>cv", function() require('selenv.api').pick_venv() end, desc = "Select VirtualEnv" },
     }
