@@ -12,6 +12,7 @@ function M.get()
   ---@class PluginLspKeys
     -- stylua: ignore
     M._keys =  {
+      { "<leader>ce", vim.diagnostic.open_float, desc = "Lsp Restart" },
       { "<leader>cd", vim.diagnostic.open_float, desc = "Line Diagnostics" },
       { "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
       { "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, desc = "Goto Definition", has = "definition" },
