@@ -248,14 +248,6 @@ return {
   -- },
   {
     "nvim-jo/selenv.nvim",
-    config = function()
-      require('selenv').setup({
-        get_venvs = function(venvs_path)
-          return require('selenv.api').get_venvs(venvs_path)
-        end,
-        venvs_path = vim.fn.expand('%:p:h'),
-      })
-    end,
     keys = {
       { "<leader>cv", function() require('selenv.api').pick_venv() end, desc = "Select VirtualEnv" },
     }
