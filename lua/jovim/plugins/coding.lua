@@ -253,7 +253,7 @@ return {
         get_venvs = function(venvs_path)
           return require('swenv.api').get_venvs(venvs_path)
         end,
-        venvs_path = vim.fn.expand('%:p'),
+        venvs_path = vim.fn.expand('%:p:h'),
       })
     end,
     keys = {
