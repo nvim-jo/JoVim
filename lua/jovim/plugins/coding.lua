@@ -229,7 +229,14 @@ return {
     "linux-cultist/venv-selector.nvim",
     cmd = {"VenvSelect", "VenvSelectedCached"},
     opts = {
-      auto_refresh = true
+      auto_refresh = true,
+      parents = 0,
+      name = {
+        "venv",
+        ".venv",
+        "env",
+        ".env"
+      }
     },
     keys = { 
       { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" },
