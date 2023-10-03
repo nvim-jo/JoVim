@@ -247,35 +247,17 @@ return {
   --   },
   -- },
   {
-    "AckslD/swenv.nvim",
+    "nvim-jo/selenv.nvim",
     config = function()
-      require('swenv').setup({
+      require('selenv').setup({
         get_venvs = function(venvs_path)
-          return require('swenv.api').get_venvs(venvs_path)
+          return require('selenv.api').get_venvs(venvs_path)
         end,
         venvs_path = vim.fn.expand('%:p:h'),
       })
     end,
     keys = {
-      { "<leader>cv", function() require('swenv.api').pick_venv() end, desc = "Select VirtualEnv" },
+      { "<leader>cv", function() require('selenv.api').pick_venv() end, desc = "Select VirtualEnv" },
     }
   },
-  {
-    "linux-cultist/venv-selector.nvim",
-    cmd = "VenvSelect",
-    opts = function(_, opts)
-      if require("jovim.util").has("nvim-dap-python") then
-        opts.dap_enabled = true
-      end
-      return vim.tbl_deep_extend("force", opts, {
-        name = {
-          "venv",
-          ".venv",
-          "env",
-          ".env",
-        },
-      })
-    end,
-    keys = { { "<leader>vs", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
-  } 
 }
