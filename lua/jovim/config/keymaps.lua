@@ -72,6 +72,7 @@ else
   map("n", "<C-S-j>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
   map("n", "<C-S-k>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
+map("n", "<C-x>", function() require("mini.bufremove").delete(0, false) end, { desc = "Delete Buffer"})
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = get_icon("Switch", 1, true).."Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = get_icon("Switch", 1, true).."Switch to Other Buffer" })
 
