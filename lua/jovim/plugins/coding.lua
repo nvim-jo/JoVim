@@ -246,10 +246,4 @@ return {
   --     { "<leader>cs", "<cmd>:VenvSelectCached<cr>", desc = "Select VirtualEnv Cached" } 
   --   },
   -- },
-  {
-    "nvim-jo/selenv.nvim",
-    keys = {
-      { "<leader>cv", function() require('selenv.api').pick_venv() end, desc = "Select VirtualEnv" },
-    }
-  },
 }
