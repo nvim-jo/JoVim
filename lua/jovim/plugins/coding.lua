@@ -225,25 +225,39 @@ return {
       conceal.generate_conceals()
     end,
   },
+  -- {
+  --   "linux-cultist/venv-selector.nvim",
+  --   cmd = {"VenvSelect", "VenvSelectedCached"},
+  --   config = function()
+  --     require('venv-selector').setup({
+  --       auto_refresh = true,
+  --       parents = 0,
+  --       name = {
+  --         "venv",
+  --         ".venv",
+  --         "env",
+  --         ".env"
+  --       },
+  --       search_workspace = true,
+  --     })
+  --   end,
+  --   keys = { 
+  --     { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" },
+  --     { "<leader>cs", "<cmd>:VenvSelectCached<cr>", desc = "Select VirtualEnv Cached" } 
+  --   },
+  -- },
   {
-    "linux-cultist/venv-selector.nvim",
-    cmd = {"VenvSelect", "VenvSelectedCached"},
+    "AckslD/swenv.nvim",
     config = function()
-      require('venv-selector').setup({
-        auto_refresh = true,
-        parents = 0,
-        name = {
-          "venv",
-          ".venv",
-          "env",
-          ".env"
-        },
-        search_workspace = true,
+      require('swenv').setup({
+        get_venvs = function(venvs_path)
+          return require('swenv.api').get_venvs(venvs_path)
+        end,
+        venvs_path = vim.fn.expand('%:p'),
       })
     end,
-    keys = { 
-      { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" },
-      { "<leader>cs", "<cmd>:VenvSelectCached<cr>", desc = "Select VirtualEnv Cached" } 
-    },
-  },
+    keys = {
+      { "<leader>cv", function() require('swenv.api').pick_venv() end, desc = "Select VirtualEnv" },
+    }
+  }
 }
