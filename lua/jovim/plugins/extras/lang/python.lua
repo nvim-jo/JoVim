@@ -20,11 +20,11 @@ return {
             python = {
               analysis = {
                 useLibraryCodeForTypes = true,
-                -- diagnosticSeverityOverrides = {
-                --   reportUnusedVariable = "warning"
-                -- },
-                diagnosticMode = 'off',
-                typeCheckingMode = 'off'
+                diagnosticSeverityOverrides = {
+                  reportUnusedVariable = "warning"
+                },
+                diagnosticMode = 'basic',
+                -- typeCheckingMode = 'off'
               }
             }
           }
