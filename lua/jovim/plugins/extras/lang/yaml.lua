@@ -60,7 +60,7 @@ return {
         yamlls = function()
           -- Neovim < 0.10 does not have dynamic registration for formatting
           if vim.fn.has("nvim-0.10") == 0 then
-            require("lazyvim.util").on_attach(function(client, _)
+            require("jovim.util").on_attach(function(client, _)
               if client.name == "yamlls" then
                 client.server_capabilities.documentFormattingProvider = true
               end
