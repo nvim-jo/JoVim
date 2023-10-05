@@ -144,7 +144,7 @@ end
 map("n", "<leader>ju", "<cmd>JoVimUpdate<cr>", {desc = "Update JoVim"})
 
 -- floating terminal
-local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root(), border = "single" }) end
+local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root(), border = "rounded" }) end
 map("n", "<c-/>", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
 map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
@@ -176,7 +176,7 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- toggle
 map("n", "<leader>tt", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
-map("n", "<leader>tT", function() Util.float_term(nil, { border = "single" }) end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
+map("n", "<leader>tT", function() Util.float_term(nil, { border = "rounded" }) end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
 map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = get_icon("Note", 1, true).."Notepad" })
 map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = get_icon("Conceal", 1, true).."Conceal", silent = true })
 map("n", "<leader>tf", require("jovim.plugins.lsp.format").toggle, { desc = get_icon("Format", 1, true).."Format on Save" })
