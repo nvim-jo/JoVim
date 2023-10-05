@@ -22,7 +22,7 @@ return {
             end,
           })
         end,
-      }, 
+      },
     },
     cmd = { "TSUpdateSync" },
     keys = {
@@ -50,7 +50,6 @@ return {
         "regex",
         "tsx",
         "typescript",
-        "toml",
         "vim",
         "vimdoc",
         "yaml",
