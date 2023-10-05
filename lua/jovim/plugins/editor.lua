@@ -64,6 +64,16 @@ return {
       },
     },
     config = function(_, opts)
+      local function on_move(data)
+        Util.on_rename(data.source, data.destination)
+      end
+
+      local events = require("neo-tree.events")
+      opts.event_handlers = opts.event_handlers or {}
+      vim.list_extend(opts.event_handlers, {
+        { event = events.FILE_MOVED, handler = on_move },
+        { event = events.FILE_RENAMED, handler = on_move },
+      })
       require("neo-tree").setup(opts)
       vim.api.nvim_create_autocmd("TermClose", {
         pattern = "*lazygit",
@@ -90,7 +100,6 @@ return {
   -- fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
-    commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
@@ -166,75 +175,50 @@ return {
         desc = "Goto Symbol (Workspace)",
       },
     },
-    opts = {
-      defaults = {
-        file_ignore_patterns = { "node_modules", "venv" },
-        prompt_prefix = " ",
-        selection_caret = " ",
-        mappings = {
-          i = {
-            ["<c-t>"] = function(...)
-              return require("trouble.providers.telescope").open_with_trouble(...)
-            end,
-            ["<a-t>"] = function(...)
-              return require("trouble.providers.telescope").open_selected_with_trouble(...)
-            end,
-            ["<a-i>"] = function()
-              local action_state = require("telescope.actions.state")
-              local line = action_state.get_current_line()
-              Util.telescope("find_files", { no_ignore = true, default_text = line })()
-            end,
-            ["<a-h>"] = function()
-              local action_state = require("telescope.actions.state")
-              local line = action_state.get_current_line()
-              Util.telescope("find_files", { hidden = true, default_text = line })()
-            end,
-            ["<C-Down>"] = function(...)
-              return require("telescope.actions").cycle_history_next(...)
-            end,
-            ["<C-Up>"] = function(...)
-              return require("telescope.actions").cycle_history_prev(...)
-            end,
-            ["<C-f>"] = function(...)
-              return require("telescope.actions").preview_scrolling_down(...)
-            end,
-            ["<C-b>"] = function(...)
-              return require("telescope.actions").preview_scrolling_up(...)
-            end,
-          },
-          n = {
-            ["q"] = function(...)
-              return require("telescope.actions").close(...)
-            end,
+    opts = function()
+      local actions = require("telescope.actions")
+
+      local open_with_trouble = function(...)
+        return require("trouble.providers.telescope").open_with_trouble(...)
+      end
+      local open_selected_with_trouble = function(...)
+        return require("trouble.providers.telescope").open_selected_with_trouble(...)
+      end
+      local find_files_no_ignore = function()
+        local action_state = require("telescope.actions.state")
+        local line = action_state.get_current_line()
+        Util.telescope("find_files", { no_ignore = true, default_text = line })()
+      end
+      local find_files_with_hidden = function()
+        local action_state = require("telescope.actions.state")
+        local line = action_state.get_current_line()
+        Util.telescope("find_files", { hidden = true, default_text = line })()
+      end
+
+      return {
+        defaults = {
+          file_ignore_patterns = { "node_modules", "venv" },
+          prompt_prefix = " ",
+          selection_caret = " ",
+          mappings = {
+            i = {
+              ["<c-t>"] = open_with_trouble,
+              ["<a-t>"] = open_selected_with_trouble,
+              ["<a-i>"] = find_files_no_ignore,
+              ["<a-h>"] = find_files_with_hidden,
+              ["<C-Down>"] = actions.cycle_history_next,
+              ["<C-Up>"] = actions.cycle_history_prev,
+              ["<C-f>"] = actions.preview_scrolling_down,
+              ["<C-b>"] = actions.preview_scrolling_up,
+            },
+            n = {
+              ["q"] = actions.close,
+            },
           },
         },
-      },
-    },
-  },
-
-  -- disable old installations of leap and flit. Optional so it doesn't appear under disabled plugins
-  {
-    "ggandor/leap.nvim",
-    enabled = function()
-      vim.schedule(function()
-        local Config = require("lazy.core.config")
-        if Config.spec.disabled["leap.nvim"] or Config.spec.disabled["flit.nvim"] then
-          require("lazy.core.util").warn(
-            [[`flash.nvim` is now the default **JoVim** jump plugin.
-**leap.nvim** and **flit.nvim** have been disabled.
-Please remove the plugins from your config.
-If you rather use leap/flit instead, you can add the leap extra:
-`jovim.plugins.extras.editor.leap`
-]],
-            { title = "JoVim" }
-          )
-        end
-      end)
-      return false
+      }
     end,
-    optional = true,
   },
-  { "ggandor/flit.nvim", enabled = false, optional = true },
 
   -- Flash enhances the built-in search functionality by showing labels
   -- at the end of each match, letting you quickly jump to a specific
@@ -323,7 +307,7 @@ If you rather use leap/flit instead, you can add the leap extra:
   -- hunks in a commit.
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       signs = {
         add = { text = "▎" },
@@ -331,7 +315,7 @@ If you rather use leap/flit instead, you can add the leap extra:
         delete = { text = "" },
         topdelete = { text = "" },
         changedelete = { text = "▎" },
-        untracked = { text = "▎" },
+        untracked = { text = "▎" }, 
       },
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
@@ -362,7 +346,7 @@ If you rather use leap/flit instead, you can add the leap extra:
   -- instances.
   {
     "RRethy/vim-illuminate",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       delay = 200,
       large_file_cutoff = 2000,
@@ -453,7 +437,7 @@ If you rather use leap/flit instead, you can add the leap extra:
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
+    event = "LazyFile",
     config = true,
     -- stylua: ignore
     keys = {

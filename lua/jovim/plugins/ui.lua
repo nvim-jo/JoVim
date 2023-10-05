@@ -55,7 +55,7 @@ return {
   -- tabs, which include filetype icons and close buttons.
   {
     "akinsho/bufferline.nvim",
-    lazy = false,
+    event = "VeryLazy", 
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
@@ -119,27 +119,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = { "BufReadPost", "BufNewFile" },
-    -- opts = {
-    --   -- char = "▏",
-    --   char = "│",
-    --   scope = { enabled = false },
-    --   filetype_exclude = {
-    --     "help",
-    --     "alpha",
-    --     "dashboard",
-    --     "neo-tree",
-    --     "Trouble",
-    --     "lazy",
-    --     "mason",
-    --     "notify",
-    --     "toggleterm",
-    --     "lazyterm",
-    --   },
-    --   -- show_trailing_blankline_indent = false,
-    --   -- show_current_context = false,
-    --   -- smart_indent_cap = true,
-    -- },
+    event = "LazyFile",
     config = function ()
       require('jovim.setup.indent-blank').setup()
     end,
@@ -152,7 +132,7 @@ return {
     "echasnovski/mini.indentscope",
     version = false, -- wait till new 0.7.0 release to put it back on semver
     enabled = false,
-    event = { "BufReadPre", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       -- symbol = "▏",
       symbol = "│",
