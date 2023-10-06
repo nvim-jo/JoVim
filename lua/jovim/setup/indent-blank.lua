@@ -46,7 +46,8 @@ M.setup = function ()
                 "lazyterm",
             }
         }, 
-        scope = { 
+        scope = {
+            enabled = false, 
             highlight = highlight,
             show_end = false,
             exclude = {
@@ -67,7 +68,8 @@ M.setup = function ()
         },
         indent = {
             char = "│",
-            tab_char = nil,
+            tab_char = "│",
+            -- tab_char = nil,
             highlight = indent_highliht,
             smart_indent_cap = true,
             priority = 1,
