@@ -49,6 +49,7 @@ M.setup = function ()
         scope = {
             highlight = highlight,
             show_end = false,
+            show_start = false,
             exclude = {
                 language = {},
                 node_type = {
