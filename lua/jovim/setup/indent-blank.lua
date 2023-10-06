@@ -47,7 +47,6 @@ M.setup = function ()
             }
         }, 
         scope = {
-            enabled = false, 
             highlight = highlight,
             show_end = false,
             exclude = {
