@@ -65,6 +65,9 @@ local default_overrides = {
 	["@boolean"] = { fg = my_palette.mauve, style = {} },
 	["@type.builtin"] = { fg = my_palette.peach },
 
+	LineNr = { fg = my_palette.overlay1 },
+	CursorLineNr = { fg = my_palette.blue },
+
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
 	IlluminatedWordText = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
 	IlluminatedWordRead = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
