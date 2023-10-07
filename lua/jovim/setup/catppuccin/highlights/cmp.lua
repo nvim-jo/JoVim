@@ -2,7 +2,7 @@ local C = require('jovim.setup.catppuccin.utils').palette
 
 return {
 	CmpBorder = {
-		fg = C.blue,
+		fg = C.surface2,
 		bg = C.none,
 	},
 
