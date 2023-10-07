@@ -18,7 +18,7 @@ local default_overrides = {
 	MarkingBorder = { fg = my_palette.blue },
 
 	-- CursorLine = { bg = utils.lighten(my_palette.base, 0.93, my_palette.text) },
-	Cursor = { bg = my_palette.rosewater },
+	Cursor = { bg = "#f5e0dc" },
 	CursorLine = { bg = "#2a2b3c" },
 	CursorColumn = { bg = my_palette.mantle },
 	LineNr = { fg = my_palette.overlay1 },
