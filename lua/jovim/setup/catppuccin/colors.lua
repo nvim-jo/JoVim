@@ -15,9 +15,9 @@ local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
 	MarkingBorder = { fg = my_palette.blue },
 
-	CursorLine = { bg = my_palette.mantle },
+	CursorLine = { bg = my_palette.surface0 },
 	CursorColumn = { bg = my_palette.surface0 },
-	Visual = { bg = my_palette.mantle },
+	Visual = { bg = my_palette.surface0 },
 
 	FloatBorder = {
 		fg = my_palette.blue,
