@@ -58,8 +58,9 @@ local default_overrides = {
 
 	["@keyword.return"] = { fg = my_palette.mauve },
 	["@constructor"] = { fg = my_palette.blue },
-	["@classes"] = { fg = my_palette.blue },
-	StorageClass = { fg = my_palette.text },
+	["@type.builtin"] = { fg =  my_palette.text },
+	["@type.definition"] = { fg = my_palette.blue },
+	Structure = { fg = my_palette.mauve },
 
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
 	IlluminatedWordText = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
