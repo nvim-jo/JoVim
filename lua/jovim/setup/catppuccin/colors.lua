@@ -10,6 +10,7 @@ local jotree_highlight = require('jovim.setup.catppuccin.highlights.jotree')
 local cmp_highlight = require('jovim.setup.catppuccin.highlights.cmp')
 local telescope_highlight = require('jovim.setup.catppuccin.highlights.telescope')
 local noice_highlight = require('jovim.setup.catppuccin.highlights.noice')
+local indent_highlight = require('jovim.setup.catppuccin.highlights.indent-blank')
 
 local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
@@ -40,11 +41,6 @@ local default_overrides = {
 	DiagnosticVirtualTextHint = { bg = my_palette.none },
 	LspInfoBorder = { fg = my_palette.blue, bg = my_palette.none, },
 
-	-- For indent-blankline
-	IndentBlanklineChar = { fg = utils.darken(my_palette.surface0, 0.40, my_palette.mantle), style = {} },
-	IndentBlanklineContextChar = { fg = my_palette.lavender, style = { "bold" } },
-	IndentBlanklineContextStart = { sp = my_palette.lavender, style = { "underline" } },
-
 	Pmenu = { bg = my_palette.none },
 	PmenuSel = { fg = my_palette.sapphire, bg = my_palette.none },
 	PmenuSbar = { bg = my_palette.none },  -- Popup menu: scrollbar.
@@ -70,7 +66,14 @@ local default_overrides = {
 	MatchParen = { fg = my_palette.blue, bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle), style = { "bold" } },
 }
 
-local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotree_highlight, cmp_highlight, telescope_highlight, noice_highlight)
+local highlight_overrides = vim.tbl_deep_extend("force",
+	default_overrides,
+	jotree_highlight,
+	cmp_highlight,
+	telescope_highlight,
+	noice_highlight,
+	indent_highlight
+)
 
 M.overrides = {
 	colors = {
