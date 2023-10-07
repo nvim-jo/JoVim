@@ -15,7 +15,7 @@ local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
 	MarkingBorder = { fg = my_palette.blue },
 
-	CursorLine = { bg = utils.darken(my_palette.surface0, 0.54, my_palette.mantle) },
+	CursorLine = { bg = utils.lighten(my_palette.mantle, 0.54, my_palette.base) },
 	CursorColumn = { bg = my_palette.mantle },
 	Visual = { bg = utils.darken(my_palette.surface0, 0.30, my_palette.mantle) },
 
