@@ -50,6 +50,7 @@ return {
         use_libuv_file_watcher = true,
       },
       window = {
+        position = "current",
         mappings = {
           ["<space>"] = "none",
         },
