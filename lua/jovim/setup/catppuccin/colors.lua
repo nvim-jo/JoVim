@@ -2,8 +2,13 @@ local M = {}
 local catppuccin = require("catppuccin")
 local mocha = require("catppuccin.palettes").get_palette("mocha")
 local utils = require('catppuccin.utils.colors')
-local my_palette = require('jovim.setup.catppuccin.utils').palette
-local colors = require('jovim.setup.catppuccin.utils').colors
+local custom_utils = require('jovim.setup.catppuccin.utils')
+local my_palette = custom_utils.palette
+local colors = custom_utils.colors
+
+local jotree_highlight = require('jovim.setup.catppuccin.highlights.jotree')
+local cmp_highlight = require('jovim.setup.catppuccin.highlights.cmp')
+local telescope_highlight = require('jovim.setup.catppuccin.highlights.telescope')
 
 local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
@@ -53,47 +58,6 @@ local default_overrides = {
 
 	TabLineSel = { bg = my_palette.red },
 
-	-- telescope
-	-- For telescope.nvim
-	TelescopeBorder = {
-		fg = my_palette.blue,
-		bg = my_palette.none,
-	},
-	TelescopePromptBorder = {
-		fg = my_palette.blue,
-		bg = my_palette.none,
-	},
-	TelescopePromptNormal = {
-		fg = my_palette.text,
-		bg = my_palette.none,
-	},
-	TelescopePromptPrefix = {
-		fg = my_palette.flamingo,
-		bg = my_palette.none,
-	},
-	TelescopeNormal = {
-		bg = my_palette.none,
-	},
-	TelescopePreviewTitle = {
-		fg = my_palette.green,
-		bg = my_palette.none,
-	},
-	TelescopePromptTitle = {
-		fg = my_palette.red,
-		bg = my_palette.none,
-	},
-	TelescopeResultsTitle = {
-		fg = my_palette.mantle,
-		bg = my_palette.none,
-	},
-	TelescopeSelection = {
-		fg = my_palette.green,
-		bg = my_palette.none,
-	},
-	TelescopeResultsDiffAdd = { fg = my_palette.green },
-	TelescopeResultsDiffChange = { fg = my_palette.yellow },
-	TelescopeResultsDiffDelete = { fg = my_palette.red },
-
 	["@keyword.return"] = { fg = my_palette.pink, style = {} },
 
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
@@ -108,10 +72,7 @@ local default_overrides = {
 	MatchParen = { fg = my_palette.blue, bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle), style = { "bold" } },
 }
 
-local jotree_highlight = require('jovim.setup.catppuccin.highlights.jotree')
-local cmp_highlight = require('jovim.setup.catppuccin.highlights.cmp')
-
-local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotree_highlight, cmp_highlight)
+local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotree_highlight, cmp_highlight, telescope_highlight)
 
 M.overrides = {
 	colors = {

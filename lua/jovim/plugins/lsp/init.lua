@@ -88,7 +88,7 @@ return {
     ---@param opts PluginLspOpts
     config = function(_, opts)
       local Util = require("jovim.util")
-      require('lspconfig.ui.windows').default_options.border = 'single'
+      require('lspconfig.ui.windows').default_options.border = 'rounded'
 
       if Util.has("neoconf.nvim") then
         local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
