@@ -31,7 +31,7 @@ return {
 		bg = C.none,
 	},
 	TelescopeResultsTitle = {
-		fg = C.mantle,
+		fg = C.text,
 		bg = C.none,
 	},
 	TelescopeSelection = {
