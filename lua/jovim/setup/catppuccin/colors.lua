@@ -56,7 +56,7 @@ local default_overrides = {
 
 	TabLineSel = { bg = my_palette.red },
 
-	["@keyword.return"] = { fg = my_palette.pink, style = {} },
+	["@keyword.return"] = { fg = my_palette.blue, style = {} },
 	["@constructor"] = { fg = my_palette.blue },
 
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
