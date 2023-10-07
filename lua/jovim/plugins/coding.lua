@@ -52,7 +52,7 @@ return {
           fetching_timeout = 200,
         },
         formatting = {
-          fields = { "kind", "abbr" },
+          fields = { "kind" },
           format = function(entry, item)
             local icons = require("jovim.config.icons").kinds
             -- if icons[item.kind] then
