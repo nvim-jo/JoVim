@@ -10,32 +10,32 @@ return {
   },
   -- file explorer
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    cmd = "Neotree",
+    "nvim-jo-tree/jo-tree.nvim",
+    cmd = "Jotree",
     keys = {
       {
         "<leader>fe",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("jovim.util").get_root() })
+          require("jo-tree.command").execute({ toggle = true, dir = require("jovim.util").get_root() })
         end,
         desc = "Explorer (root dir)",
       },
       {
         "<leader>fE",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+          require("jo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
         end,
         desc = "Explorer (cwd)",
       },
     },
     deactivate = function()
-      vim.cmd([[Neotree close]])
+      vim.cmd([[Jotree close]])
     end,
     init = function()
       if vim.fn.argc() == 1 then
         local stat = vim.loop.fs_stat(vim.fn.argv(0))
         if stat and stat.type == "directory" then
-          require("neo-tree")
+          require("jo-tree")
         end
       end
     end,
@@ -61,7 +61,7 @@ return {
           with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
           expander_collapsed = "",
           expander_expanded = "",
-          expander_highlight = "NeoTreeExpander",
+          expander_highlight = "JoTreeExpander",
         },
       },
     },
@@ -70,18 +70,18 @@ return {
         Util.on_rename(data.source, data.destination)
       end
 
-      local events = require("neo-tree.events")
+      local events = require("jo-tree.events")
       opts.event_handlers = opts.event_handlers or {}
       vim.list_extend(opts.event_handlers, {
         { event = events.FILE_MOVED, handler = on_move },
         { event = events.FILE_RENAMED, handler = on_move },
       })
-      require("neo-tree").setup(opts)
+      require("jo-tree").setup(opts)
       vim.api.nvim_create_autocmd("TermClose", {
         pattern = "*lazygit",
         callback = function()
-          if package.loaded["neo-tree.sources.git_status"] then
-            require("neo-tree.sources.git_status").refresh()
+          if package.loaded["jo-tree.sources.git_status"] then
+            require("jo-tree.sources.git_status").refresh()
           end
         end,
       })

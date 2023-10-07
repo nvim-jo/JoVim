@@ -8,7 +8,7 @@ return {
     },
     options = {
       -- Whether to use for editing directories
-      -- Disabled by default in JoVim because neo-tree is used for that
+      -- Disabled by default in JoVim because jo-tree is used for that
       use_as_default_explorer = false,
     },
   },

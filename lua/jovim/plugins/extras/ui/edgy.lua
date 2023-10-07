@@ -54,8 +54,8 @@ return {
         },
         left = {
           {
-            title = "Neo-Tree",
-            ft = "neo-tree",
+            title = "Jo-Tree",
+            ft = "jo-tree",
             filter = function(buf)
               return vim.b[buf].neo_tree_source == "filesystem"
             end,
@@ -67,24 +67,24 @@ return {
           },
           { title = "Neotest Summary", ft = "neotest-summary" },
           {
-            title = "Neo-Tree Git",
-            ft = "neo-tree",
+            title = "Jo-Tree Git",
+            ft = "jo-tree",
             filter = function(buf)
               return vim.b[buf].neo_tree_source == "git_status"
             end,
             pinned = true,
-            open = "Neotree position=right git_status",
+            open = "Jotree position=right git_status",
           },
           {
-            title = "Neo-Tree Buffers",
-            ft = "neo-tree",
+            title = "Jo-Tree Buffers",
+            ft = "jo-tree",
             filter = function(buf)
               return vim.b[buf].neo_tree_source == "buffers"
             end,
             pinned = true,
-            open = "Neotree position=top buffers",
+            open = "Jotree position=top buffers",
           },
-          "neo-tree",
+          "jo-tree",
         },
         keys = {
           -- increase width
@@ -118,9 +118,9 @@ return {
     end,
   },
 
-  -- prevent neo-tree from opening files in edgy windows
+  -- prevent jo-tree from opening files in edgy windows
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "nvim-jo-tree/jo-tree.nvim",
     optional = true,
     opts = function(_, opts)
       opts.open_files_do_not_replace_types = opts.open_files_do_not_replace_types

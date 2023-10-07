@@ -78,7 +78,7 @@ return {
         end,
         offsets = {
           {
-            filetype = "neo-tree",
+            filetype = "jo-tree",
             text = function()
               local current_directory = vim.loop.cwd()
               local path_elements = vim.fn.split(current_directory, "/") -- Split the path using the directory separator
@@ -144,7 +144,7 @@ return {
           "help",
           "alpha",
           "dashboard",
-          "neo-tree",
+          "jo-tree",
           "Trouble",
           "lazy",
           "mason",

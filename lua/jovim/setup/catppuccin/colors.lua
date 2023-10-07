@@ -151,12 +151,12 @@ M.overrides = {
 
 			["@keyword.return"] = { fg = my_palette.pink, style = {} },
 
-			NeoTreeRootName = { fg = my_palette.lavender, style = { "bold" } },
-			NeoTreeNormal = { fg = my_palette.text, bg = my_palette.none },
-			NeoTreeNormalNC = { fg = my_palette.text, bg = my_palette.mantle },
-			-- NeoTreeTabActive = { bg = my_palette.mantle, fg = my_palette.lavender, style = { "bold" } },
-			-- NeoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
-			NeoTreeIndentMarker = { fg = my_palette.blue },
+			JoTreeRootName = { fg = my_palette.lavender, style = { "bold" } },
+			JoTreeNormal = { fg = my_palette.text, bg = my_palette.none },
+			JoTreeNormalNC = { fg = my_palette.text, bg = my_palette.mantle },
+			-- JoTreeTabActive = { bg = my_palette.mantle, fg = my_palette.lavender, style = { "bold" } },
+			-- JoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
+			JoTreeIndentMarker = { fg = my_palette.blue },
 
 			MiniIndentscopeSymbol = { fg = my_palette.blue },
 			IlluminatedWordText = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
@@ -256,7 +256,7 @@ function M.get_options()
 				dim_context = false,
 				alt_background = false,
 			},
-			neotree = true,
+			-- Jotree = true,
 		},
 		color_overrides = M.overrides.colors,
 		highlight_overrides = M.overrides.highlights,

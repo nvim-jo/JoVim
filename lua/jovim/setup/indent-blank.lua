@@ -37,7 +37,7 @@ M.setup = function ()
                 "help",
                 "alpha",
                 "dashboard",
-                "neo-tree",
+                "jo-tree",
                 "Trouble",
                 "lazy",
                 "mason",
