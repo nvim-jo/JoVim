@@ -10,7 +10,7 @@ return {
   },
   -- file explorer
   {
-    "nvim-jo-tree/jo-tree.nvim",
+    "nvim-jo/jo-tree.nvim",
     cmd = "Jotree",
     keys = {
       {
