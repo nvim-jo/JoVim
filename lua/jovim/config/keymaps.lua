@@ -200,6 +200,11 @@ map("n", "<leader>e", function()
   require("neo-tree.command").execute({ toggle = true, dir = require("jovim.util").get_root() })
 end, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
 
+-- file browser
+map("n", "<leader>fB", function()
+  require "telescope".extensions.file_browser.file_browser()
+end, { desc = "Find File Browser", noremap = true})
+
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
   ["<leader>b"] = { name = get_icon("Buffer", 1, true).."Buffer" },

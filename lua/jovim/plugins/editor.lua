@@ -218,6 +218,19 @@ return {
         },
       }
     end,
+    config = function()
+      require("telescope").load_extension "file_browser"
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    extensions = {
+      file_browser = {
+        theme = "catppuccin",
+        hijack_netrw = true,
+      },
+    },
   },
 
   -- Flash enhances the built-in search functionality by showing labels
