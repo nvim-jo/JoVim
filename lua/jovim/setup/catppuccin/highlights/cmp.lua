@@ -6,11 +6,6 @@ return {
 		bg = C.none,
 	},
 
-    CmpBorderCustom = {
-        fg = C.surface2,
-        bg = C.none,
-    },
-
     CmpDoc = { link = "NormalFloat" },
 	CmpDocBorder = {
 		fg = C.surface2,

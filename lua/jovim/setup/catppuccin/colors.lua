@@ -42,7 +42,7 @@ local default_overrides = {
 	LspInfoBorder = { fg = my_palette.blue, bg = my_palette.none, },
 
 	Pmenu = { bg = my_palette.none },
-	PmenuSel = { fg = my_palette.sapphire, bg = my_palette.none },
+	PmenuSel = { fg = my_palette.blue, bg = "#2a2b3c" },
 	PmenuSbar = { bg = my_palette.none },  -- Popup menu: scrollbar.
 	PmenuThumb = { bg = my_palette.blue }, -- Popup menu: Thumb of the scrollbar.
 
