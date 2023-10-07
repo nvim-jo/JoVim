@@ -18,6 +18,7 @@ return {
     ---@class PluginLspOpts
     opts = {
       -- options for vim.diagnostic.config()
+      border = "rounded",
       diagnostics = {
         underline = true,
         update_in_insert = false,
