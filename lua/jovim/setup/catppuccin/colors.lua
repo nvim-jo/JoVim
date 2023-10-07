@@ -11,8 +11,6 @@ local cmp_highlight = require('jovim.setup.catppuccin.highlights.cmp')
 local telescope_highlight = require('jovim.setup.catppuccin.highlights.telescope')
 local noice_highlight = require('jovim.setup.catppuccin.highlights.noice')
 
-U.vary_color({ latte = U.lighten(C.mantle, 0.70, C.base) }, U.darken(C.surface0, 0.64, C.base)),
-
 local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
 	MarkingBorder = { fg = my_palette.blue },
