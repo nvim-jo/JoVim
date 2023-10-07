@@ -197,7 +197,7 @@ return {
 
       return {
         defaults = {
-          file_ignore_patterns = { "node_modules", "venv" },
+          file_ignore_patterns = { "node%_modules/.*", "venv/.*" },
           prompt_prefix = " ",
           selection_caret = " ",
           mappings = {
@@ -218,7 +218,8 @@ return {
         },
       }
     end,
-    config = function()
+    config = function(_, opts)
+      require('telescope').setup(opts)
       require("telescope").load_extension "file_browser"
     end,
   },
