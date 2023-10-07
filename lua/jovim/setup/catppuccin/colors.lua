@@ -60,6 +60,7 @@ local default_overrides = {
 	["@constructor"] = { fg = my_palette.blue },
 	Type = { fg = my_palette.text },
 	["@classes"] = { fg = my_palette.yellow },
+	Delimiter = { fg = my_palette.sapphire },
 
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
 	IlluminatedWordText = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
