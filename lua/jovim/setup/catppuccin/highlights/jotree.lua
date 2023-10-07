@@ -1,4 +1,4 @@
-local C = require('jovim.setup.catppuccin.colors').get_palette()
+local C = require('jovim.setup.catppuccin.utils').palette
 
 local active_bg = C.mantle
 local inactive_bg = C.base

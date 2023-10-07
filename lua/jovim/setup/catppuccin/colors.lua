@@ -2,46 +2,8 @@ local M = {}
 local catppuccin = require("catppuccin")
 local mocha = require("catppuccin.palettes").get_palette("mocha")
 local utils = require('catppuccin.utils.colors')
-
-local mocha_overrides = {
-	-- green = "#9ece6a",
-	green    = "#bad4aa",
-	surface0 = "#444444",
-	surface1 = "#666666",
-	surface2 = "#a3a7bc",
-	surface3 = "#a3a7bc",
-	magenta  = "#c678dd",
-	cyan     = "#63cdcf",
-	white    = "#dfdfe0",
-	orange   = "#F4A261",
-	gray     = "#2a2e36",
-}
-
-local my_palette = vim.tbl_deep_extend("force", mocha, mocha_overrides, {
-	warning = mocha.yellow,
-	info = mocha.blue,
-	hint = mocha.teal,
-	variable = mocha.text,
-
-	magenta = "#c678dd",
-	cyan = "#63cdcf",
-	white = "#dfdfe0",
-	orange = "#F4A261",
-	gray = "#2a2e36",
-	none = "NONE",
-
-	diff = {
-		add = "green",
-		change = "#2B5B77",
-		delete = "red",
-		text = mocha.blue,
-		conflict = mocha.magenta,
-	},
-})
-
-function M.get_palette()
-	return my_palette
-end
+local my_palette = require('jovim.setup.catppuccin.utils').palette
+local colors = require('jovim.setup.catppuccin.utils').colors
 
 local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
@@ -164,101 +126,11 @@ local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotr
 
 M.overrides = {
 	colors = {
-		all = mocha_overrides,
+		all = colors,
 	},
 	highlights = {
 		all = highlight_overrides
 	},
 }
-
-function M.get_options()
-	return
-	{
-		flavor = "mocha",
-		transparent_background = false,
-		no_italic = true,
-		term_colors = true,
-		compile = {
-			enabled = false,
-			path = vim.fn.stdpath("cache") .. "/catppuccin",
-		},
-		dim_inactive = {
-			enabled = false,
-			shade = "dark",
-			percentage = 0.15,
-		},
-		styles = {
-			comments = { "italic" },
-			conditionals = { "bold" },
-			loops = { "bold" },
-			functions = { "italic, bold" },
-			keywords = { "italic" },
-			strings = {},
-			variables = {},
-			numbers = {},
-			booleans = { "bold", "italic" },
-			properties = { "italic" },
-			types = {},
-			operators = { "bold" },
-		},
-		integrations = {
-			treesitter = true,
-			treesitter_context = true,
-			ts_rainbow = true,
-			cmp = true,
-			gitgutter = true,
-			gitsigns = true,
-			lsp_trouble = true,
-			neogit = true,
-			symbols_outline = true,
-			telescope = false,
-			neotest = true,
-			nvimtree = false,
-			dashboard = false,
-			markdown = true,
-			mason = true,
-			notify = true,
-			noice = true,
-			-- harpoon = true,
-			which_key = true,
-			semantic_tokens = true,
-			navic = {
-				enabled = true,
-				custom_bg = "NONE",
-			},
-			indent_blankline = {
-				enabled = true,
-				colored_indent_levels = true,
-			},
-			dap = {
-				enabled = true,
-				enabled_ui = true,
-			},
-			native_lsp = {
-				enabled = true,
-				virtual_text = {
-					errors = { "italic" },
-					hints = { "italic" },
-					warnings = { "italic" },
-					information = { "italic" },
-				},
-				underlines = {
-					errors = { "underline" },
-					hints = { "underline" },
-					warnings = { "underline" },
-					information = { "underline" },
-				},
-			},
-			barbecue = {
-				dim_dirname = true, -- directory name is dimmed by default
-				bold_basename = true,
-				dim_context = false,
-				alt_background = false,
-			},
-		},
-		color_overrides = M.overrides.colors,
-		highlight_overrides = M.overrides.highlights,
-	}
-end
 
 return M
