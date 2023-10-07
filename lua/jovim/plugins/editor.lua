@@ -40,6 +40,7 @@ return {
       end
     end,
     opts = {
+      popup_border_style = "rounded",
       disable_netrw = true,
       hijack_netrw = true,
       sources = { "filesystem", "buffers", "git_status", "document_symbols" },
