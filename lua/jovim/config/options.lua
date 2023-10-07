@@ -60,21 +60,23 @@ if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
 end
 
-vim.opt.foldlevel = 99
-vim.opt.foldtext = "v:lua.require'jovim.util.ui'.foldtext()"
+opt.foldlevel = 99
+opt.foldtext = "v:lua.require'jovim.util.ui'.foldtext()"
 
 if vim.fn.has("nvim-0.9.0") == 1 then
-  vim.opt.statuscolumn = [[%!v:lua.require'jovim.util.ui'.statuscolumn()]]
+  opt.statuscolumn = [[%!v:lua.require'jovim.util.ui'.statuscolumn()]]
 end
 
 -- HACK: causes freezes on <= 0.9, so only enable on >= 0.10 for now
 if vim.fn.has("nvim-0.10") == 1 then
-  vim.opt.foldmethod = "expr"
-  vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  opt.foldmethod = "expr"
+  opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 else
-  vim.opt.foldmethod = "indent"
+  opt.foldmethod = "indent"
 end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 vim.g.icons_enabled = true
+
+vim.o.lazyredraw = false

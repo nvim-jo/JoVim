@@ -1,35 +1,4 @@
 return {
-
-  -- snippets
-  {
-    "L3MON4D3/LuaSnip",
-    build = (not jit.os:find("Windows"))
-        and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
-      or nil,
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
-    },
-    opts = {
-      history = true,
-      delete_check_events = "TextChanged",
-    },
-    -- stylua: ignore
-    keys = {
-      {
-        "<tab>",
-        function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-        end,
-        expr = true, silent = true, mode = "i",
-      },
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    },
-  },
-
   -- auto completion
   {
     "hrsh7th/nvim-cmp",
@@ -40,7 +9,6 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lua",
-      "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -50,11 +18,15 @@ return {
         completion = {
           completeopt = "menu,menuone,noinsert",
         },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
+        enabled = function()
+          local context = require 'cmp.config.context'
+          if vim.api.nvim_get_mode().mode == "c" then
+            return true
+          else
+            return not context.in_treesitter_capture("comment")
+              and not context.in_syntax_group("Comment")
+          end
+        end,
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -70,12 +42,17 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "luasnip" },
           { name = "nvim_lua" },
           { name = "buffer" },
           { name = "path" },
         }),
+        performance = {
+          debounce = 300,
+          throttle = 60,
+          fetching_timeout = 200,
+        },
         formatting = {
+          fields = { "kind", "abbr" },
           format = function(entry, item)
             local icons = require("jovim.config.icons").kinds
             -- if icons[item.kind] then
