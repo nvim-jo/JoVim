@@ -8,10 +8,10 @@ return {
 
     CmpDoc = { link = "NormalFloat" },
 	CmpDocBorder = {
-		fg = C.blue,
+		fg = C.surface2,
 		bg = C.none,
 	},
-    CmpItemAbbr = { fg = C.overlay2 },
+    CmpItemAbbr = { fg = C.text },
     CmpItemAbbrDeprecated = { fg = C.overlay0, style = { "strikethrough" } },
     CmpItemKind = { fg = C.blue },
     CmpItemMenu = { fg = C.text },

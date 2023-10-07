@@ -15,7 +15,7 @@ local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
 	MarkingBorder = { fg = my_palette.blue },
 
-	CursorLine = { bg = utils.lighten(my_palette.mantle, 0.54, my_palette.base) },
+	CursorLine = { bg = utils.lighten(my_palette.base, 0.82, my_palette.surface0) },
 	CursorColumn = { bg = my_palette.mantle },
 	Visual = { bg = utils.darken(my_palette.surface0, 0.30, my_palette.mantle) },
 
@@ -47,7 +47,7 @@ local default_overrides = {
 	Pmenu = { bg = my_palette.none },
 	PmenuSel = { fg = my_palette.sapphire, bg = my_palette.none },
 	PmenuSbar = { bg = my_palette.none },  -- Popup menu: scrollbar.
-	PmenuThumb = { bg = my_palette.mauve }, -- Popup menu: Thumb of the scrollbar.
+	PmenuThumb = { bg = my_palette.blue }, -- Popup menu: Thumb of the scrollbar.
 
 	VertSplit = { fg = my_palette.surface0 },
 	NonText = { fg = my_palette.surface0 },
