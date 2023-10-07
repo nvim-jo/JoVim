@@ -11,14 +11,18 @@ local cmp_highlight = require('jovim.setup.catppuccin.highlights.cmp')
 local telescope_highlight = require('jovim.setup.catppuccin.highlights.telescope')
 local noice_highlight = require('jovim.setup.catppuccin.highlights.noice')
 local indent_highlight = require('jovim.setup.catppuccin.highlights.indent-blank')
+local ts_highlight = require('jovim.setup.catppuccin.highlights.treesitter')
 
 local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
 	MarkingBorder = { fg = my_palette.blue },
 
 	-- CursorLine = { bg = utils.lighten(my_palette.base, 0.93, my_palette.text) },
+	Cursor = { bg = my_palette.rosewater },
 	CursorLine = { bg = "#2a2b3c" },
 	CursorColumn = { bg = my_palette.mantle },
+	LineNr = { fg = my_palette.overlay1 },
+	CursorLineNr = { fg = my_palette.blue },
 	Visual = { bg = utils.darken(my_palette.surface0, 0.64, my_palette.mantle) },
 
 	FloatBorder = {
@@ -56,18 +60,6 @@ local default_overrides = {
 
 	TabLineSel = { bg = my_palette.red },
 
-	["@keyword.return"] = { fg = my_palette.mauve },
-	["@constructor"] = { fg = my_palette.blue },
-	["@pyconstructor"] = { fg = my_palette.sapphire },
-	Type = { fg = my_palette.text },
-	["@classes"] = { fg = my_palette.yellow },
-	["@colon"] = { fg = my_palette.teal },
-	["@boolean"] = { fg = my_palette.mauve, style = {} },
-	["@type.builtin"] = { fg = my_palette.peach },
-
-	LineNr = { fg = my_palette.overlay1 },
-	CursorLineNr = { fg = my_palette.blue },
-
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
 	IlluminatedWordText = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
 	IlluminatedWordRead = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
@@ -82,7 +74,8 @@ local highlight_overrides = vim.tbl_deep_extend("force",
 	cmp_highlight,
 	telescope_highlight,
 	noice_highlight,
-	indent_highlight
+	indent_highlight,
+	ts_highlight
 )
 
 M.overrides = {
