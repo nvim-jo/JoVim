@@ -1,3 +1,4 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -12,10 +13,11 @@ return {
     opts = {
       servers = {
         pyright = {
-          capabilities = (function ()
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-          end)(),
+          -- capabilities = (function ()
+          --   local capabilities = vim.lsp.protocol.make_client_capabilities()
+          --   capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+          -- end)(),
+          capabilities = capabilities,
           settings = {
             python = {
               analysis = {
@@ -23,8 +25,8 @@ return {
                 diagnosticSeverityOverrides = {
                   reportUnusedVariable = "warning"
                 },
-                diagnosticMode = 'basic',
-                -- typeCheckingMode = 'off'
+                -- diagnosticMode = 'basic',
+                typeCheckingMode = "off",
               }
             }
           }

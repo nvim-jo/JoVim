@@ -70,15 +70,27 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
+          { name = "nvim_lua" },
           { name = "buffer" },
           { name = "path" },
         }),
         formatting = {
-          format = function(_, item)
-            local icons = require("jovim.config").icons.kinds
+          format = function(entry, item)
+            local icons = require("jovim.config.icons").kinds
+            -- if icons[item.kind] then
+            --   item.kind = icons[item.kind] .. item.kind
+            -- end
             if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
+              item.kind = string.format("%s %s", icons[item.kind], item.kind)
             end
+
+            item.menu = ({
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[LuaSnip]",
+              nvim_lua = "[Lua]",
+
+            })[entry.source_name]
             return item
           end,
         },
