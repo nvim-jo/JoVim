@@ -31,25 +31,13 @@ local default_overrides = {
 	DiagnosticVirtualTextWarn = { bg = my_palette.none },
 	DiagnosticVirtualTextInfo = { bg = my_palette.none },
 	DiagnosticVirtualTextHint = { bg = my_palette.none },
-	LspInfoBorder = { link = "FloatBorder" },
+	LspInfoBorder = { fg = my_palette.blue, bg = my_palette.none, },
 
 	-- For indent-blankline
 	IndentBlanklineChar = { fg = utils.darken(my_palette.surface0, 0.40, my_palette.mantle), style = {} },
 	IndentBlanklineContextChar = { fg = my_palette.lavender, style = { "bold" } },
 	IndentBlanklineContextStart = { sp = my_palette.lavender, style = { "underline" } },
 
-	-- For nvim-cmp and wilder.nvim
-	CmpItemAbbrMatch = { fg = my_palette.blue },
-	CmpItemAbbrMatchFuzzy = { fg = my_palette.blue },
-	CmpDoc = { link = "NormalFloat" },
-	CmpDocBorder = {
-		fg = my_palette.blue,
-		bg = my_palette.none,
-	},
-	CmpBorder = {
-		fg = my_palette.blue,
-		bg = my_palette.none,
-	},
 	Pmenu = { bg = my_palette.none },
 	PmenuSel = { fg = my_palette.sapphire, bg = my_palette.none },
 	PmenuSbar = { bg = my_palette.none },  -- Popup menu: scrollbar.
@@ -121,8 +109,9 @@ local default_overrides = {
 }
 
 local jotree_highlight = require('jovim.setup.catppuccin.highlights.jotree')
+local cmp_highlight = require('jovim.setup.catppuccin.highlights.cmp')
 
-local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotree_highlight)
+local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotree_highlight, cmp_highlight)
 
 M.overrides = {
 	colors = {
