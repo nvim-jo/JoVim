@@ -58,6 +58,7 @@ local default_overrides = {
 
 	["@keyword.return"] = { fg = my_palette.mauve },
 	["@constructor"] = { fg = my_palette.blue },
+	["@classes"] = { fg = my_palette.blue },
 	StorageClass = { fg = my_palette.text },
 
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
