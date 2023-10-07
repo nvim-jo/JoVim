@@ -62,6 +62,7 @@ local default_overrides = {
 	["@classes"] = { fg = my_palette.yellow },
 	["@colon"] = { fg = my_palette.teal },
 	["@boolean"] = { fg = my_palette.mauve, style = {} },
+	["@type.builtin"] = { fg = my_palette.peach },
 
 	MiniIndentscopeSymbol = { fg = my_palette.blue },
 	IlluminatedWordText = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
