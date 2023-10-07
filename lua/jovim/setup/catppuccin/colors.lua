@@ -58,6 +58,7 @@ local default_overrides = {
 
 	["@keyword.return"] = { fg = my_palette.mauve },
 	["@constructor"] = { fg = my_palette.blue },
+	["@pyconstructor"] = { fg = my_palette.sapphire },
 	Type = { fg = my_palette.text },
 	["@classes"] = { fg = my_palette.yellow },
 	["@colon"] = { fg = my_palette.teal },
