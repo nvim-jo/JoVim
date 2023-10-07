@@ -1,7 +1,7 @@
 local C = require('jovim.setup.catppuccin.utils').palette
 
 return {
-    TelescopeSelectionCaret = { fg = C.flamingo },
+    TelescopeSelectionCaret = { fg = C.blue },
     TelescopeMatching = { fg = C.blue },
 	TelescopeBorder = {
 		fg = C.blue,
@@ -16,7 +16,7 @@ return {
 		bg = C.none,
 	},
 	TelescopePromptPrefix = {
-		fg = C.flamingo,
+		fg = C.blue,
 		bg = C.none,
 	},
 	TelescopeNormal = {
