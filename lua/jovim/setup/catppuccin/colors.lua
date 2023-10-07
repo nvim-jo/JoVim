@@ -152,7 +152,7 @@ M.overrides = {
 			["@keyword.return"] = { fg = my_palette.pink, style = {} },
 
 			NeoTreeRootName = { fg = my_palette.lavender, style = { "bold" } },
-			NeoTreeNormal = { fg = my_palette.text, bg = my_palette.mantle },
+			NeoTreeNormal = { fg = my_palette.text, bg = my_palette.none },
 			NeoTreeNormalNC = { fg = my_palette.text, bg = my_palette.mantle },
 			-- NeoTreeTabActive = { bg = my_palette.mantle, fg = my_palette.lavender, style = { "bold" } },
 			-- NeoTreeTabInactive = { bg = my_palette.base, fg = my_palette.overlay0 },
