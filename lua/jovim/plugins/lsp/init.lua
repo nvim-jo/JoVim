@@ -88,6 +88,14 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
+      local win = require('lspconfig.ui.windows')
+      local _default_opts = win.default_opts
+
+      win.default_opts = function(options)
+        local opts = _default_opts(options)
+        opts.border = 'single'
+        return opts
+      end
       local Util = require("jovim.util")
 
       if Util.has("neoconf.nvim") then
