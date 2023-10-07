@@ -9,6 +9,7 @@ local colors = custom_utils.colors
 local jotree_highlight = require('jovim.setup.catppuccin.highlights.jotree')
 local cmp_highlight = require('jovim.setup.catppuccin.highlights.cmp')
 local telescope_highlight = require('jovim.setup.catppuccin.highlights.telescope')
+local noice_highlight = require('jovim.setup.catppuccin.highlights.noice')
 
 local default_overrides = {
 	MarkingWindow = { fg = my_palette.text },
@@ -65,14 +66,10 @@ local default_overrides = {
 	IlluminatedWordRead = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
 	IlluminatedWordWrite = { bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle) },
 
-	NoiceCmdlineIcon = { fg = my_palette.mauve },
-	NoiceCmdlinePopupBorder = { fg = my_palette.blue },
-	NoiceCmdlinePopupTitle = { fg = my_palette.text },
-
 	MatchParen = { fg = my_palette.blue, bg = utils.darken(my_palette.surface0, 0.3, my_palette.mantle), style = { "bold" } },
 }
 
-local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotree_highlight, cmp_highlight, telescope_highlight)
+local highlight_overrides = vim.tbl_deep_extend("force", default_overrides, jotree_highlight, cmp_highlight, telescope_highlight, noice_highlight)
 
 M.overrides = {
 	colors = {

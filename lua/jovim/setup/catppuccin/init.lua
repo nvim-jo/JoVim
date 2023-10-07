@@ -75,7 +75,6 @@ function M.get_options()
 			markdown = true,
 			mason = true,
 			notify = true,
-			noice = true,
 			-- harpoon = true,
 			which_key = true,
 			semantic_tokens = true,
