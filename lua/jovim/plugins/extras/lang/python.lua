@@ -12,9 +12,23 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        pyright = {}, 
+        pyright = {
+          capabilities = capabilities,
+          settings = {
+            python = {
+              analysis = {
+                useLibraryCodeForTypes = true,
+                diagnosticSeverityOverrides = {
+                  reportUnusedVariable = "warning"
+                },
+                -- diagnosticMode = 'basic',
+                typeCheckingMode = "off",
+              }
+            }
+          }
+        },
         ruff_lsp = {},
-      }, 
+      },
       setup = {
         ruff_lsp = function()
           require("jovim.util").on_attach(function(client, _)
@@ -51,7 +65,7 @@ return {
       -- stylua: ignore
       keys = {
         { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method" },
-        { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class" },
+        { "<leader>dPc", function() require('dap-python').test_class() end,  desc = "Debug Class" },
       },
       config = function()
         local path = require("mason-registry").get_package("debugpy"):get_install_path()
