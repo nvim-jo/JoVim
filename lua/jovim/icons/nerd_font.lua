@@ -24,6 +24,7 @@ return {
   DiagnosticWarn = "",
   Ellipsis = "…",
   File = "",
+  Files = "",
   FileNew = "",
   FileCabinet = "󰪶",
   FileTree = "󰙅",
@@ -79,5 +80,5 @@ return {
   Window = "󱂬",
   WordFile = "󰈭",
   WordWrap = "",
-  PaTH = "",
+  Path = "",
 }
