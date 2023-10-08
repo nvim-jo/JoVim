@@ -78,5 +78,6 @@ return {
   Vim = "",
   Window = "󱂬",
   WordFile = "󰈭",
-  WordWrap = ""
+  WordWrap = "",
+  Path = ""
 }
