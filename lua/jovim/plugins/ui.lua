@@ -110,8 +110,12 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    init = function()
+      vim.g.lualine_laststatus = vim.o.laststatus
+      vim.o.laststatus = 0
+    end,
     config = function()
-      require('jovim.setup.lualinealt').setup()
+      require('jovim.setup.lualine').setup()
     end
   },
 

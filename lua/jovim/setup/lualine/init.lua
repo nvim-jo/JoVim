@@ -1,7 +1,7 @@
 local lualine = require('lualine')
-local fancy_branch = require('jovim.setup.lualinealt.components.fancy_branch')
-local fancy_location = require('jovim.setup.lualinealt.components.fancy_location')
-local fancy_filetype = require('jovim.setup.lualinealt.components.fancy_filetype')
+local fancy_branch = require('jovim.setup.lualine.components.fancy_branch')
+local fancy_location = require('jovim.setup.lualine.components.fancy_location')
+local fancy_filetype = require('jovim.setup.lualine.components.fancy_filetype')
 
 -- Color table for highlights
 -- stylua: ignore
@@ -188,6 +188,7 @@ ins_right {
 
 local M = {}
 M.setup = function ()
+    vim.o.laststatus = vim.g.lualine_laststatus
     lualine.setup(config)
 end
 

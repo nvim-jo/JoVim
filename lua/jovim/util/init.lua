@@ -3,6 +3,10 @@ local Util = require("lazy.core.util")
 local M = {}
 
 M.root_patterns = { ".git", "lua" }
+function M.get_clients(...)
+  local fn = vim.lsp.get_clients or vim.lsp.get_active_clients
+  return fn(...)
+end
 
 ---@param on_attach fun(client, buffer)
 function M.on_attach(on_attach)
@@ -48,8 +52,6 @@ function M.opts(name)
   local Plugin = require("lazy.core.plugin")
   return Plugin.values(plugin, "opts", false)
 end
-
-M.get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
 
 -- returns the root directory based on:
 -- * lsp workspace folders
@@ -351,7 +353,7 @@ function M.safe_keymap_set(mode, lhs, rhs, opts)
   end
 end
 
-M.get_directory = function()
+function M.get_directory()
   local current_directory = vim.loop.cwd()
   local path_elements = vim.fn.split(current_directory, "/") -- Split the path using the directory separator
   local last_directory = path_elements[#path_elements] -- Get the last element
@@ -362,8 +364,8 @@ function M.get_icon(kind, padding, no_fallback)
   if not vim.g.icons_enabled and no_fallback then return "" end
   local icon_pack = vim.g.icons_enabled and "icons" or "text_icons"
   if not M[icon_pack] then
-    M.icons = require "jovim.icons.nerd_font" 
-    M.text_icons = require "jovim.icons.text" 
+    M.icons = require "jovim.icons.nerd_font"
+    M.text_icons = require "jovim.icons.text"
   end
   local icon = M[icon_pack] and M[icon_pack][kind]
   return icon and icon .. string.rep(" ", padding or 0) or ""

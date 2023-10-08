@@ -13,12 +13,15 @@ local defaults = {
   -- load the default settings
   defaults = {
     autocmds = true, -- jovim.config.autocmds
-    keymaps = true, -- jovim.config.keymaps
+    keymaps = true,  -- jovim.config.keymaps
     -- jovim.config.options can't be configured here since that's loaded before jovim setup
     -- if you want to disable loading options, add `package.loaded["jovim.config.options"] = true` to the top of your init.lua
   },
   -- icons used by other plugins
   icons = {
+    misc = {
+      dots = "󰇘",
+    },
     dap = {
       Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
       Breakpoint = " ",
@@ -41,10 +44,11 @@ local defaults = {
       Array = " ",
       Boolean = " ",
       Class = " ",
+      Codeium = " ",
       Color = " ",
       Constant = " ",
       Constructor = " ",
-      Copilot = " ",
+      Copilot = " ",
       Enum = " ",
       EnumMember = " ",
       Event = " ",
@@ -74,7 +78,7 @@ local defaults = {
       Value = " ",
       Variable = " ",
     },
-  }, 
+  },
 }
 
 M.renames = {
@@ -130,7 +134,7 @@ function M.setup(opts)
         })
       end,
     })
-  end 
+  end
 
   local lazy_autocmds = vim.fn.argc(-1) == 0
   if not lazy_autocmds then
