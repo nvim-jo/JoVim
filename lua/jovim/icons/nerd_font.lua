@@ -79,5 +79,4 @@ return {
   Window = "󱂬",
   WordFile = "󰈭",
   WordWrap = "",
-  Path = ""
 }
