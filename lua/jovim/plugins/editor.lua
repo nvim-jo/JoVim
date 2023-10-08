@@ -227,7 +227,7 @@ return {
   },
 
   {
-    "nvim-jo/file-browser.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     extensions = {
       file_browser = {
         theme = "catppuccin",
