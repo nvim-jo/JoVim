@@ -189,9 +189,9 @@ map("n", "<leader>e", function()
 end, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
 
 -- file browser
--- map("n", "<leader>E", function()
---   require "telescope".extensions.file_browser.file_browser()
--- end, { desc = get_icon("Path", 1, true).."File Browser", noremap = true})
+map("n", "<leader>E", function()
+  require "telescope".extensions.file_browser.file_browser()
+end, { desc = get_icon("Path", 1, true).."File Browser", noremap = true})
 
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
