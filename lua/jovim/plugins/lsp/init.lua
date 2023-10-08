@@ -41,9 +41,6 @@ return {
       capabilities = {},
       -- Automatically format on save
       autoformat = true,
-      -- Enable this to show formatters used in a notification
-      -- Useful for debugging formatter issues
-      format_notify = false,
       -- options for vim.lsp.buf.format
       -- `bufnr` and `filter` is handled by the JoVim formatter,
       -- but can be also overridden when specified
@@ -58,7 +55,7 @@ return {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps
           -- for specific lsp servers
-          ---@type LazyKeys[]
+          ---@type JoKeysSpec[]
           -- keys = {},
           settings = {
             Lua = {
@@ -88,7 +85,6 @@ return {
     ---@param opts PluginLspOpts
     config = function(_, opts)
       local Util = require("jovim.util")
-      -- require('lspconfig.ui.windows').default_options.border = 'rounded'
 
       if Util.has("neoconf.nvim") then
         local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
@@ -114,7 +110,7 @@ return {
       end
 
       -- diagnostics
-      for name, icon in pairs(require("jovim.config").icons.diagnostics) do
+      for name, icon in pairs(require("jovimvim.config.icons").diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       end
@@ -123,7 +119,7 @@ return {
 
       if opts.inlay_hints.enabled and inlay_hint then
         Util.on_attach(function(client, buffer)
-          if client.supports_method('textDocument/inlayHint') then
+          if client.supports_method("textDocument/inlayHint") then
             inlay_hint(buffer, true)
           end
         end)
@@ -132,7 +128,7 @@ return {
       if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
         opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
           or function(diagnostic)
-            local icons = require("jovim.config").icons.diagnostics
+            local icons = require("jovim.config.icons").diagnostics
             for d, icon in pairs(icons) do
               if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
                 return icon
@@ -222,7 +218,7 @@ return {
         },
       }
     end,
-  }, 
+  },
 
   -- cmdline tools and lsp servers
   {

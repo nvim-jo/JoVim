@@ -150,7 +150,7 @@ return {
           "mason",
           "notify",
           "toggleterm",
-          "lazyterm",
+          "joterm",
         },
         callback = function()
           vim.b.miniindentscope_disable = true
@@ -335,13 +335,10 @@ return {
         separator = " ",
         highlight = true,
         depth_limit = 5,
-        icons = require("jovim.config").icons.kinds,
+        icons = require("jovim.config.icons").kinds,
       }
     end,
   },
-
-  -- icons
-  { "nvim-tree/nvim-web-devicons", lazy = true },
 
   -- ui components
   { "MunifTanjim/nui.nvim",        lazy = true },

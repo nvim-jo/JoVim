@@ -3,19 +3,7 @@ local Util = require("jovim.util")
 local wk = require("which-key")
 local get_icon = Util.get_icon
 
-local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    if opts.remap and not vim.g.vscode then
-      opts.remap = nil
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
-end
+local map = Util.safe_keymap_set
 
 local function which_map(mode, mappings, opts)
   wk.register(mappings, {

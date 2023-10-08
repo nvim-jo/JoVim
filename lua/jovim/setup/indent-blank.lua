@@ -43,7 +43,7 @@ M.setup = function ()
                 "mason",
                 "notify",
                 "toggleterm",
-                "lazyterm",
+                "joterm",
             }
         }, 
         scope = {

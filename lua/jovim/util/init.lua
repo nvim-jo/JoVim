@@ -22,9 +22,11 @@ end
 
 function M.fg(name)
   ---@type {foreground?:number}?
+  ---@diagnostic disable-next-line: deprecated
   local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
-  local fg = hl and hl.fg or hl.foreground
-  return fg and { fg = string.format("#%06x", fg) }
+  ---@diagnostic disable-next-line: undefined-field
+  local fg = hl and (hl.fg or hl.foreground)
+  return fg and { fg = string.format("#%06x", fg) } or nil
 end
 
 ---@param fn fun()
@@ -46,6 +48,8 @@ function M.opts(name)
   local Plugin = require("lazy.core.plugin")
   return Plugin.values(plugin, "opts", false)
 end
+
+M.get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
 
 -- returns the root directory based on:
 -- * lsp workspace folders
@@ -123,18 +127,18 @@ function M.telescope(builtin, opts)
   end
 end
 
----@type table<string,LazyFloat>
+---@type table<string,JoFloat>
 local terminals = {}
 
 -- Opens a floating terminal (interactive by default)
 ---@param cmd? string[]|string
----@param opts? LazyCmdOptions|{interactive?:boolean, esc_esc?:false, ctrl_hjkl?:false}
+---@param opts? JoCmdOptions|{interactive?:boolean, esc_esc?:false, ctrl_hjkl?:false}
 function M.float_term(cmd, opts)
   opts = vim.tbl_deep_extend("force", {
-    ft = "lazyterm",
+    ft = "joterm",
     size = { width = 0.9, height = 0.9 },
   }, opts or {}, { persistent = true })
-  ---@cast opts LazyCmdOptions|{interactive?:boolean, esc_esc?:false}
+  ---@cast opts JoCmdOptions|{interactive?:boolean, esc_esc?:false}
 
   local termkey = vim.inspect({ cmd = cmd or "shell", cwd = opts.cwd, env = opts.env, count = vim.v.count1 })
 
@@ -227,7 +231,7 @@ function M.lazy_notify()
   vim.notify = temp
 
   local timer = vim.loop.new_timer()
-  local check = vim.loop.new_check()
+  local check = assert(vim.loop.new_check())
 
   local replay = function()
     timer:stop()
@@ -253,6 +257,7 @@ function M.lazy_notify()
   timer:start(500, 0, replay)
 end
 
+---@return _.lspconfig.options
 function M.lsp_get_config(server)
   local configs = require("lspconfig.configs")
   return rawget(configs, server)
@@ -263,6 +268,7 @@ end
 function M.lsp_disable(server, cond)
   local util = require("lspconfig.util")
   local def = M.lsp_get_config(server)
+  ---@diagnostic disable-next-line: undefined-field
   def.document_config.on_new_config = util.add_hook_before(def.document_config.on_new_config, function(config, root_dir)
     if cond(root_dir, config) then
       config.enabled = false
@@ -299,10 +305,13 @@ function M.changelog()
   vim.diagnostic.disable(float.buf)
 end
 
+---@param from string
+---@param to string
 function M.on_rename(from, to)
-  local clients = vim.lsp.get_active_clients()
+  local clients = M.get_clients()
   for _, client in ipairs(clients) do
-    if client:supports_method("workspace/willRenameFiles") then
+    if client.supports_method("workspace/willRenameFiles") then
+      ---@diagnostic disable-next-line: invisible
       local resp = client.request_sync("workspace/willRenameFiles", {
         files = {
           {
@@ -310,11 +319,35 @@ function M.on_rename(from, to)
             newUri = vim.uri_from_fname(to),
           },
         },
-      }, 1000)
+      }, 1000, 0)
       if resp and resp.result ~= nil then
         vim.lsp.util.apply_workspace_edit(resp.result, client.offset_encoding)
       end
     end
+  end
+end
+
+-- Wrapper around vim.keymap.set that will
+-- not create a keymap if a lazy key handler exists.
+-- It will also set `silent` to true by default.
+function M.safe_keymap_set(mode, lhs, rhs, opts)
+  local keys = require("lazy.core.handler").handlers.keys
+  ---@cast keys JoKeysHandler
+  local modes = type(mode) == "string" and { mode } or mode
+
+  ---@param m string
+  modes = vim.tbl_filter(function(m)
+    return not (keys.have and keys:have(lhs, m))
+  end, modes)
+
+  -- do not create the keymap if a lazy keys handler exists
+  if #modes > 0 then
+    opts = opts or {}
+    opts.silent = opts.silent ~= false
+    if opts.remap and not vim.g.vscode then
+      opts.remap = nil
+    end
+    vim.keymap.set(modes, lhs, rhs, opts)
   end
 end
 
