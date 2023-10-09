@@ -8,7 +8,7 @@
   (block
     (function_definition
       name: (identifier) @pyconstructor)))
- (#any-of? @pybaseconstructor "__new__" "__init__"))
+ (#any-of? @constructor "__new__" "__init__"))
 
 (none) @pyliteral
 [(true) (false)] @pyliteral
