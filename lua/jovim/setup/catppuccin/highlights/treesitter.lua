@@ -7,6 +7,6 @@ return {
 	Type = { fg = C.text },
 	["@classes"] = { fg = C.yellow },
 	["@colon"] = { fg = C.teal },
-	["@boolean"] = { fg = C.mauve, style = {} },
 	["@type.builtin"] = { fg = C.peach },
+	["@pyliteral"] = { fg = C.mauve, style = {} },
 }

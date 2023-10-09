@@ -9,3 +9,6 @@
     (function_definition
       name: (identifier) @pyconstructor)))
  (#any-of? @constructor "__new__" "__init__"))
+
+(none) @pyliteral
+[(true) (false)] @pyliteral
