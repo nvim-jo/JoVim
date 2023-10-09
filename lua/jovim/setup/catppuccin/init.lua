@@ -12,6 +12,7 @@ function M.get_options()
 		flavor = "mocha",
 		transparent_background = false,
 		no_italic = true,
+		no_bold = true,
 		term_colors = true,
 		compile = {
 			enabled = false,
