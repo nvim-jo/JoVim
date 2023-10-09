@@ -110,10 +110,15 @@ return {
       end
 
       -- diagnostics
-      for name, icon in pairs(require("jovim.config.icons").diagnostics) do
-        name = "DiagnosticSign" .. name
-        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+      local diagnosticIcons = require('jovim.config.icons').diagnostics
+      for type, icon in pairs(diagnosticIcons) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
+      -- for name, icon in pairs(diagnosticIcons) do
+      --   name = "DiagnosticSign" .. name
+      --   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+      -- end
 
       local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 
