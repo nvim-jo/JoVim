@@ -1,9 +1,11 @@
+local Util = require("lazy.core.util")
+
 ---@class JoVimConfig: JoVimOptions
 local M = {}
 
 M.lazy_version = ">=10.8.0"
 M.use_lazy_file = true
-M.lazy_file_events = { "BufReadPost", "BufNewFile" }
+M.lazy_file_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
 
 ---@class JoVimOptions
 local defaults = {
@@ -12,10 +14,10 @@ local defaults = {
   colorscheme = "catppuccin",
   -- load the default settings
   defaults = {
-    autocmds = true, -- jovim.config.autocmds
-    keymaps = true,  -- jovim.config.keymaps
-    -- jovim.config.options can't be configured here since that's loaded before jovim setup
-    -- if you want to disable loading options, add `package.loaded["jovim.config.options"] = true` to the top of your init.lua
+    autocmds = true, -- lazyvim.config.autocmds
+    keymaps = true, -- lazyvim.config.keymaps
+    -- lazyvim.config.options can't be configured here since that's loaded before lazyvim setup
+    -- if you want to disable loading options, add `package.loaded["lazyvim.config.options"] = true` to the top of your init.lua
   },
   -- icons used by other plugins
   icons = {
@@ -44,7 +46,7 @@ local defaults = {
       Array = " ",
       Boolean = " ",
       Class = " ",
-      Codeium = " ",
+      Codeium = "󰘦 ",
       Color = " ",
       Constant = " ",
       Constructor = " ",
@@ -136,6 +138,7 @@ function M.setup(opts)
     })
   end
 
+  -- autocmds can be loaded lazily when not opening a file
   local lazy_autocmds = vim.fn.argc(-1) == 0
   if not lazy_autocmds then
     M.load("autocmds")
@@ -159,7 +162,8 @@ function M.setup(opts)
     M.lazy_file()
   end
 
-  require("lazy.core.util").try(function()
+  Util.track("colorscheme")
+  Util.try(function()
     if type(M.colorscheme) == "function" then
       M.colorscheme()
     else
@@ -168,10 +172,11 @@ function M.setup(opts)
   end, {
     msg = "Could not load your colorscheme",
     on_error = function(msg)
-      require("lazy.core.util").error(msg)
+      Util.error(msg)
       vim.cmd.colorscheme("habamax")
     end,
   })
+  Util.track()
 end
 
 -- Properly load file based plugins without blocking the UI
@@ -183,7 +188,6 @@ function M.lazy_file()
       return
     end
     local Event = require("lazy.core.handler.event")
-    local Util = require("lazy.core.util")
     vim.api.nvim_del_augroup_by_name("lazy_file")
 
     Util.track({ event = "JoVim.lazy_file" })
@@ -235,7 +239,6 @@ end
 
 ---@param name "autocmds" | "options" | "keymaps"
 function M.load(name)
-  local Util = require("lazy.core.util")
   local function _load(mod)
     Util.try(function()
       require(mod)
@@ -264,11 +267,10 @@ function M.load(name)
 end
 
 M.did_init = false
-
 function M.init()
   if not M.did_init then
     M.did_init = true
-    local plugin = require("lazy.core.config").spec.plugins.LazyVim
+    local plugin = require("lazy.core.config").spec.plugins.JoVim
     if plugin then
       vim.opt.rtp:append(plugin.dir)
     end
@@ -290,7 +292,7 @@ function M.init()
     Plugin.Spec.add = function(self, plugin, ...)
       if type(plugin) == "table" then
         if M.renames[plugin[1]] then
-          require("lazy.core.util").warn(
+          Util.warn(
             ("Plugin `%s` was renamed to `%s`.\nPlease update your config for `%s`"):format(
               plugin[1],
               M.renames[plugin[1]],
