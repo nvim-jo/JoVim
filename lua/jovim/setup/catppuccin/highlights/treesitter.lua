@@ -5,6 +5,8 @@ return {
 	["@constructor"] = { fg = C.blue },
 	["@pybuiltin"] = { fg = C.text },
 	["@pyconstructor"] = { fg = C.sapphire },
+	["@pyor"] = { fg = C.yellow },
+	["@pyarrow"] = { fg = C.text },
 	Type = { fg = C.text },
 	["@classes"] = { fg = C.yellow },
 	["@colon"] = { fg = C.teal },

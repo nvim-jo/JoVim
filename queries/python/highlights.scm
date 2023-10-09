@@ -15,3 +15,11 @@
 
 (none) @pyliteral
 [(true) (false)] @pyliteral
+
+[
+  "|"
+] @pyor
+
+[
+  "->"
+] @pyarrow
