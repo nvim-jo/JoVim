@@ -102,28 +102,7 @@ ins_left {
   end,
   color = function()
     -- auto change color according to neovims mode
-    local mode_color = {
-      n = colors.blue,
-      i = colors.green,
-      v = colors.mauve,
-      [''] = colors.blue,
-      V = colors.mauve,
-      c = colors.mauve,
-      no = colors.blue,
-      s = colors.orange,
-      S = colors.orange,
-      [''] = colors.orange,
-      ic = colors.yellow,
-      R = colors.maroon,
-      Rv = colors.maroon,
-      cv = colors.red,
-      ce = colors.red,
-      r = colors.cyan,
-      rm = colors.cyan,
-      ['r?'] = colors.cyan,
-      ['!'] = colors.red,
-      t = colors.red,
-    }
+    local mode_color = require('jovim.setup.catppuccin.colors').get_mode_color() 
     return { fg = mode_color[vim.fn.mode()] }
   end, 
   padding = { left = 0, right = 1 }, -- We don't need space before this
