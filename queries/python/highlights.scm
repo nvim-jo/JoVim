@@ -24,5 +24,5 @@
   "->"
 ] @pyarrow
 
- (keyword_argument
-   name: (identifier) @pyargs)
+(keyword_argument
+  name: (identifier) @pyargs)
