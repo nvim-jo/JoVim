@@ -8,12 +8,6 @@ return {
       { "folke/neodev.nvim", opts = {} },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        cond = function()
-          return require("jovim.util").has("nvim-cmp")
-        end,
-      },
     },
     ---@class PluginLspOpts
     opts = {
@@ -110,15 +104,10 @@ return {
       end
 
       -- diagnostics
-      local diagnosticIcons = require('jovim.config.icons').diagnostics
-      for type, icon in pairs(diagnosticIcons) do
+      for type, icon in pairs(require('jovim.config.icons').diagnostics) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
-      -- for name, icon in pairs(diagnosticIcons) do
-      --   name = "DiagnosticSign" .. name
-      --   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-      -- end
 
       local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 

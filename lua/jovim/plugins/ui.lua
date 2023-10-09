@@ -104,6 +104,17 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("bufferline").setup(opts)
+      -- Fix bufferline when restoring a session
+      vim.api.nvim_create_autocmd("BufAdd", {
+        callback = function()
+          vim.schedule(function()
+            pcall(nvim_bufferline)
+          end)
+        end,
+      })
+    end,
   },
 
   -- statusline
@@ -275,14 +286,14 @@ return {
 
       dashboard.section.header.val = logo
       dashboard.section.buttons.val = {
-        dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
-        dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-        dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-        dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
-        dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-        dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+        dashboard.button("f", " " .. " Find file", "<cmd> Telescope find_files <cr>"),
+        dashboard.button("n", " " .. " New file", "<cmd> ene <BAR> startinsert <cr>"),
+        dashboard.button("r", " " .. " Recent files", "<cmd> Telescope oldfiles <cr>"),
+        dashboard.button("g", " " .. " Find text", "<cmd> Telescope live_grep <cr>"),
+        dashboard.button("c", " " .. " Config", "<cmd> e $MYVIMRC <cr>"),
+        dashboard.button("s", " " .. " Restore Session", [[<cmd> lua require("persistence").load() <cr>]]),
+        dashboard.button("l", "󰒲 " .. " Lazy", "<cmd> Lazy <cr>"),
+        dashboard.button("q", " " .. " Quit", "<cmd> qa <cr>"),
       }
       for _, button in ipairs(dashboard.section.buttons.val) do
         button.opts.hl = "AlphaButtons"
@@ -313,7 +324,14 @@ return {
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = "⚡ Editor loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+          dashboard.section.footer.val = "⚡ Editor loaded "
+            .. stats.loaded
+            .. "/"
+            .. stats.count
+            .. " plugins in "
+            .. ms
+            .. "ms"
+          -- dashboard.section.footer.val = "⚡ Editor loaded " .. stats.count .. " plugins in " .. ms .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
       })
@@ -340,6 +358,7 @@ return {
         highlight = true,
         depth_limit = 5,
         icons = require("jovim.config.icons").kinds,
+        lazy_update_context = true,
       }
     end,
   },
