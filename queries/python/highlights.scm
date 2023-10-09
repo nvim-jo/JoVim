@@ -23,3 +23,11 @@
 [
   "->"
 ] @pyarrow
+
+(assignment
+  left: (identifier) @variable
+  right: (conditional_expression
+            (binary_expression
+              left: (identifier) @parameter
+              operator: "==" ; Adjust this operator to match your language
+              right: (string_literal) @value)))
