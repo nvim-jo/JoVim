@@ -2,7 +2,7 @@ local C = require('jovim.setup.catppuccin.utils').palette
 
 return {
     ["@keyword.return"] = { fg = C.mauve },
-	["@constructor"] = { fg = C.blue },
+	["@pybaseconstructor"] = { fg = C.blue },
 	["@pyconstructor"] = { fg = C.sapphire },
 	Type = { fg = C.text },
 	["@classes"] = { fg = C.yellow },
