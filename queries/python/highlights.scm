@@ -24,7 +24,7 @@
   "->"
 ] @pyarrow
 
-(assignment
-  left: (identifier) @variable
-  right: (identifier) @parameter
-  (parameters))
+((assignment left: (identifier) @variable right: (identifier) @parameter)
+ (and
+   (match? @parameter (parameters))
+   (match? @variable)))
