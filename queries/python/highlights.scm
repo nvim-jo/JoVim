@@ -23,3 +23,8 @@
 [
   "->"
 ] @pyarrow
+
+(assignment
+  left: (identifier) @variable
+  right: (identifier) @parameter
+  (parameters))
