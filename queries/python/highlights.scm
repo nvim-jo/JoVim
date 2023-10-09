@@ -8,7 +8,10 @@
   (block
     (function_definition
       name: (identifier) @pyconstructor)))
- (#any-of? @constructor "__new__" "__init__"))
+(#any-of? @constructor "__new__" "__init__"))
+
+((identifier) @pybuiltin
+ (#lua-match? @pybuiltin "^__[a-zA-Z0-9_]*__$"))
 
 (none) @pyliteral
 [(true) (false)] @pyliteral
