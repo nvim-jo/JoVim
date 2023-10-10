@@ -198,6 +198,9 @@ end, { desc = get_icon("Path", 1, true).."File Browser", noremap = true})
 -- copy all
 map("n", "<leader>cc", "<cmd>%y+<cr>", { desc = "Copy all codes" })
 
+-- select all
+map("n", "<C-a>", "<esc>ggVG<CR>", { desc = "Select all" })
+
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
   ["<leader>b"] = { name = get_icon("Buffer", 1, true).."Buffer" },
