@@ -300,31 +300,6 @@ return {
     end,
   },
 
-  {
-    "ibhagwan/fzf-lua",
-    cmd = "FzfLua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({
-        "telescope",
-        winopts = {
-          border           = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-          preview = {
-            default = "bat"
-          }
-        },
-        
-        fzf_opts = {
-          ['--color'] = "bg+:-1,gutter:-1,bg:-1"
-        },
-        files = {
-          fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude venv"
-        }
-      })
-    end
-  },
-
   -- which-key helps you remember key bindings by showing a popup
   -- with the active keybindings of the command you started typing.
   {
