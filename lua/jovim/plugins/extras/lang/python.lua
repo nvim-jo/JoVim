@@ -48,8 +48,14 @@ return {
   },
   {
 		"stevearc/conform.nvim",
-    ft = { "python" },
-		event = "BufWritePre", -- load the plugin before saving
+		event = "BufWritePre", -- load the plugin before saving,
+    cond = function()
+        local ft = vim.bo.filetype
+        if ft == "python" then
+          return true
+        end
+        return false
+    end,
 		opts = {
 			formatters_by_ft = {
 				-- first use isort and then black
