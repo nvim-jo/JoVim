@@ -48,6 +48,7 @@ return {
   },
   {
 		"stevearc/conform.nvim",
+    ft = { "python" },
 		event = "BufWritePre", -- load the plugin before saving
 		opts = {
 			formatters_by_ft = {
