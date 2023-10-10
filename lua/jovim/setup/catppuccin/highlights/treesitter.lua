@@ -9,7 +9,6 @@ return {
 	["@field.python"] = { fg = C.text },
 	["@classes"] = { fg = C.yellow },
 	["@colon"] = { fg = C.teal },
-	["@type.builtin"] = { fg = C.peach },
 	["@pyliteral"] = { fg = C.mauve, style = {} },
 
 	["@constructor.python"] = { fg = C.blue },
