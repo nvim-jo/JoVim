@@ -48,10 +48,11 @@ return {
   },
   {
 		"stevearc/conform.nvim",
+    ft = { "python" },
 		event = "BufWritePre", -- load the plugin before saving
 		keys = {
 			{
-				"<leader>f",
+				"<leader>cf",
 				function() require("conform").format({ lsp_fallback = true }) end,
 				desc = "Format",
 			},
