@@ -286,7 +286,7 @@ return {
 
       -- dashboard.section.header.val = logo
       require("alpha.term")
-      dashboard.section.terminal.command = vim.fn.stdpath("config") .. "/nvim-logo -t"
+      dashboard.section.terminal.command = vim.fn.stdpath("config") .. "/nvim-logo -l"
 		  dashboard.section.terminal.width = 70
 		  dashboard.section.terminal.height = 10
 		  dashboard.section.terminal.opts.redraw = true
