@@ -19,5 +19,6 @@ return {
 	["@colon"] = { fg = C.teal },
 	["@type.builtin"] = { fg = C.peach },
 	["@pyliteral"] = { fg = C.mauve, style = {} },
-	["@namespace"] = { fg = C.text },
+	["@property"] = { fg = C.text },
+	["@field"] = { fg = C.text }
 }
