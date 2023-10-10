@@ -280,6 +280,31 @@ return {
             },
           },
         },
+        pickers = {
+          find_files = {
+            -- I don't like having the cwd prefix in my files
+            find_command = vim.fn.executable "fd" == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
+      
+            mappings = {
+              n = {
+                ["kj"] = "close",
+              },
+            },
+          },
+      
+          git_branches = {
+            mappings = {
+              i = {
+                ["<C-a>"] = false,
+              },
+            },
+          },
+      
+          buffers = {
+            sort_lastused = true,
+            sort_mru = true,
+          },
+        },      
       }
     end,
     config = function(_, opts)
