@@ -128,7 +128,7 @@ return {
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = get_icon("Switch", 1, true).."Switch Buffer" },
       { "<leader>/", Util.telescope("live_grep"), desc = get_icon("Grep", 1, true).."Grep" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = get_icon("Command", 1, true).."Command History" },
-      { "<leader><space>", Util.telescope("files"), desc = get_icon("Find", 1, true).."Find Files" },
+      { "<leader>E", Util.telescope("files"), desc = get_icon("Find", 1, true).."Find Files" },
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
