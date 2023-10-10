@@ -92,15 +92,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = augroup("fix_folds"),
-  callback = function()
-    if vim.opt.foldmethod:get() == "expr" then
-      vim.schedule(function()
-        vim.opt.foldmethod = "expr"
-      end)
-    end
-  end,
-})
-
 vim.cmd "highlight! Explorer guibg=#181825 guifg=#89B4FA"
