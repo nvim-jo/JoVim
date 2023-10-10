@@ -1,6 +1,11 @@
 local C = require('jovim.setup.catppuccin.utils').palette
 
 return {
+	-- Python only
+	["@type.python"] = { fg = C.yellow },
+	["@type.builtin.python"] = { fg = C.yellow },
+	["@type.definition.python"] = { fg = C.yellow },
+
     ["@keyword.return"] = { fg = C.mauve },
 	["@constructor"] = { fg = C.blue },
 	["@pyargs"] = { fg = C.red },
@@ -15,7 +20,4 @@ return {
 	["@type.builtin"] = { fg = C.peach },
 	["@pyliteral"] = { fg = C.mauve, style = {} },
 	["@namespace"] = { fg = C.lavender },
-	["@type.python"] = { fg = C.yellow },
-	["@type.builtin.python"] = { fg = C.yellow },
-	["@type.definition.python"] = { fg = C.yellow }
 }
