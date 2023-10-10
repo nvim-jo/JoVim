@@ -14,4 +14,7 @@ return {
 	["@colon"] = { fg = C.teal },
 	["@type.builtin"] = { fg = C.peach },
 	["@pyliteral"] = { fg = C.mauve, style = {} },
+	["@include.python"] = { fg = C.text },
+	["@odp.import_module.python"] = { fg = C.text },
+    ["@odp.keyword.class.python"] = { fg = C.blue },
 }
