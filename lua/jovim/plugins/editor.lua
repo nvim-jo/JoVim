@@ -103,6 +103,26 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
+    dependencies = {
+      {
+        "nvim-jo/file-browser.nvim",
+        config = function()
+          Util.on_load("telescope.nvim", function()
+            require("telescope").load_extension("file_browser")
+          end)
+        end,
+      },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        enabled = vim.fn.executable("make") == 1,
+        config = function()
+          Util.on_load("telescope.nvim", function()
+            require("telescope").load_extension("fzf")
+          end)
+        end,
+      },
+    },
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = get_icon("Switch", 1, true).."Switch Buffer" },
@@ -235,7 +255,6 @@ return {
     end,
     config = function(_, opts)
       require('telescope').setup(opts)
-      require("telescope").load_extension "file_browser"
     end,
   },
 
