@@ -1,5 +1,5 @@
 -- This file is automatically loaded by jovim.config.init.
-
+local Util = require('jovim.util')
 local function augroup(name)
   return vim.api.nvim_create_augroup("jovim_" .. name, { clear = true })
 end
@@ -90,6 +90,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     local file = vim.loop.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "python", -- filetype for which to run the autocmd
+	callback = function()
+		Util.safe_keymap_set("n", "<leader>cf", function() require("conform").format({ lsp_fallback = true }) end, { desc = "Format", buffer = true })
+	end,
 })
 
 vim.cmd "highlight! Explorer guibg=#181825 guifg=#89B4FA"
