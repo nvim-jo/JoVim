@@ -284,13 +284,7 @@ return {
         [[                                                      ]]
       }
 
-      -- dashboard.section.header.val = logo
-      require("alpha.term")
-      dashboard.section.terminal.command = vim.fn.stdpath("config") .. "/nvim-logo -l"
-		  dashboard.section.terminal.width = 70
-		  dashboard.section.terminal.height = 10
-		  dashboard.section.terminal.opts.redraw = true
-		  dashboard.section.terminal.opts.window_config.zindex = 1
+      dashboard.section.header.val = logo
       dashboard.section.buttons.val = {
         dashboard.button("f", " " .. " Find file", "<cmd> Telescope find_files <cr>"),
         dashboard.button("n", " " .. " New file", "<cmd> ene <BAR> startinsert <cr>"),
