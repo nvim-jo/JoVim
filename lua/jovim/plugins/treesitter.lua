@@ -103,7 +103,7 @@ return {
   {
     'm-demare/hlargs.nvim',
     ft = { "python" },
-    config = function()
+    config = function(_, opts)
       local custom_utils = require('jovim.setup.catppuccin.utils')
       local my_palette = custom_utils.palette
       local hlargs = require('hlargs')
