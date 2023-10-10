@@ -141,7 +141,7 @@ return {
           }
         }
       }
-      hlargs.disable()
+      hlargs.enable()
     end,
   }
 }

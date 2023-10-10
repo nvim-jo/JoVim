@@ -175,8 +175,10 @@ map("n", "<leader>td", Util.toggle_diagnostics, { desc = get_icon("Diagnostic", 
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = get_icon("Conceal", 1, true).."Conceal (base)" })
 if vim.lsp.inlay_hint then
-  map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = get_icon("Bulb", 1, true).."Inlay Hints" })
+  map("n", "<leader>ti", function() vim.lsp.inlay_hint(0, nil) end, { desc = get_icon("Bulb", 1, true).."Inlay Hints" })
 end
+
+map("n", "<leader>th", function() require('hlargs').toggle() end, { desc = get_icon("Highlight", 1, true).."Highlight"})
 
 -- file manager
 map("n", "<leader>o", function()

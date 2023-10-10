@@ -52,6 +52,7 @@ return {
   GitUnstaged = "✗",
   GitUntracked = "★",
   Grep = "󰩉",
+  Highlight = "󰸱",
   Lazy = "󰒲 ",
   LineNumber = "",
   LSPLoaded = "", -- TODO: Remove unused icon in AstroNvim v4
