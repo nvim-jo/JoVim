@@ -195,6 +195,9 @@ map("n", "<leader>E", function()
   require "telescope".extensions.file_browser.file_browser()
 end, { desc = get_icon("Path", 1, true).."File Browser", noremap = true})
 
+-- copy all
+map("n", "<leader>cc", "<cmd>%y+<cr>", { desc = "Copy all codes" })
+
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
   ["<leader>b"] = { name = get_icon("Buffer", 1, true).."Buffer" },
