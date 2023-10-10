@@ -5,9 +5,14 @@ return {
 	["@type.python"] = { fg = C.yellow },
 	["@type.builtin.python"] = { fg = C.peach },
 	["@type.definition.python"] = { fg = C.yellow },
+	["@property.python"] = { fg = C.text },
+	["@field.python"] = { fg = C.text },
+	["@classes"] = { fg = C.yellow },
+	["@colon"] = { fg = C.teal },
+	["@type.builtin"] = { fg = C.peach },
+	["@pyliteral"] = { fg = C.mauve, style = {} },
 
-    ["@keyword.return"] = { fg = C.mauve },
-	["@constructor"] = { fg = C.blue },
+	["@constructor.python"] = { fg = C.blue },
 	["@pyargs"] = { fg = C.red },
 	["@pybuiltin"] = { fg = C.text },
 	["@pyconstructor"] = { fg = C.sapphire },
@@ -15,10 +20,7 @@ return {
 	["@pyarrow"] = { fg = C.text },
 	-- ["@parameter.reference"] = { fg = C.blue },
 	-- Type = { fg = C.text },
-	["@classes"] = { fg = C.yellow },
-	["@colon"] = { fg = C.teal },
-	["@type.builtin"] = { fg = C.peach },
-	["@pyliteral"] = { fg = C.mauve, style = {} },
-	["@property"] = { fg = C.text },
-	["@field"] = { fg = C.text }
+	
+
+	["@keyword.return"] = { fg = C.mauve },
 }
