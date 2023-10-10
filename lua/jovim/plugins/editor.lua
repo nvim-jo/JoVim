@@ -306,7 +306,18 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       -- calling `setup` is optional for customization
-      require("fzf-lua").setup({"telescope",winopts={preview={default="bat"}}})
+      require("fzf-lua").setup({
+        "telescope",
+        winopts = {
+          border           = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+          preview = {
+            default = "bat"
+          }
+        },
+        files = {
+          fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude venv"
+        }
+      })
     end
   },
 
