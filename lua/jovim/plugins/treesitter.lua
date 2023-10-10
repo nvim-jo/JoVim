@@ -101,19 +101,19 @@ return {
     end,
   },
   {
-    'm-demare/hlargs.nvim',
+    'nvim-jo/highlightargs.nvim',
     ft = { "python" },
     config = function(_, opts)
       local custom_utils = require('jovim.setup.catppuccin.utils')
       local my_palette = custom_utils.palette
-      local hlargs = require('hlargs')
+      local hlargs = require('highlightargs')
       hlargs.setup {
         color = my_palette.maroon,
         highlight = {},
         excluded_filetypes = {},
-        paint_arg_declarations = false,
-        paint_arg_usages = true,
-        paint_catch_blocks = {
+        highlight_arg_declarations = false,
+        highlight_arg_usages = true,
+        highlight_catch_blocks = {
           declarations = false,
           usages = false
         },

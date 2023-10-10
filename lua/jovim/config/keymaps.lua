@@ -178,7 +178,7 @@ if vim.lsp.inlay_hint then
   map("n", "<leader>ti", function() vim.lsp.inlay_hint(0, nil) end, { desc = get_icon("Bulb", 1, true).."Inlay Hints" })
 end
 
-map("n", "<leader>th", function() require('hlargs').toggle() end, { desc = get_icon("Highlight", 1, true).."Highlight"})
+map("n", "<leader>th", function() require('highlightargs').toggle() end, { desc = get_icon("Highlight", 1, true).."Highlight"})
 
 -- file manager
 map("n", "<leader>o", function()
