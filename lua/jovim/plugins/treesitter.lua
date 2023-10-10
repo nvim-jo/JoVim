@@ -102,8 +102,20 @@ return {
   },
   {
     'm-demare/hlargs.nvim',
+    ft = { "python" },
     config = function()
-      require('hlargs').setup()
+      local custom_utils = require('jovim.setup.catppuccin.utils')
+      local my_palette = custom_utils.palette
+      local hlargs = require('hlargs')
+      hlargs.setup({
+        color = my_palette.maroon,
+        exclude_argnames = {
+          usages = {
+            python = { 'self', 'cls' }
+          }
+        }
+      })
+      hlargs.enable()
     end,
   }
 }

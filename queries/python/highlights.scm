@@ -23,6 +23,3 @@
 [
   "->"
 ] @pyarrow
-
- (keyword_argument
-   name: (identifier) @parameter)
