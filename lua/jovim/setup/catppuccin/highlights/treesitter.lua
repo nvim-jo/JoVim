@@ -9,7 +9,7 @@ return {
 	["@pyor"] = { fg = C.yellow },
 	["@pyarrow"] = { fg = C.text },
 	["@parameter.reference"] = { fg = C.blue },
-	Type = { fg = C.text },
+	-- Type = { fg = C.text },
 	["@classes"] = { fg = C.yellow },
 	["@colon"] = { fg = C.teal },
 	["@type.builtin"] = { fg = C.peach },
