@@ -10,7 +10,7 @@ function M.get_options()
 	return
 	{
 		flavor = "mocha",
-		transparent_background = false,
+		transparent_background = true,
 		no_italic = true,
 		no_bold = true,
 		term_colors = true,
