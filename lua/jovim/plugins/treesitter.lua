@@ -100,4 +100,10 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
+  {
+    'm-demare/hlargs.nvim',
+    config = function()
+      require('hlargs').setup()
+    end,
+  }
 }
