@@ -8,11 +8,10 @@ return {
 	["@pyconstructor"] = { fg = C.sapphire },
 	["@pyor"] = { fg = C.yellow },
 	["@pyarrow"] = { fg = C.text },
-	["@parameter.reference"] = { fg = C.blue },
+	-- ["@parameter.reference"] = { fg = C.blue },
 	-- Type = { fg = C.text },
 	["@classes"] = { fg = C.yellow },
 	["@colon"] = { fg = C.teal },
 	["@type.builtin"] = { fg = C.peach },
 	["@pyliteral"] = { fg = C.mauve, style = {} },
-	["@variable.builtin.python"] = { fg = C.blue },
 }
