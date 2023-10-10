@@ -1,4 +1,3 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -10,36 +9,10 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        pyright = {
-          capabilities = capabilities,
-          settings = {
-            python = {
-              analysis = {
-                useLibraryCodeForTypes = true,
-                diagnosticSeverityOverrides = {
-                  reportUnusedVariable = "warning"
-                },
-                -- diagnosticMode = 'basic',
-                typeCheckingMode = "off",
-              }
-            }
-          }
-        },
-        ruff_lsp = {},
-      },
-      setup = {
-        ruff_lsp = function()
-          require("jovim.util").on_attach(function(client, _)
-            if client.name == "ruff_lsp" then
-              -- Disable hover in favor of Pyright
-              client.server_capabilities.hoverProvider = false
-            end
-          end)
-        end,
-      },
-    },
+    opts = function()
+      local config = require('jovim.setup.lsp.python').get_config()
+      return config
+    end,
   },
   {
     "nvim-neotest/neotest",

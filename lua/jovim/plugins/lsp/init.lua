@@ -225,6 +225,8 @@ return {
       ensure_installed = {
         "stylua",
         "shfmt",
+        "black",
+        "isort"
         -- "flake8",
       },
     },
