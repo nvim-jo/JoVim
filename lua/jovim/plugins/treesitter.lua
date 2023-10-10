@@ -111,7 +111,7 @@ return {
         color = my_palette.maroon,
         highlight = {},
         excluded_filetypes = {},
-        paint_arg_declarations = true,
+        paint_arg_declarations = false,
         paint_arg_usages = true,
         paint_catch_blocks = {
           declarations = false,
@@ -141,7 +141,7 @@ return {
           }
         }
       }
-      -- hlargs.enable()
+      hlargs.disable()
     end,
   }
 }
