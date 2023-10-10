@@ -23,3 +23,30 @@
 [
   "->"
 ] @pyarrow
+
+;; Normal parameters
+(parameters
+  (identifier) @parameter)
+;; Lambda parameters
+(lambda_parameters
+  (identifier) @parameter)
+(lambda_parameters
+  (tuple_pattern
+    (identifier) @parameter))
+; Default parameters
+(keyword_argument
+  name: (identifier) @parameter)
+; Naming parameters on call-site
+(default_parameter
+  name: (identifier) @parameter)
+(typed_parameter
+  (identifier) @parameter)
+(typed_default_parameter
+  (identifier) @parameter)
+; Variadic parameters *args, **kwargs
+(parameters
+  (list_splat_pattern ; *args
+    (identifier) @parameter))
+(parameters
+  (dictionary_splat_pattern ; **kwargs
+    (identifier) @parameter))
