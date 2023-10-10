@@ -24,39 +24,5 @@
   "->"
 ] @pyarrow
 
-(function_definition
-  parameters: (parameters
-    [
-      (identifier) @parameter
-      (list_splat_pattern
-        (identifier) @parameter)
-      (dictionary_splat_pattern
-        (identifier) @parameter)
-      (default_parameter
-        (identifier) @parameter)
-      (typed_parameter
-        [
-          (identifier) @parameter
-          (list_splat_pattern
-            (identifier) @parameter)
-          (dictionary_splat_pattern
-            (identifier) @parameter)
-        ])
-      (typed_default_parameter
-        (identifier) @parameter)
-    ]))
-(lambda
-  parameters: (lambda_parameters
-    [
-      (identifier) @parameter
-      (list_splat_pattern
-        (identifier) @parameter)
-      (dictionary_splat_pattern
-        (identifier) @parameter)
-      (default_parameter
-        (identifier) @parameter)
-    ]))
-(except_clause
-  (as_pattern
-    (as_pattern_target
-      (identifier) @catch)))
+ (keyword_argument
+   name: (identifier) @parameter)
