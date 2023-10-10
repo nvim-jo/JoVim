@@ -1,5 +1,1 @@
-local Util = require("jovim.util")
-
-local map = Util.safe_buf_keymap_set
-
-map("n", "<leader>cf", function() require("conform").format({ lsp_fallback = true }) end, { desc = "Format code" })
+vim.api.nvim_buf_set_keymap(0, 'n', "<leader>cf", function() require("conform").format({ lsp_fallback = true }) end, { noremap = true, desc = "Format code" })
