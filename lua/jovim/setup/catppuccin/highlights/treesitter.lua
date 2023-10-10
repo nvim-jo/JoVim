@@ -6,7 +6,7 @@ return {
 	["@type.builtin.python"] = { fg = C.peach },
 	["@type.definition.python"] = { fg = C.yellow },
 	["@property.python"] = { fg = C.text },
-	["@field.python"] = { fg = C.text },
+	["@field.python"] = { fg = C.blue },
 	["@classes"] = { fg = C.yellow },
 	["@colon"] = { fg = C.teal },
 	["@pyliteral"] = { fg = C.mauve, style = {} },
