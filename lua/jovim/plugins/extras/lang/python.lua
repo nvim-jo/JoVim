@@ -48,15 +48,7 @@ return {
   },
   {
 		"stevearc/conform.nvim",
-    ft = { "python" },
 		event = "BufWritePre", -- load the plugin before saving
-		keys = {
-			{
-				"<leader>cf",
-				function() require("conform").format({ lsp_fallback = true }) end,
-				desc = "Format",
-			},
-		},
 		opts = {
 			formatters_by_ft = {
 				-- first use isort and then black
