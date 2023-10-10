@@ -34,22 +34,25 @@ return {
         end,
       },
     }, 
-    cmd = { "TSUpdateSync" },
+    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     keys = {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     ---@type TSConfig
+    ---@diagnostic disable-next-line: missing-fields
     opts = {
       highlight = { enable = true },
       indent = { enable = true },
       ensure_installed = {
         "bash",
         "c",
+        "diff",
         "html",
         "javascript",
         "jsdoc",
         "json",
+        "jsonc",
         "lua",
         "luadoc",
         "luap",
@@ -63,7 +66,7 @@ return {
         "typescript",
         "vim",
         "vimdoc",
-        "yaml",
+        "yaml", 
       },
       incremental_selection = {
         enable = true,
