@@ -200,7 +200,7 @@ map("n", "<leader>cc", "<cmd>%y+<cr>", { desc = "Copy all codes" })
 
 -- select all
 map("n", "<C-a>", "<esc>ggVG<CR>", { desc = "Select all" })
-map("v", "<C-c>", '<cmd>y<cr>', { desc = "Copy selected" })
+map("v", "<C-c>", '"+y', { desc = "Copy selected" })
 
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
