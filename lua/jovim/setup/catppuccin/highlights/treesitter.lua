@@ -15,5 +15,5 @@ return {
 	["@type.builtin"] = { fg = C.peach },
 	["@pyliteral"] = { fg = C.mauve, style = {} },
 	["@namespace"] = { fg = C.text },
-	["@storageclass"] = { fg = C.text },
+	["@type"] = { fg = C.text }
 }
