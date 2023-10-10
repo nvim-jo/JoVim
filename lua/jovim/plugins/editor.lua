@@ -258,16 +258,6 @@ return {
     end,
   },
 
-  {
-    "nvim-jo/file-browser.nvim",
-    extensions = {
-      file_browser = {
-        theme = "catppuccin",
-        hijack_netrw = true,
-      },
-    },
-  },
-
   -- Flash enhances the built-in search functionality by showing labels
   -- at the end of each match, letting you quickly jump to a specific
   -- location.
