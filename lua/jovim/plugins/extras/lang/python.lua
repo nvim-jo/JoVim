@@ -102,8 +102,5 @@ return {
   },
   {
     "nvim-jo/selenv.nvim",
-    keys = {
-      { "<leader>cv", function() require('selenv.api').pick_venv() end, desc = "Select VirtualEnv" },
-    }
   },
 }

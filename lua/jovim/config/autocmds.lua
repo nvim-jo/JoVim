@@ -92,11 +92,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "python", -- filetype for which to run the autocmd
-	callback = function()
-		Util.safe_keymap_set("n", "<leader>cf", function() require("conform").format({ lsp_fallback = true }) end, { desc = "Format", buffer = true })
-	end,
-})
-
 vim.cmd "highlight! Explorer guibg=#181825 guifg=#89B4FA"
