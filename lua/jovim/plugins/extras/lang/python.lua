@@ -8,46 +8,71 @@ return {
       end
     end,
   },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = function()
-  --     local config = require('jovim.setup.lsp.python').get_config()
-  --     return config
-  --   end,
-  -- },
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        pyright = {
-          capabilities = capabilities,
-          settings = {
-            python = {
-              analysis = {
-                useLibraryCodeForTypes = true,
-                diagnosticSeverityOverrides = {
-                  reportUnusedVariable = "warning"
-                },
-                -- diagnosticMode = 'basic',
-                typeCheckingMode = "off",
+    opts = function(_, opts)
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      return {
+        servers = {
+          pyright = {
+            capabilities = capabilities,
+            settings = {
+              python = {
+                analysis = {
+                  useLibraryCodeForTypes = true,
+                  diagnosticSeverityOverrides = {
+                    reportUnusedVariable = "warning"
+                  },
+                  -- diagnosticMode = 'basic',
+                  typeCheckingMode = "off",
+                }
               }
             }
+          },
+          ruff_lsp = {
+            settings = {
+              organizeImports = false,
+            },
+            on_attach = function(client) client.server_capabilities.hoverProvider = false end,
           }
-        },
-        ruff_lsp = {},
-      },
-      setup = {
-        ruff_lsp = function()
-          require("jovim.util").on_attach(function(client, _)
-            if client.name == "ruff_lsp" then
-              -- Disable hover in favor of Pyright
-              client.server_capabilities.hoverProvider = false
-            end
-          end)
-        end,
-      },
-    },
+        }
+      }
+    end,
   },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       pyright = {
+  --         capabilities = capabilities,
+  --         settings = {
+  --           python = {
+  --             analysis = {
+  --               useLibraryCodeForTypes = true,
+  --               diagnosticSeverityOverrides = {
+  --                 reportUnusedVariable = "warning"
+  --               },
+  --               -- diagnosticMode = 'basic',
+  --               typeCheckingMode = "off",
+  --             }
+  --           }
+  --         }
+  --       },
+  --       ruff_lsp = {},
+  --     },
+  --     setup = {
+  --       ruff_lsp = function()
+  --         require("jovim.util").on_attach(function(client, _)
+  --           if client.name == "ruff_lsp" then
+  --             -- Disable hover in favor of Pyright
+  --             client.server_capabilities.hoverProvider = false
+  --           end
+  --         end)
+  --       end,
+  --     },
+  --   },
+  -- },
   {
     "nvim-neotest/neotest",
     optional = true,
