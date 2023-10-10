@@ -307,7 +307,7 @@ return {
     config = function()
       -- calling `setup` is optional for customization
       require("fzf-lua").setup({
-        "fzf-vim",
+        "default",
         winopts = {
           border           = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
           preview = {
