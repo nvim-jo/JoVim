@@ -111,9 +111,9 @@ return {
       -- Your options go here
       auto_refresh = true
     },
-    keys = {{
+    keys = {
       -- Keymap to open VenvSelector to pick a venv.
       { "<leader>vs", "<cmd>:VenvSelect", desc = "Select Venv" },
-    }}
+    }
   }
 }
