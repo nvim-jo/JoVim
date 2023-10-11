@@ -104,7 +104,7 @@ return {
     "nvim-jo/selenv.nvim",
   },
   {
-    "nvim-jo/selectvenv.nvim",
+    "nvim-jo/venv-selector.nvim",
     cmd = { "VenvSelect" },
     event = "VeryLazy",
     opts = {
