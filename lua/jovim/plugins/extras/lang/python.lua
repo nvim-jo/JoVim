@@ -111,7 +111,6 @@ return {
       -- Your options go here
       parents = 1,
       name = { "venv", ".venv" },
-      search = false,
       auto_refresh = true
     },
     keys = {
