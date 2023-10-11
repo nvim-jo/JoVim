@@ -111,7 +111,8 @@ return {
       -- Your options go here
       parents = 1,
       name = { "venv", ".venv" },
-      auto_refresh = true
+      auto_refresh = true,
+      search_venv_managers = false,
     },
     keys = {
       -- Keymap to open VenvSelector to pick a venv.
