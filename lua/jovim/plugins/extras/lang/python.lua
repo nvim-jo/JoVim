@@ -105,6 +105,7 @@ return {
   },
   {
     "nvim-jo/venv-selector.nvim",
+    branch = "lualine-support",
     cmd = { "VenvSelect" },
     event = "VeryLazy",
     opts = {
