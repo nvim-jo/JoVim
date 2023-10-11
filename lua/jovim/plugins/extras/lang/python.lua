@@ -104,7 +104,7 @@ return {
     "nvim-jo/selenv.nvim",
   },
   {
-    "linux-cultist/venv-selector.nvim",
+    "nvim-jo/selectvenv.nvim",
     cmd = { "VenvSelect" },
     event = "VeryLazy",
     opts = {
