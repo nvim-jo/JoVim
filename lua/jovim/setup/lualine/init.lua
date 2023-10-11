@@ -126,6 +126,17 @@ ins_left {
 }
 
 ins_left {
+  function ()
+    return "Select Venv"
+  end,
+  cond = conditions.check_if_python,
+  color = { fg = colors.text },
+  on_click = function()
+    require('selectvenv').open()
+  end,
+}
+
+ins_left {
   'selectvenv',
   icon = "",
   cond = conditions.check_if_python,
