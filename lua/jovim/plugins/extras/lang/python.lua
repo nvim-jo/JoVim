@@ -114,9 +114,5 @@ return {
       auto_refresh = true,
       search_venv_managers = false,
     },
-    keys = {
-      -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>vs", "<cmd>SelectVenv<cr>", desc = "Select Venv" },
-    }
   }
 }
