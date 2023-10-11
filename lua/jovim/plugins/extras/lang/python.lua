@@ -116,7 +116,7 @@ return {
     },
     keys = {
       -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>vs", "<cmd>:VenvSelect<cr>", desc = "Select Venv" },
+      { "<leader>vs", "<cmd>SelectVenv<cr>", desc = "Select Venv" },
     }
   }
 }
