@@ -65,7 +65,7 @@ function M.setup(opts)
     })
 
     vim.api.nvim_create_autocmd("User", {
-      pattern = "JoVimStarted",
+      pattern = "LazyVimStarted",
       callback = function()
         require("lazy").update({ plugins = { "lazy.nvim" }, wait = true })
         M.msg({
