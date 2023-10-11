@@ -109,6 +109,8 @@ return {
     event = "VeryLazy",
     opts = {
       -- Your options go here
+      parents = 1,
+      name = { "venv", ".venv" },
       auto_refresh = true
     },
     keys = {
