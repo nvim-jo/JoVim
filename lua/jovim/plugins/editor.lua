@@ -79,7 +79,7 @@ return {
       local events = require("jo-tree.events")
       opts.event_handlers = opts.event_handlers or {}
       vim.list_extend(opts.event_handlers, {
-        { event = events.FILE_MOVED, handler = on_move },
+        { event = events.FILE_MOVED,   handler = on_move },
         { event = events.FILE_RENAMED, handler = on_move },
       })
       require("jo-tree").setup(opts)
@@ -131,41 +131,51 @@ return {
     },
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
-      { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = get_icon("Switch", 1, true).."Switch Buffer" },
-      { "<leader>/", Util.telescope("live_grep"), desc = get_icon("Grep", 1, true).."Grep" },
-      { "<leader>:", "<cmd>Telescope command_history<cr>", desc = get_icon("Command", 1, true).."Command History" },
-      { "<leader>E", Util.telescope("files"), desc = get_icon("Find", 1, true).."Find Files" },
+      { "<leader>,",  "<cmd>Telescope buffers show_all_buffers=true<cr>",
+                                                                                           desc = get_icon("Switch", 1,
+          true) .. "Switch Buffer" },
+      { "<leader>/",  Util.telescope("live_grep"),                                       desc = get_icon("Grep", 1, true) ..
+      "Grep" },
+      { "<leader>:",  "<cmd>Telescope command_history<cr>",                              desc = get_icon("Command", 1,
+        true) .. "Command History" },
+      { "<leader>E",  Util.telescope("files"),                                           desc = get_icon("Find", 1, true) ..
+      "Find Files" },
       -- find
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
-      { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>",                                      desc = "Buffers" },
+      { "<leader>ff", Util.telescope("files"),                                           desc = "Find Files (root dir)" },
+      { "<leader>fF", Util.telescope("files", { cwd = false }),                          desc = "Find Files (cwd)" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                     desc = "Recent" },
+      { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }),              desc = "Recent (cwd)" },
       -- git
-      { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-      { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+      { "<leader>gc", "<cmd>Telescope git_commits<CR>",                                  desc = "commits" },
+      { "<leader>gs", "<cmd>Telescope git_status<CR>",                                   desc = "status" },
       -- search
-      { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
-      { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-      { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-      { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
-      { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
-      { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-      { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-      { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-      { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-      { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-      { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-      { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-      { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (root dir)" },
+      { '<leader>s"', "<cmd>Telescope registers<cr>",                                    desc = "Registers" },
+      { "<leader>sa", "<cmd>Telescope autocommands<cr>",                                 desc = "Auto Commands" },
+      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>",                    desc = "Buffer" },
+      { "<leader>sc", "<cmd>Telescope command_history<cr>",                              desc = "Command History" },
+      { "<leader>sC", "<cmd>Telescope commands<cr>",                                     desc = "Commands" },
+      { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>",                          desc = "Document diagnostics" },
+      { "<leader>sD", "<cmd>Telescope diagnostics<cr>",                                  desc = "Workspace diagnostics" },
+      { "<leader>sg", Util.telescope("live_grep"),                                       desc = "Grep (root dir)" },
+      { "<leader>sG", Util.telescope("live_grep", { cwd = false }),                      desc = "Grep (cwd)" },
+      { "<leader>sh", "<cmd>Telescope help_tags<cr>",                                    desc = "Help Pages" },
+      { "<leader>sH", "<cmd>Telescope highlights<cr>",                                   desc = "Search Highlight Groups" },
+      { "<leader>sk", "<cmd>Telescope keymaps<cr>",                                      desc = "Key Maps" },
+      { "<leader>sM", "<cmd>Telescope man_pages<cr>",                                    desc = "Man Pages" },
+      { "<leader>sm", "<cmd>Telescope marks<cr>",                                        desc = "Jump to Mark" },
+      { "<leader>so", "<cmd>Telescope vim_options<cr>",                                  desc = "Options" },
+      { "<leader>sR", "<cmd>Telescope resume<cr>",                                       desc = "Resume" },
+      { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }),              desc = "Word (root dir)" },
       { "<leader>sW", Util.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
-      { "<leader>sw", Util.telescope("grep_string"), mode = "v", desc = "Selection (root dir)" },
-      { "<leader>sW", Util.telescope("grep_string", { cwd = false }), mode = "v", desc = "Selection (cwd)" },
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>sw", Util.telescope("grep_string"),                                     mode = "v",
+                                                                                                                                                  desc =
+        "Selection (root dir)" },
+      { "<leader>sW", Util.telescope("grep_string", { cwd = false }),                    mode = "v",
+                                                                                                                                                  desc =
+        "Selection (cwd)" },
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }),          desc =
+      "Colorscheme with preview" },
       {
         "<leader>ss",
         Util.telescope("lsp_document_symbols", {
@@ -259,7 +269,7 @@ return {
               height = 0.95,
               preview_height = 0.5,
             },
-      
+
             flex = {
               horizontal = {
                 preview_width = 0.9,
@@ -290,14 +300,14 @@ return {
           find_files = {
             -- I don't like having the cwd prefix in my files
             find_command = vim.fn.executable "fd" == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
-      
+
             mappings = {
               n = {
                 ["kj"] = "close",
               },
             },
           },
-      
+
           git_branches = {
             mappings = {
               i = {
@@ -305,12 +315,12 @@ return {
               },
             },
           },
-      
+
           buffers = {
             sort_lastused = true,
             sort_mru = true,
           },
-        },      
+        },
       }
     end,
     config = function(_, opts)
@@ -329,11 +339,14 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end,
+                                                                                                  desc =
+        "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc =
+      "Toggle Flash Search" },
     },
   },
 
@@ -385,12 +398,12 @@ return {
         ["["] = { name = "+prev" }
       },
       window = {
-        border = "single", -- none, single, double, shadow
-        position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+        border = "single",        -- none, single, double, shadow
+        position = "bottom",      -- bottom, top
+        margin = { 1, 0, 1, 0 },  -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
         padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
-        zindex = 1000, -- positive value to position WhichKey above other floating windows.
+        winblend = 0,             -- value between 0-100 0 for fully opaque and 100 for fully transparent
+        zindex = 1000,            -- positive value to position WhichKey above other floating windows.
       },
     },
     config = function(_, opts)
@@ -413,7 +426,7 @@ return {
         delete = { text = "" },
         topdelete = { text = "" },
         changedelete = { text = "▎" },
-        untracked = { text = "▎" }, 
+        untracked = { text = "▎" },
       },
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
@@ -485,7 +498,7 @@ return {
     -- stylua: ignore
     keys = {
       { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
     },
   },
 
@@ -495,10 +508,10 @@ return {
     cmd = { "TroubleToggle", "Trouble" },
     opts = { use_diagnostic_signs = true },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
       { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
       {
         "[q",
         function()
@@ -539,12 +552,24 @@ return {
     config = true,
     -- stylua: ignore
     keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+      { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",    desc = "Todo/Fix/Fixme" },
     },
   },
+
+  {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup({
+        mapping = { "jk", "jj" }, -- a table with mappings to use
+        timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+        clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+        keys = "<Esc>",         -- keys used for escaping, if it is a function will use the result everytime
+      })
+    end,
+  }
 }
