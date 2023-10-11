@@ -367,6 +367,7 @@ return {
   { "MunifTanjim/nui.nvim",        lazy = true },
   {
     "nvim-tree/nvim-web-devicons",
+    lazy = true,
     config = function()
       require('jovim.setup.icon').setup()
     end,
