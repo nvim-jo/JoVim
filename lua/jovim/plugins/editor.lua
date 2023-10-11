@@ -564,7 +564,7 @@ return {
   {
     "max397574/better-escape.nvim",
     lazy = true,
-    config = function()
+    init = function ()
       require("better_escape").setup({
         mapping = { "jk", "jj" }, -- a table with mappings to use
       })
