@@ -1,6 +1,9 @@
 local M = {}
 
 M.icons = {
+    misc = {
+        dots = "󰇘",
+    },
     dap = {
         Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
         Breakpoint = " ",
@@ -62,4 +65,4 @@ function M.get_icon_data(type)
     return M.icons[type]
 end
 
-return M 
+return M

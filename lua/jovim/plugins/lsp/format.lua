@@ -51,7 +51,7 @@ function M.format(opts)
 
   if #client_ids == 0 then
     if opts and opts.force then
-      Util.warn("No formatter available", { title = "LazyVim" })
+      Util.warn("No formatter available", { title = "JoVim" })
     end
     return
   end

@@ -14,73 +14,13 @@ local defaults = {
   colorscheme = "catppuccin",
   -- load the default settings
   defaults = {
-    autocmds = true, -- lazyvim.config.autocmds
-    keymaps = true, -- lazyvim.config.keymaps
-    -- lazyvim.config.options can't be configured here since that's loaded before lazyvim setup
-    -- if you want to disable loading options, add `package.loaded["lazyvim.config.options"] = true` to the top of your init.lua
+    autocmds = true, -- jovim.config.autocmds
+    keymaps = true, -- jovim.config.keymaps
+    -- jovim.config.options can't be configured here since that's loaded before jovim setup
+    -- if you want to disable loading options, add `package.loaded["jovim.config.options"] = true` to the top of your init.lua
   },
   -- icons used by other plugins
-  icons = {
-    misc = {
-      dots = "󰇘",
-    },
-    dap = {
-      Stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
-      Breakpoint = " ",
-      BreakpointCondition = " ",
-      BreakpointRejected = { " ", "DiagnosticError" },
-      LogPoint = ".>",
-    },
-    diagnostics = {
-      Error = " ",
-      Warn = " ",
-      Hint = " ",
-      Info = " ",
-    },
-    git = {
-      added = " ",
-      modified = " ",
-      removed = " ",
-    },
-    kinds = {
-      Array = " ",
-      Boolean = " ",
-      Class = " ",
-      Codeium = "󰘦 ",
-      Color = " ",
-      Constant = " ",
-      Constructor = " ",
-      Copilot = " ",
-      Enum = " ",
-      EnumMember = " ",
-      Event = " ",
-      Field = " ",
-      File = " ",
-      Folder = " ",
-      Function = " ",
-      Interface = " ",
-      Key = " ",
-      Keyword = " ",
-      Method = " ",
-      Module = " ",
-      Namespace = " ",
-      Null = " ",
-      Number = " ",
-      Object = " ",
-      Operator = " ",
-      Package = " ",
-      Property = " ",
-      Reference = " ",
-      Snippet = " ",
-      String = " ",
-      Struct = " ",
-      Text = " ",
-      TypeParameter = " ",
-      Unit = " ",
-      Value = " ",
-      Variable = " ",
-    },
-  },
+  icons = require('jovim.icons').icons 
 }
 
 M.renames = {
@@ -125,7 +65,7 @@ function M.setup(opts)
     })
 
     vim.api.nvim_create_autocmd("User", {
-      pattern = "LazyVimStarted",
+      pattern = "JoVimStarted",
       callback = function()
         require("lazy").update({ plugins = { "lazy.nvim" }, wait = true })
         M.msg({
