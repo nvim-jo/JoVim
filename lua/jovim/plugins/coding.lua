@@ -75,7 +75,7 @@ return {
         formatting = {
           fields = { "kind", "abbr" },
           format = function(entry, item)
-            local icons = require("jovim.config.icons").kinds
+            local icons = require('jovim.icons').get_icon_data('kinds')
             -- if icons[item.kind] then
             --   item.kind = icons[item.kind] .. item.kind
             -- end

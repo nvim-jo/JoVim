@@ -357,7 +357,7 @@ return {
         separator = " ",
         highlight = true,
         depth_limit = 5,
-        icons = require("jovim.config.icons").kinds,
+        icons = require("jovim.icons").get_icon_data('kinds'),
         lazy_update_context = true,
       }
     end,

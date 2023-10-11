@@ -104,7 +104,8 @@ return {
       end
 
       -- diagnostics
-      for type, icon in pairs(require('jovim.config.icons').diagnostics) do
+      local icons_data = require('jovim.icons').get_icon_data('diagnostics')
+      for type, icon in pairs(icons_data) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
@@ -122,7 +123,7 @@ return {
       if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
         opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
           or function(diagnostic)
-            local icons = require("jovim.config.icons").diagnostics
+            local icons = require("jovim.icons").get_icon_data('diagnostics')
             for d, icon in pairs(icons) do
               if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
                 return icon
