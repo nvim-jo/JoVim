@@ -125,16 +125,16 @@ ins_left {
   color = { fg = colors.text, gui = 'bold' },
 }
 
-ins_left {
-  function ()
-    return "Select Venv"
-  end,
-  cond = conditions.check_if_python,
-  color = { fg = colors.text },
-  on_click = function()
-    require('selectvenv').open()
-  end,
-}
+-- ins_left {
+--   function ()
+--     return "Select Venv"
+--   end,
+--   cond = conditions.check_if_python,
+--   color = { fg = colors.text },
+--   on_click = function()
+--     require('selectvenv').open()
+--   end,
+-- }
 
 ins_left {
   'selectvenv',
