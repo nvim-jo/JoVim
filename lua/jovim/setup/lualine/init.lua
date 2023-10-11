@@ -126,7 +126,7 @@ ins_left {
 }
 
 ins_left {
-  'selenv',
+  'selectvenv',
   icon = "",
   cond = conditions.check_if_python,
   color = { fg = "#CDD6F4" },
