@@ -132,7 +132,7 @@ end
 map("n", "<leader>ju", "<cmd>JoVimUpdate<cr>", {desc = "Update JoVim"})
 
 -- floating terminal
-local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root(), border = "rounded" }) end
+local lazyterm = function() Util.terminal(nil, { cwd = Util.root(), border = "rounded" }) end
 map("n", "<c-/>", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
 map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
@@ -167,11 +167,11 @@ map("n", "<leader>tt", lazyterm, { desc = get_icon("Terminal", 1, true).."Termin
 map("n", "<leader>tT", function() Util.float_term(nil, { border = "rounded" }) end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
 map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = get_icon("Note", 1, true).."Notepad" })
 map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = get_icon("Conceal", 1, true).."Conceal", silent = true })
-map("n", "<leader>tf", require("jovim.plugins.lsp.format").toggle, { desc = get_icon("Format", 1, true).."Format on Save" })
+map("n", "<leader>tf", function() Util.format.toggle() end, { desc = get_icon("Format", 1, true).."Format on Save" })
 map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = get_icon("Spellcheck", 1, true).."Spelling" })
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = get_icon("WordWrap", 1, true).."Word Wrap" })
-map("n", "<leader>tl", function() Util.toggle_number() end, { desc = get_icon("LineNumber", 1, true).."Line Numbers" })
-map("n", "<leader>td", Util.toggle_diagnostics, { desc = get_icon("Diagnostic", 1, true).."Diagnostics" })
+map("n", "<leader>tl", function() Util.toggle.number() end, { desc = get_icon("LineNumber", 1, true).."Line Numbers" })
+map("n", "<leader>td", Util.toggle.diagnostics(), { desc = get_icon("Diagnostic", 1, true).."Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = get_icon("Conceal", 1, true).."Conceal (base)" })
 if vim.lsp.inlay_hint then
