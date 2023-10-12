@@ -1,4 +1,4 @@
-local Util = require("lazy.core.util")
+local Util = require("jovim.util")
 
 ---@class JoVimConfig: JoVimOptions
 local M = {}
@@ -108,6 +108,7 @@ function M.setup(opts)
       M.load("keymaps")
       require("jovim.extra.notepad").setup()
       require("jovim.extra.updater").setup()
+
 
       Util.format.setup()
 
