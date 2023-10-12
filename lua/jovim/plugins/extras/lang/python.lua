@@ -78,19 +78,19 @@ return {
       end,
     },
   },
-  {
-    "nvim-jo/selenv.nvim",
-  },
-  {
-    "nvim-jo/selectvenv.nvim",
-    cmd = { "SelectVenv" },
-    event = "VeryLazy",
-    opts = {
-      -- Your options go here
-      parents = 1,
-      name = { "venv", ".venv" },
-      auto_refresh = true,
-      search_venv_managers = false,
-    },
-  }
+  -- {
+  --   "nvim-jo/selenv.nvim",
+  -- },
+  -- {
+  --   "nvim-jo/selectvenv.nvim",
+  --   cmd = { "SelectVenv" },
+  --   event = "VeryLazy",
+  --   opts = {
+  --     -- Your options go here
+  --     parents = 1,
+  --     name = { "venv", ".venv" },
+  --     auto_refresh = true,
+  --     search_venv_managers = false,
+  --   },
+  -- }
 }
