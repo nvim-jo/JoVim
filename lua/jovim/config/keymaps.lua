@@ -171,7 +171,7 @@ map("n", "<leader>tf", function() Util.format.toggle() end, { desc = get_icon("F
 map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = get_icon("Spellcheck", 1, true).."Spelling" })
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = get_icon("WordWrap", 1, true).."Word Wrap" })
 map("n", "<leader>tl", function() Util.toggle.number() end, { desc = get_icon("LineNumber", 1, true).."Line Numbers" })
-map("n", "<leader>td", Util.toggle.diagnostics(), { desc = get_icon("Diagnostic", 1, true).."Diagnostics" })
+map("n", "<leader>td", function () Util.toggle.diagnostics() end, { desc = get_icon("Diagnostic", 1, true).."Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>tC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = get_icon("Conceal", 1, true).."Conceal (base)" })
 if vim.lsp.inlay_hint then
