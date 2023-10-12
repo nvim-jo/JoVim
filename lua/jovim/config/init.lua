@@ -158,7 +158,7 @@ function M.load(name)
       end, { msg = "Failed loading " .. mod })
     end
   end
-  -- always load lazyvim, then user file
+  -- always load jovim, then user file
   if M.defaults[name] or name == "options" then
     _load("jovim.config." .. name)
   end

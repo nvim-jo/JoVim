@@ -17,8 +17,8 @@ return {
         init = function()
             vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
             -- Install the conform formatter on VeryLazy
-            require("lazyvim.util").on_very_lazy(function()
-                require("lazyvim.util").format.register({
+            require("jovim.util").on_very_lazy(function()
+                require("jovim.util").format.register({
                     name = "conform.nvim",
                     priority = 100,
                     primary = true,

@@ -278,10 +278,10 @@ return {
     "goolord/alpha-nvim",
     optional = true,
     enabled = function()
-      require("lazyvim.util").warn({
+      require("jovim.util").warn({
         "`dashboard.nvim` is now the default LazyVim starter plugin.",
         "",
-        "To keep using `alpha.nvim`, please enable the `lazyvim.plugins.extras.ui.alpha` extra.",
+        "To keep using `alpha.nvim`, please enable the `jovim.plugins.extras.ui.alpha` extra.",
         "Or to hide this message, remove the alpha spec from your config.",
       })
       return false
