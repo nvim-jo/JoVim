@@ -16,7 +16,7 @@ return {
       {
         "<leader>fe",
         function()
-          require("jo-tree.command").execute({ toggle = true, dir = require("jovim.util").get_root() })
+          require("jo-tree.command").execute({ toggle = true, dir = Util.root() })
         end,
         desc = "Explorer (root dir)",
       },
@@ -73,7 +73,7 @@ return {
     },
     config = function(_, opts)
       local function on_move(data)
-        Util.on_rename(data.source, data.destination)
+        Util.lsp.on_rename(data.source, data.destination)
       end
 
       local events = require("jo-tree.events")
@@ -418,7 +418,7 @@ return {
   -- hunks in a commit.
   {
     "lewis6991/gitsigns.nvim",
-    event = "LazyFile",
+    event = "JoFile",
     opts = {
       signs = {
         add = { text = "▎" },
@@ -457,7 +457,7 @@ return {
   -- instances.
   {
     "RRethy/vim-illuminate",
-    event = "LazyFile",
+    event = "JoFile",
     opts = {
       delay = 200,
       large_file_cutoff = 2000,
@@ -495,10 +495,28 @@ return {
   -- buffer remove
   {
     "echasnovski/mini.bufremove",
-    -- stylua: ignore
+
     keys = {
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
+      {
+        "<leader>bd",
+        function()
+          local bd = require("mini.bufremove").delete
+          if vim.bo.modified then
+            local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+            if choice == 1 then -- Yes
+              vim.cmd.write()
+              bd(0)
+            elseif choice == 2 then -- No
+              bd(0, true)
+            end
+          else
+            bd(0)
+          end
+        end,
+        desc = "Delete Buffer",
+      },
+      -- stylua: ignore
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
   },
 
@@ -548,7 +566,7 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "LazyFile",
+    event = "JoFile",
     config = true,
     -- stylua: ignore
     keys = {

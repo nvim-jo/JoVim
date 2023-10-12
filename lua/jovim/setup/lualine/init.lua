@@ -13,14 +13,14 @@ local colors = {
   darkblue = '#081633',
   green    = '#a6e3a1',
   orange   = '#fab387',
-  maroon = '#eba0ac',
+  maroon   = '#eba0ac',
   violet   = '#a9a1e1',
   magenta  = '#c678dd',
   blue     = '#89B4FA',
   red      = '#f38ba8',
   lavender = '#b4befe',
-  mauve = '#cba6f7',
-  text = "#cdd6f4",
+  mauve    = '#cba6f7',
+  text     = "#cdd6f4",
 }
 
 local conditions = {
@@ -35,7 +35,7 @@ local conditions = {
     local gitdir = vim.fn.finddir('.git', filepath .. ';')
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
-  check_if_python = function ()
+  check_if_python = function()
     return vim.bo.filetype == "python"
   end,
 }
@@ -89,10 +89,10 @@ end
 local function capitalizeFirstLetter(str)
   -- Check if the string is not empty
   if #str > 0 then
-      -- Capitalize the first letter and make the rest lowercase
-      return str:sub(1, 1):upper() .. str:sub(2):lower()
+    -- Capitalize the first letter and make the rest lowercase
+    return str:sub(1, 1):upper() .. str:sub(2):lower()
   else
-      return str
+    return str
   end
 end
 
@@ -102,21 +102,21 @@ ins_left {
   end,
   color = function()
     -- auto change color according to neovims mode
-    local mode_color = require('jovim.setup.catppuccin.colors').get_mode_color() 
+    local mode_color = require('jovim.setup.catppuccin.colors').get_mode_color()
     return { fg = mode_color[vim.fn.mode()] }
-  end, 
+  end,
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
 ins_left {
-  fancy_branch 
+  fancy_branch
 }
 
 ins_left {
   'filetype',
   icon_only = true,
   separator = "",
-  padding = {right = 0, left=1 }
+  padding = { right = 0, left = 1 }
 }
 
 ins_left {
@@ -177,9 +177,11 @@ ins_right {
 }
 
 local M = {}
-M.setup = function ()
-    vim.o.laststatus = vim.g.lualine_laststatus
-    lualine.setup(config)
+M.setup = function()
+  local lualine_require = require("lualine_require")
+  lualine_require.require = require
+  vim.o.laststatus = vim.g.lualine_laststatus
+  lualine.setup(config)
 end
 
 return M

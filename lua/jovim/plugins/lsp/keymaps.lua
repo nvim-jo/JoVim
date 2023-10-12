@@ -66,7 +66,7 @@ end
 ---@param method string
 function M.has(buffer, method)
   method = method:find("/") and method or "textDocument/" .. method
-  local clients = require("jovim.util").get_clients({ bufnr = buffer })
+  local clients = require("jovim.util").lsp.get_clients({ bufnr = buffer })
   for _, client in ipairs(clients) do
     if client.supports_method(method) then
       return true
@@ -83,7 +83,7 @@ function M.resolve(buffer)
   end
   local spec = M.get()
   local opts = require("jovim.util").opts("nvim-lspconfig")
-  local clients = require("jovim.util").get_clients({ bufnr = buffer })
+  local clients = require("jovim.util").lsp.get_clients({ bufnr = buffer })
   for _, client in ipairs(clients) do
     local maps = opts.servers[client.name] and opts.servers[client.name].keys or {}
     vim.list_extend(spec, maps)

@@ -6,7 +6,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
-    event = { "LazyFile", "VeryLazy" },
+    event = { "JoFile", "VeryLazy" },
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -102,6 +102,19 @@ return {
       end
       require("nvim-treesitter.configs").setup(opts)
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "JoFile",
+    enabled = true,
+    opts = { mode = "cursor" },
+  },
+
+  -- Automatically add closing tags for HTML and JSX
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    opts = {},
   },
   {
     'nvim-jo/highlightargs.nvim',

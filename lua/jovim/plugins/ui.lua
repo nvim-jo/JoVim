@@ -123,8 +123,14 @@ return {
     event = "VeryLazy",
     init = function()
       vim.g.lualine_laststatus = vim.o.laststatus
-      vim.o.laststatus = 0
-    end,
+      if vim.fn.argc(-1) > 0 then
+        -- set an empty statusline till lualine loads
+        vim.o.statusline = " "
+      else
+        -- hide the statusline on the starter page
+        vim.o.laststatus = 0
+      end
+    end, 
     config = function()
       require('jovim.setup.lualine').setup()
     end
@@ -134,7 +140,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = "LazyFile",
+    event = "JoFile",
     config = function ()
       require('jovim.setup.indent-blank').setup()
     end,
@@ -147,7 +153,7 @@ return {
     "echasnovski/mini.indentscope",
     version = false, -- wait till new 0.7.0 release to put it back on semver
     enabled = false,
-    event = "LazyFile",
+    event = "JoFile",
     opts = {
       -- symbol = "▏",
       symbol = "│",
@@ -268,76 +274,80 @@ return {
       },
     },
   },
-
-  -- Dashboard. This runs when neovim starts, and is what displays
-  -- the "JOVIM" banner.
   {
     "goolord/alpha-nvim",
+    optional = true,
+    enabled = function()
+      require("lazyvim.util").warn({
+        "`dashboard.nvim` is now the default LazyVim starter plugin.",
+        "",
+        "To keep using `alpha.nvim`, please enable the `lazyvim.plugins.extras.ui.alpha` extra.",
+        "Or to hide this message, remove the alpha spec from your config.",
+      })
+      return false
+    end,
+  },
+
+  {
+    "glepnir/dashboard-nvim",
     event = "VimEnter",
     opts = function()
-      local dashboard = require("alpha.themes.dashboard")
-      local logo = {
-        [[                                                      ]],
-        [[        ██╗ ██████╗ ██╗   ██╗██╗███╗   ███╗          Z]],
-        [[        ██║██╔═══██╗██║   ██║██║████╗ ████║      Z    ]],
-        [[        ██║██║   ██║██║   ██║██║██╔████╔██║   z       ]],
-        [[   ██   ██║██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ z         ]],
-        [[   ╚█████╔╝╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║           ]],
-        [[    ╚════╝  ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝           ]],
-        [[                                                      ]]
+      local logo = [[
+           ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
+           ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
+           ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
+           ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         
+           ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           
+           ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           
+      ]]
+
+      logo = string.rep("\n", 8) .. logo .. "\n\n"
+
+      local opts = {
+        theme = "doom",
+        hide = {
+          -- this is taken care of by lualine
+          -- enabling this messes up the actual laststatus setting after loading a file
+          statusline = false,
+        },
+        config = {
+          header = vim.split(logo, "\n"),
+          -- stylua: ignore
+          center = {
+            { action = "Telescope find_files",              desc = " Find file",       icon = " ", key = "f" },
+            { action = "ene | startinsert",                 desc = " New file",        icon = " ", key = "n" },
+            { action = "Telescope oldfiles",                desc = " Recent files",    icon = " ", key = "r" },
+            { action = "Telescope live_grep",               desc = " Find text",       icon = " ", key = "g" },
+            { action = "e $MYVIMRC",                        desc = " Config",          icon = " ", key = "c" },
+            { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
+            { action = "JoExtras",                        desc = " Jo Extras",     icon = " ", key = "e" },
+            { action = "Lazy",                              desc = " Lazy",            icon = "󰒲 ", key = "l" },
+            { action = "qa",                                desc = " Quit",            icon = " ", key = "q" },
+          },
+          footer = function()
+            local stats = require("lazy").stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          end,
+        },
       }
 
-      dashboard.section.header.val = logo
-      dashboard.section.buttons.val = {
-        dashboard.button("f", " " .. " Find file", "<cmd> Telescope find_files <cr>"),
-        dashboard.button("n", " " .. " New file", "<cmd> ene <BAR> startinsert <cr>"),
-        dashboard.button("r", " " .. " Recent files", "<cmd> Telescope oldfiles <cr>"),
-        dashboard.button("g", " " .. " Find text", "<cmd> Telescope live_grep <cr>"),
-        dashboard.button("c", " " .. " Config", "<cmd> e $MYVIMRC <cr>"),
-        dashboard.button("s", " " .. " Restore Session", [[<cmd> lua require("persistence").load() <cr>]]),
-        dashboard.button("l", "󰒲 " .. " Lazy", "<cmd> Lazy <cr>"),
-        dashboard.button("q", " " .. " Quit", "<cmd> qa <cr>"),
-      }
-      for _, button in ipairs(dashboard.section.buttons.val) do
-        button.opts.hl = "AlphaButtons"
-        button.opts.hl_shortcut = "AlphaShortcut"
+      for _, button in ipairs(opts.config.center) do
+        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
       end
-      dashboard.section.header.opts.hl = "AlphaHeader"
-      dashboard.section.buttons.opts.hl = "AlphaButtons"
-      dashboard.section.footer.opts.hl = "AlphaFooter"
-      dashboard.opts.layout[1].val = 8
-      return dashboard
-    end,
-    config = function(_, dashboard)
+
       -- close Lazy and re-open when the dashboard is ready
       if vim.o.filetype == "lazy" then
         vim.cmd.close()
         vim.api.nvim_create_autocmd("User", {
-          pattern = "AlphaReady",
+          pattern = "DashboardLoaded",
           callback = function()
             require("lazy").show()
           end,
         })
       end
 
-      require("alpha").setup(dashboard.opts)
-
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "LazyVimStarted",
-        callback = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = "⚡ Editor loaded "
-            .. stats.loaded
-            .. "/"
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
-          -- dashboard.section.footer.val = "⚡ Editor loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-          pcall(vim.cmd.AlphaRedraw)
-        end,
-      })
+      return opts
     end,
   },
 

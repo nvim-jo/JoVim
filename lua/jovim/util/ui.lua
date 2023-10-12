@@ -1,3 +1,4 @@
+---@class jovim.util.ui
 local M = {}
 
 ---@alias Sign {name:string, text:string, texthl:string, priority:number}
@@ -26,7 +27,7 @@ function M.get_signs(buf, lnum)
   )
   for _, extmark in pairs(extmarks) do
     signs[#signs + 1] = {
-      name = extmark[4].sign_hl_group,
+      name = extmark[4].sign_hl_group or "",
       text = extmark[4].sign_text,
       texthl = extmark[4].sign_hl_group,
       priority = extmark[4].priority,
@@ -93,11 +94,15 @@ function M.statuscolumn()
   ---@type Sign?,Sign?,Sign?
   local left, right, fold
   for _, s in ipairs(M.get_signs(buf, vim.v.lnum)) do
-    if s.name:find("GitSign") then
+    if s.name and s.name:find("GitSign") then
       right = s
     else
       left = s
     end
+  end
+
+  if vim.v.virtnum ~= 0 then
+    left = nil
   end
 
   vim.api.nvim_win_call(win, function()
@@ -117,6 +122,15 @@ function M.statuscolumn()
     nu .. " ",
     M.icon(fold or right),
   }, "")
+end
+
+function M.fg(name)
+  ---@type {foreground?:number}?
+  ---@diagnostic disable-next-line: deprecated
+  local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
+  ---@diagnostic disable-next-line: undefined-field
+  local fg = hl and (hl.fg or hl.foreground)
+  return fg and { fg = string.format("#%06x", fg) } or nil
 end
 
 return M
