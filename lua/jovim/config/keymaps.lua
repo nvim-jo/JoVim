@@ -164,9 +164,9 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- toggle
 map("n", "<leader>tt", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
-map("n", "<leader>tT", function() Util.float_term(nil, { border = "rounded" }) end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
+map("n", "<leader>tT", function() Util.terminal(nil, { border = "rounded" }) end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
 map("n", "<leader>tn", "<cmd>Notepad<cr>", { desc = get_icon("Note", 1, true).."Notepad" })
-map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = get_icon("Conceal", 1, true).."Conceal", silent = true })
+-- map("n", "<leader>tc", function() require('conceal').toggle_conceal() end, { desc = get_icon("Conceal", 1, true).."Conceal", silent = true })
 map("n", "<leader>tf", function() Util.format.toggle() end, { desc = get_icon("Format", 1, true).."Format on Save" })
 map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = get_icon("Spellcheck", 1, true).."Spelling" })
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = get_icon("WordWrap", 1, true).."Word Wrap" })
